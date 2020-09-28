@@ -1,0 +1,23 @@
+.storybook-loading {
+  /* background-color: rgba(0, 0, 0, 0.5); */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.storybook-loading--small img {
+  width: 24px;
+  height: 24px;
+  padding: 10px 16px;
+}
+.storybook-loading--medium img{
+  width: 48px;
+  height: 48px;
+  padding: 11px 20px;
+}
+.storybook-loading--large img {
+  width: 60px;
+  height: 60px;
+  padding: 12px 24px;
+}

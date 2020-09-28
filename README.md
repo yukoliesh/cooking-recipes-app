@@ -1,3 +1,7 @@
+# Cooking Recipes App
+
+This is my learning journey to build an app from scratch. 
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
