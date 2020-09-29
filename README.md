@@ -2,6 +2,14 @@
 
 This is my learning journey to build an app from scratch. 
 
+## Tech Stacks which are being used in this project
+- React
+- Storybook
+- XStyled-component
+- React Testing Library
+- GraphQL
+- Apollo
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
