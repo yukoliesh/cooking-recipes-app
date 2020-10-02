@@ -1,5 +1,9 @@
 import React from 'react';
+import Button from '@material-ui/core/Button';
+import { ThemeProvider } from '@material-ui/styles';
+import { theme, useStyles } from '../styles/theme';
 import './button.css';
+
 
 export interface ButtonProps {
   /**
@@ -18,6 +22,10 @@ export interface ButtonProps {
    * Button contents
    */
   label: string;
+   /**
+   * Button Border
+   */
+  border?: string;
   /**
    * Optional click handler
    */
@@ -27,22 +35,24 @@ export interface ButtonProps {
 /**
  * Primary UI component for user interaction
  */
-export const Button: React.FC<ButtonProps> = ({
+export const StyledButton: React.FC<ButtonProps> = ({
   primary = false,
   size = 'medium',
-  backgroundColor,
   label,
   ...props
 }) => {
-  const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
+  const classes = useStyles();
+  const mode = primary ? 'primary' : 'secondary';
   return (
-    <button
-      type="button"
-      className={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
-      style={{ backgroundColor }}
-      {...props}
-    >
-      {label}
-    </button>
+    <ThemeProvider theme={theme}>
+      <Button
+          variant="contained"
+          color={mode}
+          className={classes.button}
+          {...props}
+        >
+          {label}
+      </Button>
+    </ThemeProvider>
   );
 };
