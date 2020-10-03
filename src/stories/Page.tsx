@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Header } from './Header/Header';
+import { Menu } from './Menu/Menu';
 import './page.css';
 
 export interface PageProps {
@@ -12,7 +13,8 @@ export interface PageProps {
 
 export const Page: React.FC<PageProps> = ({ user, onLogin, onLogout, onCreateAccount }) => (
   <article>
-    <Header user={user} onLogin={onLogin} onLogout={onLogout} onCreateAccount={onCreateAccount} />
+    <Header />
+    <Menu user={user} onLogin={onLogin} onLogout={onLogout} onCreateAccount={onCreateAccount} />
 
     <section>
       <h2>Pages in Storybook</h2>

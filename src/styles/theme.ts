@@ -11,7 +11,7 @@ export const theme = createMuiTheme({
       main: '#808e95',
       light: '#b0bec5'
     },
-  },
+  }
 });
 
 
@@ -34,8 +34,8 @@ export const useStyles = makeStyles((theme: Theme) =>
     button: {
       marginRight: theme.spacing(1)
     },
-    // link: {
-    //   marginRight: theme.spacing(1)
-    // }
+    link: {
+      marginRight: theme.spacing(1)
+    }
   }),
 );
