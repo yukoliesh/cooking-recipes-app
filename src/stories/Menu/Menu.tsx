@@ -33,7 +33,7 @@ const RGrid = styled(Grid)`
 const SpacedLink = styled(Link)`
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
-  margin-right: 8px !important;
+  margin-right: 16px !important;
 `;
 
 export const Menu: React.FC<MenuProps> = ({ user, onLogin, onLogout, onCreateAccount }: MenuProps): JSX.Element => {
@@ -43,7 +43,7 @@ export const Menu: React.FC<MenuProps> = ({ user, onLogin, onLogout, onCreateAcc
     <ThemeProvider theme={theme}>
       <Box>
         <Grid container spacing={3} justify="center" alignItems="center">
-          <Grid item xs={6} >
+          <Grid item xs={6}>
             <img src={image.src} alt={image.alt} />
           </Grid>
           <RGrid item xs={4}>

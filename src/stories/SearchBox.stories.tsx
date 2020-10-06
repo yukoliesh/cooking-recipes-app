@@ -12,8 +12,8 @@ export default {
 
 const Template: Story<SearchBoxProps> = (args) => <SearchBox {...args} />;
 
-export const LoggedIn = Template.bind({});
-LoggedIn.args = {
+export const SearchBoxField = Template.bind({});
+SearchBoxField.args = {
   ...HeaderStories.LoggedIn.args,
 };
 
