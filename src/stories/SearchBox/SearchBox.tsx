@@ -4,6 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import SearchIcon from '@material-ui/icons/Search';
+import styled from "@xstyled/styled-components";
 
 export interface SearchBoxProps {
 
@@ -18,6 +19,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const TextFieldWhite = styled(TextField)`
+  background-color: #fff;
+  opacity: 1;
+`;
+
 export const SearchBox: React.FC<SearchBoxProps> = (SearchBoxProps): JSX.Element => {
   const classes = useStyles();
 
@@ -25,7 +31,7 @@ export const SearchBox: React.FC<SearchBoxProps> = (SearchBoxProps): JSX.Element
     <Grid container spacing={3}>
       <Grid item xs={3}>
         <form className={classes.root} noValidate autoComplete="off">
-          <TextField 
+          <TextFieldWhite 
             id="outlined-basic" 
             label="Search" 
             variant="filled" 

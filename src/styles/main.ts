@@ -1,6 +1,8 @@
-import { css } from '@xstyled/styled-components';
+import styled, { css } from '@xstyled/styled-components';
 import {createGlobalStyle} from '@xstyled/styled-components';
 
+
+// This can be used for css reset
 export default createGlobalStyle`
   *{
     font-family: 'Montserrat', sans-serif;
@@ -12,4 +14,5 @@ export default createGlobalStyle`
 export const heading = css`
   font-family: 'Roboto Slab', serif;
 `;
+
 
