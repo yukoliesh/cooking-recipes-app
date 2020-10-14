@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 
-import { Menu, MenuProps } from './Menu/Menu';
+import { Menu, MenuProps } from './Menu';
 
 export default {
   title: 'Example/Menu',
