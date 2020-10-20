@@ -1,4 +1,5 @@
 import styled, { css } from '@xstyled/styled-components';
+import { th } from "@xstyled/system";
 
 const fontFamily = css`
   font-family: 'Montserrat', sans-serif;
@@ -14,3 +15,4 @@ export const h1 = styled.div`
   font-size: 48px;
   line-height: 1.5;
 `;
+

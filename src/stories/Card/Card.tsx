@@ -1,9 +1,20 @@
 import React from 'react';
-import { CardCont } from "../../styles/CardStyle";
-import { Row, Col } from "../../styles/Grids"; 
+import styled from "@xstyled/styled-components";
+import { th } from "@xstyled/system";
+import { CardCont, CardImageCont, CardImage, CardInfoText, Desc, CategoryBg, CardInfoCategoryCont, CardInfoCont, CardInfoTitle } from "../../styles/CardStyle";
+import { Box } from "../../styles/Grids"; 
+import { H3, Fade } from "../../styles/Text"; 
+
+const ImageWrapper = styled(Box)`
+  width: 200px;
+`;
+const InfoWrapper = styled(Box)`
+  width: calc(100% - 200px);
+`;
 
 export interface CardProps {
-  image: string;
+  imageUrl: string;
+  imageAlt: string;
   title: string;
   description: string;
   categoryName: string;
@@ -12,7 +23,8 @@ export interface CardProps {
 }
 
 export const Card: React.FC<CardProps> = ({
-  image,
+  imageUrl,
+  imageAlt,
   title,
   description,
   categoryName,
@@ -21,27 +33,43 @@ export const Card: React.FC<CardProps> = ({
 }): JSX.Element => (
   <>
     <CardCont>
-      <Row justifyContent="flex-start" alignItems="center">
-        <Col>{image}</Col>
-        <Col>
-          <Row justifyContent="flex-start" alignItems="flex-start">
-            <Col>{title}</Col>
-          </Row>
-          <Row justifyContent="flex-start" alignItems="flex-start">
-            <Col>{description}</Col>
-          </Row>
-          <Row justifyContent="flex-start" alignItems="flex-start">
-            <Col>Cagetory</Col>
-            <Col>Time</Col>
-            <Col>Effort</Col>
-          </Row>
-          <Row justifyContent="flex-start" alignItems="flex-start">
-            <Col>{categoryName}</Col>
-            <Col>{timeAmount}</Col>
-            <Col>{effortName}</Col>
-          </Row>
-        </Col>
-      </Row>
+      <Box justifyContent={{ md: 'flex-start' }} alignItems="flex-start">
+        <ImageWrapper>
+          <CardImageCont><CardImage src={imageUrl} alt={imageAlt} /></CardImageCont>
+        </ImageWrapper>
+        <InfoWrapper flexDirection="column">
+          <Box padding={3}>
+            <Box><H3>{title}</H3></Box>
+          </Box>
+          <Box padding={3}>
+            <Box>
+              <Fade>
+                <Desc>{description}</Desc>
+              </Fade>
+            </Box>
+          </Box>
+          <Box padding={3}>
+            <CardInfoCategoryCont flexDirection="column">
+              <CardInfoTitle>Category</CardInfoTitle>
+              <CategoryBg bgColor="#ff0000" color="#fff">
+                <CardInfoText fontWeight="bold">{categoryName}</CardInfoText>
+              </CategoryBg>
+            </CardInfoCategoryCont>
+            <CardInfoCont flexDirection="column">
+              <CardInfoTitle>Time</CardInfoTitle>
+              <Box>
+                <CardInfoText fontWeight="bold">{timeAmount}</CardInfoText>
+              </Box>
+            </CardInfoCont>
+            <CardInfoCont flexDirection="column">
+              <CardInfoTitle>Effort</CardInfoTitle>
+              <Box>
+                <CardInfoText fontWeight="bold">{effortName}</CardInfoText>
+              </Box>
+            </CardInfoCont>
+          </Box>
+        </InfoWrapper>
+      </Box>
     </CardCont>
   </>
 );

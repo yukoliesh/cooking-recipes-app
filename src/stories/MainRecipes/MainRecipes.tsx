@@ -35,11 +35,12 @@ export const MainRecipes: React.FC<MainRecipesProps> = (): JSX.Element => (
       <Col>
         <Card
           title="Agedashi tofu with black pepper broth"
-          description="This classic Japanese dish is an impressive side or light meal."
-          categoryName="Japanese"
+          description="This classic Japanese dish is an impressive side or light meal. This classic Japanese dish is an impressive side or light meal."
+          categoryName="Singaporean"
           timeAmount="60 min"
           effortName="Easy"
-          image="../../images/agedashi-tofu.jpg"
+          imageUrl={require("../../images/agedashi-tofu.jpg")}
+          imageAlt="Agedashi Tofu"
         />
       </Col>
     </Row>
