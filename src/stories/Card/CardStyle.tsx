@@ -1,7 +1,7 @@
 import styled from "@xstyled/styled-components";
 import { th } from "@xstyled/system";
-import { fontFamily } from "./Text"; 
-import { Col, Box } from "./Grids"; 
+import { fontFamily } from "../../styles/Text"; 
+import { Col, Box } from "../../styles/Grids"; 
 
 export const CardCont = styled.div`
 width: 30vw;
@@ -9,6 +9,8 @@ max-width: 485px;
 border-radius: 15px;
 filter: drop-shadow(0 4px 4px #a9a8a8);
 background-color: #fff;
+margin-right: ${th.space(2)};
+margin-bottom: ${th.space(4)};
 `;
 
 export const CardImageCont = styled(Col)`

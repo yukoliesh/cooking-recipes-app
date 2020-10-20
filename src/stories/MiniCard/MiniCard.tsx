@@ -1,31 +1,28 @@
 import React from 'react';
 import styled from "@xstyled/styled-components";
-import { CardCont, CardImageCont, CardImage, CardInfoText, Desc, CategoryBg, CardInfoCategoryCont, CardInfoCont, CardInfoTitle } from "./CardStyle";
+import { CardCont, CardImageCont, CardImage, CardInfoText, CategoryBg, CardInfoCategoryCont, CardInfoCont, CardInfoTitle, CardTitle } from "../MiniCard";
 import { Box } from "../../styles/Grids"; 
-import { H3, Fade } from "../../styles/Text"; 
 
 const ImageWrapper = styled(Box)`
-  width: 200px;
+  width: 170px;
 `;
 const InfoWrapper = styled(Box)`
   width: calc(100% - 200px);
 `;
 
-export interface CardProps {
+export interface MiniCardProps {
   imageUrl: string;
   imageAlt: string;
   title: string;
-  description: string;
   categoryName: string;
   timeAmount: string;
   effortName: string;
 }
 
-export const Card: React.FC<CardProps> = ({
+export const MiniCard: React.FC<MiniCardProps> = ({
   imageUrl,
   imageAlt,
   title,
-  description,
   categoryName,
   timeAmount,
   effortName
@@ -37,31 +34,21 @@ export const Card: React.FC<CardProps> = ({
           <CardImageCont><CardImage src={imageUrl} alt={imageAlt} /></CardImageCont>
         </ImageWrapper>
         <InfoWrapper flexDirection="column">
-          <Box padding={3}>
-            <Box><H3>{title}</H3></Box>
+          <Box paddingTop={4} paddingBottom={0} >
+            <Box><CardTitle>{title}</CardTitle></Box>
           </Box>
-          <Box padding={3}>
-            <Box>
-              <Fade>
-                <Desc>{description}</Desc>
-              </Fade>
-            </Box>
-          </Box>
-          <Box padding={3}>
+          <Box paddingBottom={4} paddingTop={4}>
             <CardInfoCategoryCont flexDirection="column">
-              <CardInfoTitle>Category</CardInfoTitle>
               <CategoryBg bgColor="#ff0000" color="#fff">
                 <CardInfoText fontWeight="bold">{categoryName}</CardInfoText>
               </CategoryBg>
             </CardInfoCategoryCont>
             <CardInfoCont flexDirection="column">
-              <CardInfoTitle>Time</CardInfoTitle>
               <Box>
                 <CardInfoText fontWeight="bold">{timeAmount}</CardInfoText>
               </Box>
             </CardInfoCont>
             <CardInfoCont flexDirection="column">
-              <CardInfoTitle>Effort</CardInfoTitle>
               <Box>
                 <CardInfoText fontWeight="bold">{effortName}</CardInfoText>
               </Box>

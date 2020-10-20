@@ -2,7 +2,7 @@ import styled, { css } from '@xstyled/styled-components';
 import { th } from "@xstyled/system";
 
 export const fontFamily = css`
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Montserrat', 'Helvetica', sans-serif;
 `;
 
 export const Text = styled.p`
@@ -43,7 +43,7 @@ export const H1 = styled.h1`
    font-size: ${th.fontSize(7)};
 `;
 
-export const H2 = styled.h3`
+export const H2 = styled.h2`
    ${fontFamily}
    font-size: ${th.fontSize(6)};
 `;
@@ -51,6 +51,13 @@ export const H2 = styled.h3`
 export const H3 = styled.h3`
    ${fontFamily}
    font-size: ${th.fontSize(5)};
+   line-height: 140%;
+   margin: 0;
+`;
+
+export const H4 = styled.h4`
+   ${fontFamily}
+   font-size: ${th.fontSize(4)};
    line-height: 140%;
    margin: 0;
 `;

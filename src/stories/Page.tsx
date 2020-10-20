@@ -1,8 +1,14 @@
 import React from 'react';
+import styled from '@xstyled/styled-components';
 import { Header } from './Header/Header';
 import { Menu } from './Menu/Menu';
 import { Row, Col } from '../styles/Grids';
-import { Categories } from './Categories/Categories';
+import { Categories } from './Categories';
+import { H2, H3 } from "../styles/Text"; 
+import Lemon from "../images/Lemon03.png";
+import Basil from "../images/Basil.png"
+import { Card } from "./Card"; 
+import { MiniCard } from "./MiniCard"; 
 import './page.css';
 
 export interface PageProps {
@@ -12,65 +18,76 @@ export interface PageProps {
   onCreateAccount: () => void;
 }
 
+const RowWidth = styled(Row)`
+  width: 50vw;
+  max-width: 500px;
+`;
+
+const MainTitleImg = styled.img`
+  width: 8rem;
+`;
+
+export default {
+  title: 'img'
+}
+
+const image = {
+  src: Lemon,
+  alt: '60 min Recipes'
+}
+const imageBasil = {
+  src: Basil,
+  alt: '15 min Recipes'
+}
+
 export const Page: React.FC<PageProps> = ({ user, onLogin, onLogout, onCreateAccount }) => (
   <article>
     <Header />
     <Menu user={user} onLogin={onLogin} onLogout={onLogout} onCreateAccount={onCreateAccount} />
 
-    <Row justifyContent="center" alignItems="center">
+    <Row justifyContent="center" alignItems="flex-start">
       <Col>
         <Categories />
       </Col>
-      <Col size={2}>
+      <Col>
         <section>
-          <h2>Pages in Storybook</h2>
-          <p>
-            We recommend building UIs with a{' '}
-            <a href="https://componentdriven.org" target="_blank" rel="noopener noreferrer">
-              <strong>component-driven</strong>
-            </a>{' '}
-            process starting with atomic components and ending with pages.
-          </p>
-          <p>
-            Render pages with mock data. This makes it easy to build and review page states without
-            needing to navigate to them in your app. Here are some handy patterns for managing page data
-            in Storybook:
-          </p>
-          <ul>
-            <li>
-              Use a higher-level connected component. Storybook helps you compose such data from the
-              "args" of child component stories
-            </li>
-            <li>
-              Assemble data in the page component from your services. You can mock these services out
-              using Storybook.
-            </li>
-          </ul>
-          <p>
-            Get a guided tutorial on component-driven development at{' '}
-            <a href="https://www.learnstorybook.com" target="_blank" rel="noopener noreferrer">
-              Learn Storybook
-            </a>
-            . Read more in the{' '}
-            <a href="https://storybook.js.org/docs" target="_blank" rel="noopener noreferrer">
-              docs
-            </a>
-            .
-          </p>
-          <div className="tip-wrapper">
-            <span className="tip">Tip</span> Adjust the width of the canvas with the{' '}
-            <svg width="10" height="10" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
-              <g fill="none" fillRule="evenodd">
-                <path
-                  d="M1.5 5.2h4.8c.3 0 .5.2.5.4v5.1c-.1.2-.3.3-.4.3H1.4a.5.5 0 01-.5-.4V5.7c0-.3.2-.5.5-.5zm0-2.1h6.9c.3 0 .5.2.5.4v7a.5.5 0 01-1 0V4H1.5a.5.5 0 010-1zm0-2.1h9c.3 0 .5.2.5.4v9.1a.5.5 0 01-1 0V2H1.5a.5.5 0 010-1zm4.3 5.2H2V10h3.8V6.2z"
-                  id="a"
-                  fill="#999"
-                />
-              </g>
-            </svg>
-            Viewports addon in the toolbar
-          </div>
+        <RowWidth justifyContent="flex-start" alignItems="center">
+          <Col><MainTitleImg src={image.src} alt={image.alt} /></Col>
+          <Col><H2>60 min Recipes</H2></Col>
+        </RowWidth>
+        <Card
+        title="Agedashi tofu with black pepper broth"
+        description="This classic Japanese dish is an impressive side or light meal. This classic Japanese dish is an impressive side or light meal."
+        categoryName="Singaporean"
+        timeAmount="60 min"
+        effortName="Easy"
+        imageUrl={require("../images/agedashi-tofu.jpg")}
+        imageAlt="Agedashi Tofu"
+        />
+        <Card
+          title="Agedashi tofu with black pepper broth"
+          description="This classic Japanese dish is an impressive side or light meal. This classic Japanese dish is an impressive side or light meal."
+          categoryName="Singaporean"
+          timeAmount="60 min"
+          effortName="Easy"
+          imageUrl={require("../images/agedashi-tofu.jpg")}
+          imageAlt="Agedashi Tofu"
+        />
         </section>
+      </Col>
+      <Col>
+        <RowWidth justifyContent="flex-start" alignItems="center">
+          <Col><MainTitleImg src={imageBasil.src} alt={imageBasil.alt} /></Col>
+          <Col><H3>15 min Recipes</H3></Col>
+        </RowWidth>
+        <MiniCard 
+           title="Beef Yakitori"
+           categoryName="Japanese"
+           timeAmount="60 min"
+           effortName="Easy"
+           imageUrl={require("../images/beef-yakitori.jpg")}
+           imageAlt="Agedashi Tofu"
+        />
       </Col>
     </Row>
 
