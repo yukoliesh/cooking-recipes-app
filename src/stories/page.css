@@ -67,3 +67,15 @@ li {
 .tip-wrapper svg path {
   fill: #1ea7fd;
 }
+
+.cropped {
+  width: 110px;
+  overflow: hidden;
+  margin: 0 0 0 -35px;
+}
+
+.cropped-mini {
+  width: 95px;
+  overflow: hidden;
+  margin: 0 0 0 -40px;
+}

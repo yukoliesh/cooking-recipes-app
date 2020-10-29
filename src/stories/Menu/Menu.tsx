@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from '@xstyled/styled-components';
-import Grid from '@material-ui/core/Grid';
+import { Flex, Box } from "reflexbox";
 import { StyledButton } from '../Button';
-import Box from '@material-ui/core/Box';
 import Link from '@material-ui/core/Link';
 import { ThemeProvider } from '@material-ui/styles';
 import { theme } from '../../styles/theme'; 
@@ -26,7 +25,7 @@ const image = {
   alt: 'Easy Cooking logo'
 }
 
-const RGrid = styled(Grid)`
+const RGrid = styled(Box)`
   text-align: right;
 `;
 
@@ -41,36 +40,39 @@ export const Menu: React.FC<MenuProps> = ({ user, onLogin, onLogout, onCreateAcc
   const preventDefault = (event: React.SyntheticEvent) => event.preventDefault();
   return (
     <ThemeProvider theme={theme}>
-      <Box>
-        <Grid container spacing={3} justify="center" alignItems="center">
-          <Grid item xs={6}>
-            <img src={image.src} alt={image.alt} />
-          </Grid>
-          <RGrid item xs={4}>
-            <nav>
-              <SpacedLink href="#" onClick={preventDefault} color="secondary">
-                Recipes
-              </SpacedLink>
-              <SpacedLink href="#" onClick={preventDefault} color="secondary">
-                Categories
-              </SpacedLink>
-              <SpacedLink href="#" onClick={preventDefault} color="secondary">
-                Favorites
-              </SpacedLink>
-            </nav>
-          </RGrid>
-          <Grid item>
-            {user ? (
-              <StyledButton size="small" onClick={onLogout} label="Sign out" />
-            ) : (
-              <>
-                <StyledButton size="small" onClick={onLogin} label="Sign in" />
-                <StyledButton primary size="small" onClick={onCreateAccount} label="Sign up" />
-              </>
-            )}
-          </Grid>
-        </Grid>
-      </Box>
+      <Flex justifyContent="flex-start" alignItems="center" marginBottom={4}>
+        <Box width={1 / 2}>
+          <img src={image.src} alt={image.alt} />
+        </Box>
+        <RGrid width={1 / 2}>
+          <Flex alignItems="center">
+            <Box>
+              <nav>
+                <SpacedLink href="#" onClick={preventDefault} color="secondary">
+                  Recipes
+                </SpacedLink>
+                <SpacedLink href="#" onClick={preventDefault} color="secondary">
+                  Categories
+                </SpacedLink>
+                <SpacedLink href="#" onClick={preventDefault} color="secondary">
+                  Favorites
+                </SpacedLink>
+              </nav>
+            </Box>
+            <Box width={1 / 4}>
+              {user ? (
+                <StyledButton size="small" onClick={onLogout} label="Sign out" />
+              ) : (
+                <>
+                  <StyledButton size="small" onClick={onLogin} label="Sign in" />
+                  <StyledButton primary size="small" onClick={onCreateAccount} label="Sign up" />
+                </>
+              )}
+            </Box>
+          </Flex>
+        </RGrid>
+        
+      </Flex>
     </ThemeProvider>
   )
 };

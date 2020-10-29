@@ -12,6 +12,7 @@ import {
   PositioningProps,
   ShadowsProps,
   SpaceProps,
+  layout,
 } from "@xstyled/system";
 
 type Props = FlexboxesProps &
@@ -38,13 +39,24 @@ export const Col = styled.div<{size?: number, width?: string, maxWidth?: string}
   max-width: ${(props) => props.maxWidth};
 `;
 
-export const Box = styled.div<Props>`
-  min-width: 0;
-  display: flex;
-  ${flexboxes}
-  ${space}
-  ${color}
-  ${backgrounds}
-  ${shadows}
-  ${positioning}
-`;
+// export const Box = styled.div<Props>`
+//   min-width: 0;
+//   display: flex;
+//   ${flexboxes}
+//   ${space}
+//   ${color}
+//   ${backgrounds}
+//   ${shadows}
+//   ${positioning}
+// `;
+
+export const Box = styled.div(
+  {
+    boxSizing: 'border-box',
+    minWidth: 0,
+  },
+  space,
+  color,
+  layout,
+  flexboxes
+)

@@ -1,7 +1,8 @@
 import styled from "@xstyled/styled-components";
 import { th } from "@xstyled/system";
+import { Box } from "reflexbox";
 import { fontFamily } from "../../styles/Text"; 
-import { Col, Box } from "../../styles/Grids"; 
+// import { Col, Box } from "../../styles/Grids"; 
 
 export const CardCont = styled.div`
 width: 30vw;
@@ -13,7 +14,7 @@ margin-right: ${th.space(2)};
 margin-bottom: ${th.space(4)};
 `;
 
-export const CardImageCont = styled(Col)`
+export const CardImageCont = styled(Box)`
   width: 200px;
   height: 300px;
 `;
@@ -35,13 +36,13 @@ export const Desc = styled.p`
 export const CardInfoCategoryCont = styled(Box)`
   ${fontFamily}
   padding-right: ${th.space(2)};
-  width: 8rem;
+  width: 9rem;
 `;
 
 export const CardInfoCont = styled(Box)`
   ${fontFamily}
   padding-right: ${th.space(2)};
-  width: 5rem;
+  width: 6rem;
 `;
 
 export const CardInfoTitle = styled.div`
@@ -56,12 +57,18 @@ export const CardInfoText = styled.p<{fontWeight? : string}>`
   font-weight: ${(props) => props.fontWeight};
 `;
 
-export const CategoryBg = styled.div<{bgColor: string, color: string}>`
-  padding: 2px ${th.space(2)};
-  border-radius: 30px;
-  background-color: ${(props) => props.bgColor};
-  color: ${(props) => props.color};
-  text-align: center;
-  font-weight: bold;
-  margin-top: ${th.space(1)};
+export const Divider = styled.div`
+  height: 50px;
+  margin: ${th.space(1)} ${th.space(3)};
+  border-right: solid 1px #ccc;
 `;
+
+// export const CategoryBg = styled.div<{bgColor: string, color: string}>`
+//   padding: 2px ${th.space(2)};
+//   border-radius: 30px;
+//   background-color: ${(props) => props.bgColor};
+//   color: ${(props) => props.color};
+//   text-align: center;
+//   font-weight: bold;
+//   margin-top: ${th.space(1)};
+// `;

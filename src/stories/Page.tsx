@@ -1,8 +1,9 @@
 import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import styled from '@xstyled/styled-components';
 import { Header } from './Header/Header';
 import { Menu } from './Menu/Menu';
-import { Row, Col } from '../styles/Grids';
+import { Flex, Box } from "reflexbox";
 import { Categories } from './Categories';
 import { H2, H3 } from "../styles/Text"; 
 import Lemon from "../images/Lemon03.png";
@@ -18,9 +19,14 @@ export interface PageProps {
   onCreateAccount: () => void;
 }
 
-const RowWidth = styled(Row)`
+const MainCont = styled(Flex)`
+  width: 80vw;
+  margin: 0 auto;
+`;
+
+const RowWidth = styled(Box)`
   width: 50vw;
-  max-width: 500px;
+  max-width: 550px;
 `;
 
 const MainTitleImg = styled.img`
@@ -40,57 +46,68 @@ const imageBasil = {
   alt: '15 min Recipes'
 }
 
-export const Page: React.FC<PageProps> = ({ user, onLogin, onLogout, onCreateAccount }) => (
-  <article>
-    <Header />
-    <Menu user={user} onLogin={onLogin} onLogout={onLogout} onCreateAccount={onCreateAccount} />
-
-    <Row justifyContent="center" alignItems="flex-start">
-      <Col>
-        <Categories />
-      </Col>
-      <Col>
-        <section>
-        <RowWidth justifyContent="flex-start" alignItems="center">
-          <Col><MainTitleImg src={image.src} alt={image.alt} /></Col>
-          <Col><H2>60 min Recipes</H2></Col>
-        </RowWidth>
-        <Card
-        title="Agedashi tofu with black pepper broth"
-        description="This classic Japanese dish is an impressive side or light meal. This classic Japanese dish is an impressive side or light meal."
-        categoryName="Singaporean"
-        timeAmount="60 min"
-        effortName="Easy"
-        imageUrl={require("../images/agedashi-tofu.jpg")}
-        imageAlt="Agedashi Tofu"
-        />
-        <Card
-          title="Agedashi tofu with black pepper broth"
-          description="This classic Japanese dish is an impressive side or light meal. This classic Japanese dish is an impressive side or light meal."
-          categoryName="Singaporean"
-          timeAmount="60 min"
-          effortName="Easy"
-          imageUrl={require("../images/agedashi-tofu.jpg")}
-          imageAlt="Agedashi Tofu"
-        />
-        </section>
-      </Col>
-      <Col>
-        <RowWidth justifyContent="flex-start" alignItems="center">
-          <Col><MainTitleImg src={imageBasil.src} alt={imageBasil.alt} /></Col>
-          <Col><H3>15 min Recipes</H3></Col>
-        </RowWidth>
-        <MiniCard 
-           title="Beef Yakitori"
-           categoryName="Japanese"
-           timeAmount="60 min"
-           effortName="Easy"
-           imageUrl={require("../images/beef-yakitori.jpg")}
-           imageAlt="Agedashi Tofu"
-        />
-      </Col>
-    </Row>
-
-    
-  </article>
-);
+export const Page: React.FC<PageProps> = ({ user, onLogin, onLogout, onCreateAccount }: PageProps): JSX.Element => {
+  return (
+    <Router>
+      <article>
+        <Header />
+          <MainCont justifyContent="center" alignItems="center">
+            <Box width={1}>
+              <Flex>
+                <Box width={1} flex={1}> <Menu user={user} onLogin={onLogin} onLogout={onLogout} onCreateAccount={onCreateAccount} /> </Box>
+              </Flex>
+              <Flex>
+                <Box width={1 / 4}><Categories /></Box>
+                <RowWidth alignItems="center">
+                  <Flex justifyContent="flex-start" alignItems="center">
+                    <div className="cropped">
+                      <MainTitleImg src={image.src} alt={image.alt} />
+                    </div>
+                    <H2>60 min Recipes</H2>
+                  </Flex>
+                  <Flex>
+                    <Box>
+                    <Card
+                      title="Agedashi tofu with black pepper broth"
+                      description="This classic Japanese dish is an impressive side or light meal. This classic Japanese dish is an impressive side or light meal."
+                      categoryName="Singaporean"
+                      timeAmount="60 min"
+                      effortName="Easy"
+                      imageUrl={require("../images/agedashi-tofu.jpg")}
+                      imageAlt="Agedashi Tofu"
+                      detailPagePath="/"
+                      categoryPagePath="/"
+                      />
+                    </Box>
+                  </Flex>
+                </RowWidth>
+                <Box width={1 / 4}>
+                  <RowWidth alignItems="center">
+                    <Flex justifyContent="flex-start" alignItems="center">
+                      <div className="cropped-mini">
+                        <MainTitleImg src={imageBasil.src} alt={imageBasil.alt} />
+                      </div>
+                      <H3>15 min Recipes</H3>
+                    </Flex>
+                  </RowWidth>
+                  <Flex>
+                    <Box>
+                      <MiniCard 
+                      title="Beef Yakitori"
+                      categoryName="Japanese"
+                      timeAmount="60 min"
+                      effortName="Easy"
+                      imageUrl={require("../images/beef-yakitori.jpg")}
+                      imageAlt="Agedashi Tofu"
+                      detailPagePath="/"
+                      categoryPagePath="/"
+                    />
+                    </Box>
+                  </Flex>
+                </Box>
+              </Flex>
+            </Box>
+          </MainCont>
+      </article>
+  </Router>
+)};

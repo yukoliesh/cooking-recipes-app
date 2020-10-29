@@ -1,7 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from "@xstyled/styled-components";
-import { CardCont, CardImageCont, CardImage, CardInfoText, CategoryBg, CardInfoCategoryCont, CardInfoCont, CardInfoTitle, CardTitle } from "../MiniCard";
-import { Box } from "../../styles/Grids"; 
+import { CardCont, CardImageCont, CardImage, CardInfoText, CardInfoCategoryCont, CardInfoCont, CardTitle, MiniDivider } from "../MiniCard";
+import { Flex, Box } from "reflexbox";
+// import { Box } from "../../styles/Grids"; 
 
 const ImageWrapper = styled(Box)`
   width: 170px;
@@ -17,6 +19,8 @@ export interface MiniCardProps {
   categoryName: string;
   timeAmount: string;
   effortName: string;
+  detailPagePath: string;
+  categoryPagePath: string;
 }
 
 export const MiniCard: React.FC<MiniCardProps> = ({
@@ -25,37 +29,41 @@ export const MiniCard: React.FC<MiniCardProps> = ({
   title,
   categoryName,
   timeAmount,
-  effortName
+  effortName,
+  detailPagePath,
+  categoryPagePath
 }): JSX.Element => (
   <>
     <CardCont>
-      <Box justifyContent={{ md: 'flex-start' }} alignItems="flex-start">
+      <Flex justifyContent={{ md: 'flex-start' }} alignItems="flex-start">
         <ImageWrapper>
-          <CardImageCont><CardImage src={imageUrl} alt={imageAlt} /></CardImageCont>
+          <CardImageCont><Link to={detailPagePath}><CardImage src={imageUrl} alt={imageAlt} /></Link></CardImageCont>
         </ImageWrapper>
         <InfoWrapper flexDirection="column">
           <Box paddingTop={4} paddingBottom={0} >
-            <Box><CardTitle>{title}</CardTitle></Box>
+            <Box><Link to={detailPagePath}><CardTitle>{title}</CardTitle></Link></Box>
           </Box>
-          <Box paddingBottom={4} paddingTop={4}>
-            <CardInfoCategoryCont flexDirection="column">
-              <CategoryBg bgColor="#ff0000" color="#fff">
-                <CardInfoText fontWeight="bold">{categoryName}</CardInfoText>
-              </CategoryBg>
+          <Flex paddingBottom={2} paddingTop={4} alignItems="center">
+            <CardInfoCategoryCont width={1 / 3}>
+              <Box>
+                <Link to={categoryPagePath}><CardInfoText fontWeight="bold">{categoryName}</CardInfoText></Link>
+              </Box>
             </CardInfoCategoryCont>
-            <CardInfoCont flexDirection="column">
+            <MiniDivider />
+            <CardInfoCont width={1 / 3}>
               <Box>
                 <CardInfoText fontWeight="bold">{timeAmount}</CardInfoText>
               </Box>
             </CardInfoCont>
-            <CardInfoCont flexDirection="column">
+            <MiniDivider />
+            <CardInfoCont width={1 / 3}>
               <Box>
                 <CardInfoText fontWeight="bold">{effortName}</CardInfoText>
               </Box>
             </CardInfoCont>
-          </Box>
+          </Flex>
         </InfoWrapper>
-      </Box>
+      </Flex>
     </CardCont>
   </>
 );

@@ -1,13 +1,14 @@
 import React from 'react';
 import styled from "@xstyled/styled-components";
-import { CardCont, CardImageCont, CardImage, CardInfoText, Desc, CategoryBg, CardInfoCategoryCont, CardInfoCont, CardInfoTitle } from "./CardStyle";
-import { Box } from "../../styles/Grids"; 
+import { Link } from 'react-router-dom';
+import { CardCont, CardImageCont, CardImage, CardInfoText, Desc, CardInfoCategoryCont, CardInfoCont, CardInfoTitle, Divider } from "./CardStyle";
+import { Flex, Box } from "reflexbox";
 import { H3, Fade } from "../../styles/Text"; 
 
 const ImageWrapper = styled(Box)`
   width: 200px;
 `;
-const InfoWrapper = styled(Box)`
+const InfoWrapper = styled(Flex)`
   width: calc(100% - 200px);
 `;
 
@@ -19,6 +20,8 @@ export interface CardProps {
   categoryName: string;
   timeAmount: string;
   effortName: string;
+  detailPagePath: string;
+  categoryPagePath: string;
 }
 
 export const Card: React.FC<CardProps> = ({
@@ -28,17 +31,19 @@ export const Card: React.FC<CardProps> = ({
   description,
   categoryName,
   timeAmount,
-  effortName
+  effortName,
+  detailPagePath,
+  categoryPagePath
 }): JSX.Element => (
   <>
     <CardCont>
-      <Box justifyContent={{ md: 'flex-start' }} alignItems="flex-start">
+      <Flex justifyContent={{ md: 'flex-start' }} alignItems="flex-start">
         <ImageWrapper>
-          <CardImageCont><CardImage src={imageUrl} alt={imageAlt} /></CardImageCont>
+          <CardImageCont><Link to={detailPagePath}><CardImage src={imageUrl} alt={imageAlt} /></Link></CardImageCont>
         </ImageWrapper>
         <InfoWrapper flexDirection="column">
           <Box padding={3}>
-            <Box><H3>{title}</H3></Box>
+            <Box><Link to={detailPagePath}><H3>{title}</H3></Link></Box>
           </Box>
           <Box padding={3}>
             <Box>
@@ -47,28 +52,30 @@ export const Card: React.FC<CardProps> = ({
               </Fade>
             </Box>
           </Box>
-          <Box padding={3}>
+          <Flex padding={3} alignItems="center">
             <CardInfoCategoryCont flexDirection="column">
               <CardInfoTitle>Category</CardInfoTitle>
-              <CategoryBg bgColor="#ff0000" color="#fff">
-                <CardInfoText fontWeight="bold">{categoryName}</CardInfoText>
-              </CategoryBg>
+              <Box>
+                <Link to={categoryPagePath}><CardInfoText fontWeight="bold">{categoryName}</CardInfoText></Link>
+              </Box>
             </CardInfoCategoryCont>
+            <Divider />
             <CardInfoCont flexDirection="column">
               <CardInfoTitle>Time</CardInfoTitle>
               <Box>
                 <CardInfoText fontWeight="bold">{timeAmount}</CardInfoText>
               </Box>
             </CardInfoCont>
+            <Divider />
             <CardInfoCont flexDirection="column">
               <CardInfoTitle>Effort</CardInfoTitle>
               <Box>
                 <CardInfoText fontWeight="bold">{effortName}</CardInfoText>
               </Box>
             </CardInfoCont>
-          </Box>
+          </Flex>
         </InfoWrapper>
-      </Box>
+      </Flex>
     </CardCont>
   </>
 );

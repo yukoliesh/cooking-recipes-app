@@ -9,7 +9,7 @@ export interface HeaderProps {
 
 }
 
-const Wrapper = styled(Flex)`
+const Wrapper = styled.div`
   position: relative;
 `;
 
@@ -18,7 +18,7 @@ const HeaderBg = styled.div`
   background-repeat: no-repeat;
   background-position: top center;
   background-size: cover;
-  background-color: red;
+  background-color: #fff;
   width: 100vw;
   height: 50vh;
 `;
@@ -30,14 +30,9 @@ const Title = styled.h2`
   background-color: #fff;
   padding: 0.5rem 1rem;
 `;
-const TitleCont = styled.div`
-  flex-grow: 1;
-`;
-const TitleRowCont = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-end;
-  height: 49vh;
+
+const RightAlignedBox = styled(Box)`
+  text-align: right;
 `;
 
 
@@ -45,18 +40,14 @@ export const Header: React.FC<HeaderProps> = (): JSX.Element => (
   <header>
     <Wrapper>
       <HeaderBg>
-        <TitleRowCont>
-          <Flex>
-            <Box size={4}>
-              <TitleCont>
-                <Title>Explore Your Easy Cooking Recipes!</Title>
-              </TitleCont>
-            </Box>
-            <Box size={1}>
-              <SearchBox />
-            </Box>
-          </Flex>
-        </TitleRowCont>
+        <Flex justifyContent="flex-start" alignItems="flex-end" height="49vh">
+          <Box>
+            <Title>Explore Your Easy Cooking Recipes!</Title>
+          </Box>
+          <RightAlignedBox width={3 / 4}>
+            <SearchBox />
+          </RightAlignedBox>
+        </Flex>
       </HeaderBg>       
     </Wrapper>
   </header>
