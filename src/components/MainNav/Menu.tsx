@@ -46,7 +46,7 @@ export const Menu: React.FC<MenuProps> = ({ user, onLogin, onLogout, onCreateAcc
           <img src={image.src} alt={image.alt} />
         </Box>
         <RGrid width={1 / 2}>
-          <Flex alignItems="center">
+          <Flex alignItems="center" justifyContent="flex-end">
             <Box>
               <nav>
                 <SpacedLink href="#" onClick={preventDefault} color="secondary">
