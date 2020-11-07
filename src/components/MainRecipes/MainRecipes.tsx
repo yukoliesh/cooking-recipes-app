@@ -1,9 +1,12 @@
 import React from 'react';
 import styled from '@xstyled/styled-components';
+import { th } from "@xstyled/system";
+import { StyledButton } from '../Button';
 import { Flex, Box } from "reflexbox";
 import { H2 } from "../../styles/Text"; 
-import { Card } from "./Card";
+import { Card } from "./index";
 import Lemon from "../../images/Lemon03.png";
+import { recipes } from "../../data/MockData";
 
 const RowWidth = styled(Box)`
   width: 50vw;
@@ -17,33 +20,54 @@ const image = {
   alt: '60 min Recipes'
 }
 
+const MoreButton = styled(StyledButton)`
+  width: 50vw;
+  max-width: 500px;
+  padding: ${th.space(3)} ${th.space(4)} !important;
+`;
+
+const CroppedImg = styled.div`
+  width: 7rem;
+  overflow: hidden;
+  margin: -10px 0 0 -35px;
+`;
+
 export interface MainRecipesProps {
 
 }
 
 export const MainRecipes: React.FC<MainRecipesProps> = ({}: MainRecipesProps): JSX.Element => {
+  const limitMainRecipes = recipes.slice(0,5);
   return (
-    <RowWidth alignItems="center">
-      <Flex justifyContent="flex-start" alignItems="center">
-        <div className="cropped">
-          <MainTitleImg src={image.src} alt={image.alt} />
-        </div>
-        <H2>60 min Recipes</H2>
-      </Flex>
-      <Flex>
+    <RowWidth>
+      <Flex width={1}>
         <Box>
-        <Card
-          title="Agedashi tofu with black pepper broth"
-          description="This classic Japanese dish is an impressive side or light meal. This classic Japanese dish is an impressive side or light meal."
-          categoryName="Singaporean"
-          timeAmount="60 min"
-          effortName="Easy"
-          imageUrl={require("../../images/agedashi-tofu.jpg")}
-          imageAlt="Agedashi Tofu"
+          <CroppedImg>
+            <MainTitleImg src={image.src} alt={image.alt} />
+          </CroppedImg>
+        </Box>
+        <Box>
+          <H2>60 min Recipes</H2>
+        </Box>
+      </Flex>
+      <Box width={1}>
+        {limitMainRecipes && limitMainRecipes.map(item => (
+          <Card
+          key={item.id}
+          title={item.title}
+          description={item.description}
+          categoryName={item.category}
+          timeAmount={`${item.totalTime} min`}
+          effortLevel={item.effort}
+          imageUrl={require(`../../images/${item.category}/${item.image}`)}
+          imageAlt={item.title}
           detailPagePath="/"
           categoryPagePath="/"
           />
-        </Box>
-      </Flex>
+        ))}
+      </Box>
+      <Box width={1}>
+        <MoreButton size="large" label="More Recipes" primary />
+      </Box>
     </RowWidth>
   )}

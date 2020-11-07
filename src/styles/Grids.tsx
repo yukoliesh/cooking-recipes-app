@@ -1,10 +1,7 @@
 import styled from "@xstyled/styled-components";
 import {
-  backgrounds,
   color,
   flexboxes,
-  positioning,
-  shadows,
   space,
   BackgroundsProps,
   ColorProps,

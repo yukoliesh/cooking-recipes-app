@@ -19,13 +19,13 @@ const CroppedImg = styled.div`
   overflow: hidden;
   margin: -20px 0 0 -35px;
 `;
-export interface CategoriesProps {
+export interface IndianProps {
 
 }
 
-export const Categories: React.FC<CategoriesProps> = ({
-}: CategoriesProps): JSX.Element => {
-  console.log("rec", recipes);
+export const Indian: React.FC<IndianProps> = ({
+}: IndianProps): JSX.Element => {
+  const indianList = recipes.filter(item => item.category === "Indian");
   return (
     <>
       <Flex>
@@ -37,11 +37,11 @@ export const Categories: React.FC<CategoriesProps> = ({
               </CroppedImg>
             </Box>
             <Box>
-              <H2>All Categories</H2>
+              <H2>Indian</H2>
             </Box>
           </Flex>
           <Flex justifyContent="flex-start" flexWrap="wrap">
-            {recipes.map(item => (
+            {indianList.map(item => (
               <Box>
                 <Card
                   key={item.id}

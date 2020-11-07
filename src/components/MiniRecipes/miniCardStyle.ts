@@ -39,9 +39,11 @@ export const CardInfoCont = styled(Box)`
   width: 5rem;
 `;
 
-export const CardTitle = styled(H4)`
-  ${fontFamily}
+export const MiniCardTitle = styled(H4)`
   color: #fff;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 `;
 
 export const CardInfoTitle = styled.div`
@@ -56,6 +58,9 @@ export const CardInfoText = styled.p<{fontWeight? : string}>`
   line-height: ${th.lineHeight(2)};
   font-weight: ${(props) => props.fontWeight};
   color: #fff;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 `;
 
 export const MiniDivider = styled.div`

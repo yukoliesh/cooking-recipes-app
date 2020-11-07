@@ -2,7 +2,7 @@ import React from 'react';
 import styled from '@xstyled/styled-components';
 import { Flex, Box } from "reflexbox";
 import { StyledButton } from '../Button';
-import Link from '@material-ui/core/Link';
+import { Link } from 'react-router-dom';
 import { ThemeProvider } from '@material-ui/styles';
 import { theme } from '../../styles/theme'; 
 
@@ -33,29 +33,28 @@ const SpacedLink = styled(Link)`
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   margin-right: 16px !important;
+  color: #4d4d4d;
+  text-decoration: none;
 `;
 
 
 export const Menu: React.FC<MenuProps> = ({ user, onLogin, onLogout, onCreateAccount }: MenuProps): JSX.Element => {
   // const classes = useStyles();
-  const preventDefault = (event: React.SyntheticEvent) => event.preventDefault();
+  // const preventDefault = (event: React.SyntheticEvent) => event.preventDefault();
   return (
     <ThemeProvider theme={theme}>
       <Flex justifyContent="flex-start" alignItems="center" marginBottom={4}>
         <Box width={1 / 2}>
-          <img src={image.src} alt={image.alt} />
+          <Link to="/"><img src={image.src} alt={image.alt} /></Link>
         </Box>
         <RGrid width={1 / 2}>
           <Flex alignItems="center" justifyContent="flex-end">
             <Box>
               <nav>
-                <SpacedLink href="#" onClick={preventDefault} color="secondary">
+                <SpacedLink to="/All" color="secondary">
                   Recipes
                 </SpacedLink>
-                <SpacedLink href="#" onClick={preventDefault} color="secondary">
-                  Categories
-                </SpacedLink>
-                <SpacedLink href="#" onClick={preventDefault} color="secondary">
+                <SpacedLink to="/Favorites" color="secondary">
                   Favorites
                 </SpacedLink>
               </nav>

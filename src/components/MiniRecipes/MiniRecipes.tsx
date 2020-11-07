@@ -1,50 +1,75 @@
 import React from 'react';
 import styled from '@xstyled/styled-components';
+import { th } from "@xstyled/system";
 import { Flex, Box } from "reflexbox";
 import { H3 } from "../../styles/Text"; 
 import { MiniCard } from "./MiniCard";
+import { StyledButton } from '../Button';
 import Basil from "../../images/Basil.png"
+import { recipes } from "../../data/MockData";
 
 const RowWidth = styled(Box)`
   width: 50vw;
   max-width: 550px;
 `;
 const MainTitleImg = styled.img`
-  width: 8rem;
+  width: 7rem;
 `;
 const imageBasil = {
   src: Basil,
   alt: '15 min Recipes'
 }
 
-export interface MainRecipesProps {
+const MoreButton = styled(StyledButton)`
+  width: 50vw;
+  max-width: 485px;
+  padding: ${th.space(3)} ${th.space(4)} !important;
+`;
+
+const MiniCroppedImg = styled.div`
+  width: 5.5rem;
+  overflow: hidden;
+  margin: 0 0 0 -40px;
+`;
+
+
+export interface MiniRecipesProps {
 
 }
 
-export const MiniRecipes: React.FC<MainRecipesProps> = ({}: MainRecipesProps): JSX.Element => {
+export const MiniRecipes: React.FC<MiniRecipesProps> = ({}: MiniRecipesProps): JSX.Element => {
+  const quickList = recipes.filter(item => item.totalTime <= 15);
+  const limitMainRecipes = quickList.slice(0,10);
+
   return (
-    <>
-    <RowWidth alignItems="center">
+    <RowWidth>
       <Flex justifyContent="flex-start" alignItems="center">
-        <div className="cropped-mini">
+        <MiniCroppedImg>
           <MainTitleImg src={imageBasil.src} alt={imageBasil.alt} />
-        </div>
+        </MiniCroppedImg>
         <H3>15 min Recipes</H3>
       </Flex>
+      <Flex>
+        <Box>
+        {limitMainRecipes && limitMainRecipes.map(item => (
+          <MiniCard
+            key={item.id}
+            title={item.title}
+            categoryName={item.category}
+            timeAmount={`${item.totalTime} min`}
+            effortLevel={item.effort}
+            imageUrl={require(`../../images/${item.category}/${item.image}`)}
+            imageAlt={item.title}
+            detailPagePath="/"
+            categoryPagePath="/"
+          />
+          ))}
+        </Box>
+      </Flex>
+      <Flex>
+        <Box>
+          <MoreButton size="large" label="More Quick Recipes" />
+        </Box>
+      </Flex>
     </RowWidth>
-    <Flex>
-      <Box>
-        <MiniCard 
-        title="Beef Yakitori"
-        categoryName="Japanese"
-        timeAmount="60 min"
-        effortName="Easy"
-        imageUrl={require("../../images/beef-yakitori.jpg")}
-        imageAlt="Agedashi Tofu"
-        detailPagePath="/"
-        categoryPagePath="/"
-      />
-      </Box>
-    </Flex>
-    </>
   )}
