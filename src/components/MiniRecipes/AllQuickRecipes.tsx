@@ -56,7 +56,7 @@ export const AllQuickRecipes: React.FC<AllQuickRecipesProps> = ({
                   imageAlt={item.title}
                   detailPagePath="/"
                   categoryPagePath="/"
-                  onRecipeClicked={()=>{}}
+                  onSelectedRecipe={()=>{}}
                 />
               </Box>
             ))

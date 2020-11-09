@@ -60,7 +60,7 @@ export const AllCategories: React.FC<AllCategoriesProps> = ({
                   // detailPagePath={`/${handleDetailsPath(item.title)}`}
                   detailPagePath="/Details"
                   categoryPagePath={`/${item.category}`}
-                  onRecipeClicked={()=>{}}
+                  onSelectedRecipe={()=>{}}
                 />
               </Box>
             ))

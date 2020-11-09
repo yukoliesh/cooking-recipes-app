@@ -55,7 +55,7 @@ export const Vietnamese: React.FC<VietnameseProps> = ({
                   imageAlt={item.title}
                   detailPagePath="/"
                   categoryPagePath={`/${item.category}`}
-                  onRecipeClicked={()=>{}}
+                  onSelectedRecipe={()=>{}}
                 />
               </Box>
             ))

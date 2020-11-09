@@ -55,7 +55,7 @@ export const Malaysian: React.FC<MalaysianProps> = ({
                   imageAlt={item.title}
                   detailPagePath="/"
                   categoryPagePath={`/${item.category}`}
-                  onRecipeClicked={()=>{}}
+                  onSelectedRecipe={()=>{}}
                 />
               </Box>
             ))

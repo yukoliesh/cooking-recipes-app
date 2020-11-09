@@ -39,14 +39,15 @@ export interface MainRecipesProps {
 
 export const MainRecipes: React.FC<MainRecipesProps> = ({}: MainRecipesProps): JSX.Element => {
   const limitMainRecipes = recipes.slice(0,5);
-  // const [selectedId, setSelectedId] = React.useState("");
+  const [selectedId, setSelectedId] = React.useState("");
 
-  const onSelectedRecipe = (e: any) => {
-    const id = e.target;
-    console.log("id", id);
-    console.log("hello");
-  }
-  // console.log("id", selectedId);
+
+
+  // const onSelectedRecipe = (id: string): void => {
+  //   const selected = recipes.filter((c): boolean => c.id === id)[0] || recipes[0];
+  //   return setSelectedId(selected.id);
+  // }
+  console.log("id", selectedId);
   return (
     <RowWidth>
       <Flex width={1}>
@@ -73,7 +74,7 @@ export const MainRecipes: React.FC<MainRecipesProps> = ({}: MainRecipesProps): J
           imageAlt={item.title}
           detailPagePath="/Details"
           categoryPagePath={`/${item.category}`}
-          onRecipeClicked={onSelectedRecipe}
+          onSelectedRecipe={() => {}}
           />
         ))}
       </Box>

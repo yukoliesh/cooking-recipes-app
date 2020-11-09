@@ -55,7 +55,7 @@ export const Japanese: React.FC<JapaneseProps> = ({
                   imageAlt={item.title}
                   detailPagePath="/"
                   categoryPagePath={`/${item.category}`}
-                  onRecipeClicked={()=>{}}
+                  onSelectedRecipe={()=>{}}
                 />
               </Box>
             ))

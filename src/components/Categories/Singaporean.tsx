@@ -55,7 +55,7 @@ export const Singaporean: React.FC<SingaporeanProps> = ({
                   imageAlt={item.title}
                   detailPagePath="/"
                   categoryPagePath={`/${item.category}`}
-                  onRecipeClicked={()=>{}}
+                  onSelectedRecipe={()=>{}}
                 />
               </Box>
             ))

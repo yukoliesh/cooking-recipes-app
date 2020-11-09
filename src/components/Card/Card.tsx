@@ -27,8 +27,10 @@ export interface CardProps {
   timeAmount: string;
   detailPagePath: string;
   categoryPagePath: string;
-  onRecipeClicked: (e: any) => void;
+  onSelectedRecipe() : void;
 }
+
+
 
 export const Card: React.FC<CardProps> = ({
   imageUrl,
@@ -41,20 +43,22 @@ export const Card: React.FC<CardProps> = ({
   timeAmount,
   detailPagePath,
   categoryPagePath,
-  onRecipeClicked
+  onSelectedRecipe
 }): JSX.Element => {
-
+  // const onRecipeClick = (recipeId: string): void => {
+  //   onSelectedRecipeId(recipeId);
+  // }
   return (
   <>
-    <CardCont id={itemId}>
+    <CardCont id={itemId} data-testid="recipe-card">
       <Flex justifyContent={{ md: 'flex-start' }} alignItems="flex-start">
         <ImageWrapper>
-          <CardImageCont><Link to={detailPagePath} onClick={onRecipeClicked}><CardImage src={imageUrl} alt={imageAlt} /></Link></CardImageCont>
+          <CardImageCont><Link to={detailPagePath} onClick={onSelectedRecipe}><CardImage src={imageUrl} alt={imageAlt} /></Link></CardImageCont>
         </ImageWrapper>
         <InfoWrapper flexDirection="column" alignContent="space-around">
           <Box padding={3}>
             <Box>
-              <LinkStyle to={detailPagePath} onClick={onRecipeClicked}><RecipeTitle>{title}</RecipeTitle></LinkStyle>
+              <LinkStyle to={detailPagePath} onClick={onSelectedRecipe}><RecipeTitle>{title}</RecipeTitle></LinkStyle>
             </Box>
           </Box>
           <Box padding={3}>

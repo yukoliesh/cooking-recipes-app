@@ -55,7 +55,7 @@ export const Indian: React.FC<IndianProps> = ({
                   imageAlt={item.title}
                   detailPagePath="/"
                   categoryPagePath="/"
-                  onRecipeClicked={()=>{}}
+                  onSelectedRecipe={()=>{}}
                 />
               </Box>
             ))
