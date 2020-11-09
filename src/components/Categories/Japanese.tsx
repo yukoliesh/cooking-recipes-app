@@ -45,6 +45,7 @@ export const Japanese: React.FC<JapaneseProps> = ({
               <Box>
                 <Card
                   key={item.id}
+                  itemId={item.id}
                   title={item.title}
                   description={item.description}
                   categoryName={item.category}
@@ -53,7 +54,8 @@ export const Japanese: React.FC<JapaneseProps> = ({
                   imageUrl={require(`../../images/${item.category}/${item.image}`)}
                   imageAlt={item.title}
                   detailPagePath="/"
-                  categoryPagePath="/"
+                  categoryPagePath={`/${item.category}`}
+                  onRecipeClicked={()=>{}}
                 />
               </Box>
             ))

@@ -36,31 +36,34 @@ export const Categories: React.FC<CategoriesProps> = (): JSX.Element => (
     </RowWidth>
     <RowWidth justifyContent="center" alignItems="flex-end">
       <Col size={1}>
-        <NavButton borderColor="#2F4858">
+      <NavButton bordercolor="#ffc107" to="/All">
+          <NavButtonTxt>All</NavButtonTxt>
+        </NavButton>
+        <NavButton bordercolor="#2F4858" to="/Chinese">
           <NavButtonTxt>Chinese</NavButtonTxt>
         </NavButton>
-        <NavButton borderColor="#315771">
+        <NavButton bordercolor="#315771" to="/Indian">
           <NavButtonTxt>Indian</NavButtonTxt>
         </NavButton>
-        <NavButton borderColor="#33658A">
+        <NavButton bordercolor="#33658A" to="/Japanese">
           <NavButtonTxt>Japanese</NavButtonTxt>
         </NavButton>
-        <NavButton borderColor="#5D90B1">
+        <NavButton bordercolor="#5D90B1" to="/Korean">
           <NavButtonTxt>Korean</NavButtonTxt>
         </NavButton>
-        <NavButton borderColor="#86BBD8">
+        <NavButton bordercolor="#86BBD8" to="/Malaysian">
           <NavButtonTxt>Malaysian</NavButtonTxt>
         </NavButton>
-        <NavButton borderColor="#C3C16C">
+        <NavButton bordercolor="#C3C16C" to="/Singaporean">
           <NavButtonTxt>Singaporean</NavButtonTxt>
         </NavButton>
-        <NavButton borderColor="#FFC700">
+        <NavButton bordercolor="#FFC700" to="/Taiwanese">
           <NavButtonTxt>Taiwanese</NavButtonTxt>
         </NavButton>
-        <NavButton borderColor="#F9960D">
+        <NavButton bordercolor="#F9960D" to="/Thai">
           <NavButtonTxt>Thai</NavButtonTxt>
         </NavButton>
-        <NavButton borderColor="#F26419">
+        <NavButton bordercolor="#F26419" to="/Vietnamese">
           <NavButtonTxt>Vietnamese</NavButtonTxt>
         </NavButton>
       </Col>

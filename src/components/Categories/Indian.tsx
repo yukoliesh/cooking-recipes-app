@@ -45,6 +45,7 @@ export const Indian: React.FC<IndianProps> = ({
               <Box>
                 <Card
                   key={item.id}
+                  itemId={item.id}
                   title={item.title}
                   description={item.description}
                   categoryName={item.category}
@@ -54,6 +55,7 @@ export const Indian: React.FC<IndianProps> = ({
                   imageAlt={item.title}
                   detailPagePath="/"
                   categoryPagePath="/"
+                  onRecipeClicked={()=>{}}
                 />
               </Box>
             ))

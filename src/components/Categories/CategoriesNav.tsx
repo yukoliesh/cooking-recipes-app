@@ -38,34 +38,34 @@ export const CategoriesNav: React.FC<CategoriesNavProps> = ({}: CategoriesNavPro
     </RowWidth>
     <RowWidth justifyContent="flex-end" alignItems="flex-end">
       <Box width={1}>
-        <NavButton bordercolor="#ffc107" to="/All">
+        <NavButton bordercolor="#ffc107" to="/All" key="cat01">
           <NavButtonTxt>All</NavButtonTxt>
         </NavButton>
-        <NavButton bordercolor="#2F4858" to="/Chinese">
+        <NavButton bordercolor="#2F4858" to="/Chinese" key="cat02">
           <NavButtonTxt>Chinese</NavButtonTxt>
         </NavButton>
-        <NavButton bordercolor="#315771" to="/Indian">
+        <NavButton bordercolor="#315771" to="/Indian" key="cat03">
           <NavButtonTxt>Indian</NavButtonTxt>
         </NavButton>
-        <NavButton bordercolor="#33658A" to="/Japanese">
+        <NavButton bordercolor="#33658A" to="/Japanese" key="cat04">
           <NavButtonTxt>Japanese</NavButtonTxt>
         </NavButton>
-        <NavButton bordercolor="#5D90B1" to="/Korean">
+        <NavButton bordercolor="#5D90B1" to="/Korean" key="cat05">
           <NavButtonTxt>Korean</NavButtonTxt>
         </NavButton>
-        <NavButton bordercolor="#86BBD8" to="/Malaysian">
+        <NavButton bordercolor="#86BBD8" to="/Malaysian" key="cat06">
           <NavButtonTxt>Malaysian</NavButtonTxt>
         </NavButton>
-        <NavButton bordercolor="#C3C16C" to="/Singaporean">
+        <NavButton bordercolor="#C3C16C" to="/Singaporean" key="cat07">
           <NavButtonTxt>Singaporean</NavButtonTxt>
         </NavButton>
-        <NavButton bordercolor="#FFC700" to="/Taiwanese">
+        <NavButton bordercolor="#FFC700" to="/Taiwanese" key="cat08">
           <NavButtonTxt>Taiwanese</NavButtonTxt>
         </NavButton>
-        <NavButton bordercolor="#F9960D" to="/Thai">
+        <NavButton bordercolor="#F9960D" to="/Thai" key="cat09">
           <NavButtonTxt>Thai</NavButtonTxt>
         </NavButton>
-        <NavButton bordercolor="#F26419" to="/Vietnamese">
+        <NavButton bordercolor="#F26419" to="/Vietnamese" key="cat10">
           <NavButtonTxt>Vietnamese</NavButtonTxt>
         </NavButton>
       </Box>

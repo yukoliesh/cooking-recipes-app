@@ -3,11 +3,10 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Flex, Box } from "reflexbox";
 import { Header } from './components/Header';
 import { Menu } from './components/MainNav';
-import { Categories, CategoriesNav, Chinese, Indian, Japanese, Korean, Malaysian, Singaporean, Taiwanese, Thai, Vietnamese } from './components/Categories';
-import { MainRecipes } from './components/MainRecipes';
-import { MiniRecipes } from './components/MiniRecipes';
+import { AllCategories, CategoriesNav, Chinese, Indian, Japanese, Korean, Malaysian, Singaporean, Taiwanese, Thai, Vietnamese } from './components/Categories';
 import { Footer } from './components/Footer';
-import { recipes } from "./data/MockData";
+import { Home } from './components/Home';
+import { Details } from './components/Details';
 import './App.css';
 
 function App() {
@@ -26,13 +25,12 @@ function App() {
               <Switch>
                 <Route exact path="/">
                   <Flex width={1}>
-                    <MainRecipes />
-                    <MiniRecipes />
+                    <Home />
                   </Flex>
                 </Route>
                 <Box>  
                   <Route path="/All">
-                    <Categories />
+                    <AllCategories />
                   </Route>
                   <Route path="/Chinese">
                     <Chinese />
@@ -60,6 +58,9 @@ function App() {
                   </Route>
                   <Route path="/Vietnamese">
                     <Vietnamese />
+                  </Route>
+                  <Route path="/Details">
+                    <Details />
                   </Route>
                 </Box>
               </Switch>

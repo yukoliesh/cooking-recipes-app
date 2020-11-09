@@ -19,13 +19,14 @@ const CroppedImg = styled.div`
   overflow: hidden;
   margin: -20px 0 0 -35px;
 `;
-export interface CategoriesProps {
+export interface AllQuickRecipesProps {
 
 }
 
-export const Categories: React.FC<CategoriesProps> = ({
-}: CategoriesProps): JSX.Element => {
+export const AllQuickRecipes: React.FC<AllQuickRecipesProps> = ({
+}: AllQuickRecipesProps): JSX.Element => {
   console.log("rec", recipes);
+  const miniRecipes = recipes.filter(item => item.totalTime <= 15 );
   return (
     <>
       <Flex>
@@ -37,14 +38,15 @@ export const Categories: React.FC<CategoriesProps> = ({
               </CroppedImg>
             </Box>
             <Box>
-              <H2>All Categories</H2>
+              <H2>All Quick Recipes</H2>
             </Box>
           </Flex>
           <Flex justifyContent="flex-start" flexWrap="wrap">
-            {recipes.map(item => (
+            {miniRecipes.map(item => (
               <Box>
                 <Card
                   key={item.id}
+                  itemId={item.id}
                   title={item.title}
                   description={item.description}
                   categoryName={item.category}
@@ -54,6 +56,7 @@ export const Categories: React.FC<CategoriesProps> = ({
                   imageAlt={item.title}
                   detailPagePath="/"
                   categoryPagePath="/"
+                  onRecipeClicked={()=>{}}
                 />
               </Box>
             ))

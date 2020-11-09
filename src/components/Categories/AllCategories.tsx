@@ -5,6 +5,7 @@ import { H2 } from "../../styles/Text";
 import { Card } from "../Card";
 import Peas from "../../images/Peas.png";
 import { recipes } from "../../data/MockData";
+import { handleDetailsPath } from "../../shared/index";
 
 
 const MainTitleImg = styled.img`
@@ -19,13 +20,16 @@ const CroppedImg = styled.div`
   overflow: hidden;
   margin: -20px 0 0 -35px;
 `;
-export interface MalaysianProps {
+export interface AllCategoriesProps {
 
 }
 
-export const Malaysian: React.FC<MalaysianProps> = ({
-}: MalaysianProps): JSX.Element => {
-  const malaysianList = recipes.filter(item => item.category === "Malaysian");
+export const AllCategories: React.FC<AllCategoriesProps> = ({
+}: AllCategoriesProps): JSX.Element => {
+  const title = "word of mouth";
+  title.replace(" ", "_");
+  console.log("rec", title);
+  
   return (
     <>
       <Flex>
@@ -37,11 +41,11 @@ export const Malaysian: React.FC<MalaysianProps> = ({
               </CroppedImg>
             </Box>
             <Box>
-              <H2>Malaysian</H2>
+              <H2>All Categories</H2>
             </Box>
           </Flex>
           <Flex justifyContent="flex-start" flexWrap="wrap">
-            {malaysianList.map(item => (
+            {recipes.map(item => (
               <Box>
                 <Card
                   key={item.id}
@@ -53,7 +57,8 @@ export const Malaysian: React.FC<MalaysianProps> = ({
                   effortLevel={item.effort}
                   imageUrl={require(`../../images/${item.category}/${item.image}`)}
                   imageAlt={item.title}
-                  detailPagePath="/"
+                  // detailPagePath={`/${handleDetailsPath(item.title)}`}
+                  detailPagePath="/Details"
                   categoryPagePath={`/${item.category}`}
                   onRecipeClicked={()=>{}}
                 />

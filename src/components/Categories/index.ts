@@ -1,5 +1,5 @@
 export * from "./CategoriesNav";
-export * from "./Categories";
+export * from "./AllCategories";
 export * from "./Chinese";
 export * from "./Indian";
 export * from "./Japanese";

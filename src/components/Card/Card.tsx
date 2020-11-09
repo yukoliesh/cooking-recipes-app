@@ -19,6 +19,7 @@ const InfoWrapper = styled(Flex)`
 export interface CardProps {
   imageUrl: string;
   imageAlt: string;
+  itemId: string;
   title: string;
   description: string;
   categoryName: string;
@@ -26,31 +27,34 @@ export interface CardProps {
   timeAmount: string;
   detailPagePath: string;
   categoryPagePath: string;
+  onRecipeClicked: (e: any) => void;
 }
 
 export const Card: React.FC<CardProps> = ({
   imageUrl,
   imageAlt,
+  itemId,
   title,
   description,
   categoryName,
   effortLevel,
   timeAmount,
   detailPagePath,
-  categoryPagePath
+  categoryPagePath,
+  onRecipeClicked
 }): JSX.Element => {
 
   return (
   <>
-    <CardCont>
+    <CardCont id={itemId}>
       <Flex justifyContent={{ md: 'flex-start' }} alignItems="flex-start">
         <ImageWrapper>
-          <CardImageCont><Link to={detailPagePath}><CardImage src={imageUrl} alt={imageAlt} /></Link></CardImageCont>
+          <CardImageCont><Link to={detailPagePath} onClick={onRecipeClicked}><CardImage src={imageUrl} alt={imageAlt} /></Link></CardImageCont>
         </ImageWrapper>
         <InfoWrapper flexDirection="column" alignContent="space-around">
           <Box padding={3}>
             <Box>
-              <LinkStyle to={detailPagePath}><RecipeTitle>{title}</RecipeTitle></LinkStyle>
+              <LinkStyle to={detailPagePath} onClick={onRecipeClicked}><RecipeTitle>{title}</RecipeTitle></LinkStyle>
             </Box>
           </Box>
           <Box padding={3}>

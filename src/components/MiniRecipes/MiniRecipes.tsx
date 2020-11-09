@@ -7,6 +7,7 @@ import { MiniCard } from "./MiniCard";
 import { StyledButton } from '../Button';
 import Basil from "../../images/Basil.png"
 import { recipes } from "../../data/MockData";
+import history from '../../history';
 
 const RowWidth = styled(Box)`
   width: 50vw;
@@ -68,7 +69,8 @@ export const MiniRecipes: React.FC<MiniRecipesProps> = ({}: MiniRecipesProps): J
       </Flex>
       <Flex>
         <Box>
-          <MoreButton size="large" label="More Quick Recipes" />
+          {/* <MoreButton size="large" label="More Quick Recipes" onClick={() => history.push('/QuickRecipes') /> */}
+          <MoreButton size="large" label="More Quick Recipes" onClick={() => {}} />
         </Box>
       </Flex>
     </RowWidth>

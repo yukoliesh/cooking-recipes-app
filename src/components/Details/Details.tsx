@@ -25,11 +25,11 @@ const MoreButton = styled(StyledButton)`
   padding: ${th.space(3)} ${th.space(4)} !important;
 `;
 
-export interface DetailsPageProps {
+export interface DetailsProps {
 
 }
 
-export const DetailsPage: React.FC<DetailsPageProps> = ({}: DetailsPageProps): JSX.Element => {
+export const Details: React.FC<DetailsProps> = ({}: DetailsProps): JSX.Element => {
 
   return (
     <>

@@ -28,3 +28,10 @@ export const getCategoryColor = (categoryName: string) => {
   }
   else return "#4d4d4d";
 }
+
+export const handleDetailsPath = (title: string) => {
+  const string = "Gado Gado";
+  string.replace(' ',"-");
+}
+
+console.log("handle", handleDetailsPath);

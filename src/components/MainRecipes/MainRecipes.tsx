@@ -32,12 +32,21 @@ const CroppedImg = styled.div`
   margin: -10px 0 0 -35px;
 `;
 
+
 export interface MainRecipesProps {
 
 }
 
 export const MainRecipes: React.FC<MainRecipesProps> = ({}: MainRecipesProps): JSX.Element => {
   const limitMainRecipes = recipes.slice(0,5);
+  // const [selectedId, setSelectedId] = React.useState("");
+
+  const onSelectedRecipe = (e: any) => {
+    const id = e.target;
+    console.log("id", id);
+    console.log("hello");
+  }
+  // console.log("id", selectedId);
   return (
     <RowWidth>
       <Flex width={1}>
@@ -54,6 +63,7 @@ export const MainRecipes: React.FC<MainRecipesProps> = ({}: MainRecipesProps): J
         {limitMainRecipes && limitMainRecipes.map(item => (
           <Card
           key={item.id}
+          itemId={item.id}
           title={item.title}
           description={item.description}
           categoryName={item.category}
@@ -61,8 +71,9 @@ export const MainRecipes: React.FC<MainRecipesProps> = ({}: MainRecipesProps): J
           effortLevel={item.effort}
           imageUrl={require(`../../images/${item.category}/${item.image}`)}
           imageAlt={item.title}
-          detailPagePath="/"
-          categoryPagePath="/"
+          detailPagePath="/Details"
+          categoryPagePath={`/${item.category}`}
+          onRecipeClicked={onSelectedRecipe}
           />
         ))}
       </Box>
