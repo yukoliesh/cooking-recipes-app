@@ -38,18 +38,20 @@ const CreditName = styled(Box)`
 
 
 export interface FooterProps {
-
+  onLogin: () => void;
+  onCreateAccount: () => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({
-
+  onLogin,
+  onCreateAccount
 }): JSX.Element => (
     <FooterWrapper justifyContent="flex-start">
       <Box width={3 / 4}>
         <LinkStyle to="/All">RECEIPES</LinkStyle>
         <LinkStyle to="/">FAVORITES</LinkStyle>
-        <LinkStyle to="/">SIGN IN</LinkStyle>
-        <LinkStyle to="/">SIGN UP</LinkStyle>
+        <LinkStyle to="/" onClick={onLogin}>SIGN IN</LinkStyle>
+        <LinkStyle to="/" onClick={onCreateAccount}>SIGN UP</LinkStyle>
       </Box>
       <Box width={1 / 4}>
         <Flex flexDirection="column" justifyContent="flex-end">

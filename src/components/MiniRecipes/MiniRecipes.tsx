@@ -35,10 +35,12 @@ const MiniCroppedImg = styled.div`
 
 
 export interface MiniRecipesProps {
-
+  onMoreRecipesClick: () => void;
 }
 
-export const MiniRecipes: React.FC<MiniRecipesProps> = ({}: MiniRecipesProps): JSX.Element => {
+export const MiniRecipes: React.FC<MiniRecipesProps> = ({
+  onMoreRecipesClick
+}: MiniRecipesProps): JSX.Element => {
   const quickList = recipes.filter(item => item.totalTime <= 15);
   const limitMainRecipes = quickList.slice(0,10);
 
@@ -70,7 +72,7 @@ export const MiniRecipes: React.FC<MiniRecipesProps> = ({}: MiniRecipesProps): J
       <Flex>
         <Box>
           {/* <MoreButton size="large" label="More Quick Recipes" onClick={() => history.push('/QuickRecipes') /> */}
-          <MoreButton size="large" label="More Quick Recipes" onClick={() => {}} />
+          <MoreButton size="large" label="More Quick Recipes" onClick={onMoreRecipesClick} />
         </Box>
       </Flex>
     </RowWidth>

@@ -41,6 +41,9 @@ export const CategoriesNav: React.FC<CategoriesNavProps> = ({}: CategoriesNavPro
         <NavButton bordercolor="#ffc107" to="/All" key="cat01">
           <NavButtonTxt>All</NavButtonTxt>
         </NavButton>
+        <NavButton bordercolor="#ffc107" to="/QuickRecipes" key="cat01">
+          <NavButtonTxt>Quick Recipes</NavButtonTxt>
+        </NavButton>
         <NavButton bordercolor="#2F4858" to="/Chinese" key="cat02">
           <NavButtonTxt>Chinese</NavButtonTxt>
         </NavButton>

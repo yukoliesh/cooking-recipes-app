@@ -7,6 +7,7 @@ import { H2 } from "../../styles/Text";
 import { Card } from "./index";
 import Lemon from "../../images/Lemon03.png";
 import { recipes } from "../../data/MockData";
+import { client } from "../../data/apollo/client";
 
 const RowWidth = styled(Box)`
   width: 50vw;
@@ -34,12 +35,15 @@ const CroppedImg = styled.div`
 
 
 export interface MainRecipesProps {
-
+  onMoreRecipesClick: () => void;
 }
 
-export const MainRecipes: React.FC<MainRecipesProps> = ({}: MainRecipesProps): JSX.Element => {
+export const MainRecipes: React.FC<MainRecipesProps> = ({
+  onMoreRecipesClick
+}: MainRecipesProps): JSX.Element => {
   const limitMainRecipes = recipes.slice(0,5);
-  const [selectedId, setSelectedId] = React.useState("");
+
+  // const [selectedId, setSelectedId] = React.useState("");
 
 
 
@@ -47,7 +51,7 @@ export const MainRecipes: React.FC<MainRecipesProps> = ({}: MainRecipesProps): J
   //   const selected = recipes.filter((c): boolean => c.id === id)[0] || recipes[0];
   //   return setSelectedId(selected.id);
   // }
-  console.log("id", selectedId);
+  // console.log("id", selectedId);
   return (
     <RowWidth>
       <Flex width={1}>
@@ -79,7 +83,7 @@ export const MainRecipes: React.FC<MainRecipesProps> = ({}: MainRecipesProps): J
         ))}
       </Box>
       <Box width={1}>
-        <MoreButton size="large" label="More Recipes" primary />
+        <MoreButton size="large" label="More Recipes" primary onClick={onMoreRecipesClick} />
       </Box>
     </RowWidth>
   )}

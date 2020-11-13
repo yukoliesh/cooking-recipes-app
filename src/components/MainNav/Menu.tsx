@@ -5,9 +5,8 @@ import { StyledButton } from '../Button';
 import { Link } from 'react-router-dom';
 import { ThemeProvider } from '@material-ui/styles';
 import { theme } from '../../styles/theme'; 
-
 import Logo from "../../stories/assets/logo.svg";
-import './menu-style.ts';
+
 
 export interface MenuProps {
   user?: {};

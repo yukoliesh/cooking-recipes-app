@@ -7,16 +7,34 @@ import { AllCategories, CategoriesNav, Chinese, Indian, Japanese, Korean, Malays
 import { Footer } from './components/Footer';
 import { Home } from './components/Home';
 import { Details } from './components/Details';
+import { Modal } from './components/Modal';
 import './App.css';
+import { AllQuickRecipes } from './components/MiniRecipes';
 
 function App() {
+
+  const [isOpenModal, setIsOpenModal] = React.useState(false); 
+  const [isNewMember, setIsNewMember] = React.useState(false); 
+
+  const onUserLoginClick = () => {
+    setIsOpenModal(true);
+    setIsNewMember(false);
+  }
+  const onCreateAccountClick = () => {
+    setIsOpenModal(true);
+    setIsNewMember(true);
+  }
+  const onModalClose = () => {
+    setIsOpenModal(false);
+  }
+
 
   return (
     <Router>
       <Header />
       <Flex justifyContent="center">
         <Box width={3 / 4}>
-          <Menu onLogin={() => {}} onCreateAccount={() => {}} onLogout={() => {}}/>
+          <Menu onLogin={onUserLoginClick} onCreateAccount={onCreateAccountClick} onLogout={() => {}}/>
           <Flex justifyContent="flex-start" alignItems="flex-start">
             <Box width={1 / 4}>
               <CategoriesNav />
@@ -31,6 +49,9 @@ function App() {
                 <Box>  
                   <Route path="/All">
                     <AllCategories />
+                  </Route>
+                  <Route path="/QuickRecipes">
+                    <AllQuickRecipes />
                   </Route>
                   <Route path="/Chinese">
                     <Chinese />
@@ -68,7 +89,14 @@ function App() {
           </Flex>
         </Box>
       </Flex> 
-      <Footer />
+      {isNewMember ? (
+        <Modal modalTitle="Create an Account" modalDesc="When you signed up, you can save your recipes!" onCloseClick={onModalClose} isModalOpen={isOpenModal} isCreateAccount={isNewMember} onTextBoxInputChange={() => {}} />
+      ) : (
+        <Modal modalTitle="SIGN IN" modalDesc="Welcome back, Nash!" onCloseClick={onModalClose} isModalOpen={isOpenModal} isCreateAccount={isNewMember} onTextBoxInputChange={() => {}} />
+      )}
+      
+      
+      <Footer onCreateAccount={onCreateAccountClick} onLogin={onUserLoginClick} />
     </Router>
   );
 }
