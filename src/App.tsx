@@ -47,7 +47,7 @@ function App() {
                   </Flex>
                 </Route>
                 <Box>  
-                  <Route path="/All">
+                  <Route path="/AllRecipes">
                     <AllCategories />
                   </Route>
                   <Route path="/QuickRecipes">

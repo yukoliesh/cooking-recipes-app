@@ -36,8 +36,11 @@ export const Categories: React.FC<CategoriesProps> = (): JSX.Element => (
     </RowWidth>
     <RowWidth justifyContent="center" alignItems="flex-end">
       <Col size={1}>
-      <NavButton bordercolor="#ffc107" to="/All">
-          <NavButtonTxt>All</NavButtonTxt>
+        <NavButton bordercolor="#ffc107" to="/AllRecipes">
+          <NavButtonTxt>All Recipes</NavButtonTxt>
+        </NavButton>
+        <NavButton bordercolor="#ffc107" to="/QuickRecipes">
+          <NavButtonTxt>Quick Recipes</NavButtonTxt>
         </NavButton>
         <NavButton bordercolor="#2F4858" to="/Chinese">
           <NavButtonTxt>Chinese</NavButtonTxt>

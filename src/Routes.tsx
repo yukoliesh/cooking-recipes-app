@@ -23,7 +23,8 @@ export default class Routes extends Component {
             <Router history={history}>
                 <Switch>
                     <Route path="/" exact component={Home} />
-                    <Route path="/All" exact component={AllCategories} />
+                    <Route path="/AllRecipes" exact component={AllCategories} />
+                    <Route path="/QuickRecipes" exact component={AllQuickRecipes} />
                     <Route path="/Chinese" exact component={Chinese} />
                     <Route path="/Indian" exact component={Indian} />
                     <Route path="/Japanese" exact component={Japanese} />

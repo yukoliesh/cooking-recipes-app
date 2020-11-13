@@ -38,8 +38,8 @@ export const CategoriesNav: React.FC<CategoriesNavProps> = ({}: CategoriesNavPro
     </RowWidth>
     <RowWidth justifyContent="flex-end" alignItems="flex-end">
       <Box width={1}>
-        <NavButton bordercolor="#ffc107" to="/All" key="cat01">
-          <NavButtonTxt>All</NavButtonTxt>
+        <NavButton bordercolor="#ffc107" to="/AllRecipes" key="cat01">
+          <NavButtonTxt>All Recipes</NavButtonTxt>
         </NavButton>
         <NavButton bordercolor="#ffc107" to="/QuickRecipes" key="cat01">
           <NavButtonTxt>Quick Recipes</NavButtonTxt>

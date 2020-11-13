@@ -50,7 +50,7 @@ export const Menu: React.FC<MenuProps> = ({ user, onLogin, onLogout, onCreateAcc
           <Flex alignItems="center" justifyContent="flex-end">
             <Box>
               <nav>
-                <SpacedLink to="/All" color="secondary">
+                <SpacedLink to="/AllRecipes" color="secondary">
                   Recipes
                 </SpacedLink>
                 <SpacedLink to="/Favorites" color="secondary">

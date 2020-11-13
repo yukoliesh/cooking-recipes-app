@@ -48,7 +48,7 @@ export const Footer: React.FC<FooterProps> = ({
 }): JSX.Element => (
     <FooterWrapper justifyContent="flex-start">
       <Box width={3 / 4}>
-        <LinkStyle to="/All">RECEIPES</LinkStyle>
+        <LinkStyle to="/AllRecipes">RECEIPES</LinkStyle>
         <LinkStyle to="/">FAVORITES</LinkStyle>
         <LinkStyle to="/" onClick={onLogin}>SIGN IN</LinkStyle>
         <LinkStyle to="/" onClick={onCreateAccount}>SIGN UP</LinkStyle>
