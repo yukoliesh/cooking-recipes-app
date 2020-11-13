@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@xstyled/styled-components';
 import { Row, Col } from "../../styles/Grids"; 
-import { SideHeader, NavButtonTxt } from "../../styles/Text";
+import { SideHeader, NavButtonTxt } from "../../styles/text";
 import { NavButton } from "../../styles/Button";
 import Tomato from "../../images/Tomato.png"
 

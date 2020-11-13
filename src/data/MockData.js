@@ -1036,4 +1036,174 @@ export const recipes = [
       },
     ]
   },
+  {
+    "id": "12",
+    "category": "Thai",
+    "title": "Thai Basil Chicken",
+    "image": "Thai-Chilli-Basil-Chicken-Stir-Fry.jpg",
+    "description": "Right off the streets of Thailand, made in your own home! Spicy, garlicky and savoury with a hint of sweet. Gold standard Thai chicken stir fry, quick to make and no hunting down unusual ingredients.",
+    "prepTime": 5,
+    "cookTime": 10,
+    "totalTime": 15,
+    "serving": "2",
+    "effort": "Easy",
+    "isFavorite": false,
+    "url": "https://www.recipetineats.com/thai-basil-chicken-stir-fry/",
+    "ingredients": [
+      {
+        "name": "225g / 7oz chicken thigh fillets , skinless boneless, cut into bite size pieces",
+        "type": ""
+      },
+      {
+        "name": "1 green onion , cut into 4cm / 2 inch lengths.",
+        "type": ""
+      },
+      {
+        "name": "1 cup Thai basil leaves , loosely packed (Holy Basil if you can find it)",
+        "type": ""
+      },
+      {
+        "name": "2 garlic cloves , large, finely chopped",
+        "type": ""
+      },
+      {
+        "name": "1 birds eye or Thai chilli , deseeded and finely chopped",
+        "type": ""
+      },
+      {
+        "name": "1 1/2 tbsp oil (peanut, vegetable or canola)",
+        "type": ""
+      },
+      {
+        "name": "2 tsp oyster sauce",
+        "type": "Sauce"
+      },
+      {
+        "name": "1 tsp light soy sauce ",
+        "type": "Sauce"
+      },
+      {
+        "name": "1 tsp dark soy sauce (or all purpose)",
+        "type": "Sauce"
+      },
+      {
+        "name": "1 tsp sugar",
+        "type": "Sauce"
+      },
+      {
+        "name": "2 tbsp water",
+        "type": "Sauce"
+      },
+      {
+        "name": "Steamed Jasmine rice",
+        "type": "Serving"
+      },
+    ],
+    "Steps": [
+      {
+        "step": "Put Sauce ingredients in a small bowl and mix to combine."
+      },
+      {
+        "step": "Heat oil in wok or pan over high heat."
+      },
+      {
+        "step": "Add garlic and chilli and cook for 10 seconds. Don't inhale - the chilli will make you cough!"
+      },
+      {
+        "step": "Add the white part of the green onions and chicken and fry until cooked, around 2 minutes."
+      },
+      {
+        "step": "Add Sauce and cook for 1 minute until the water reduces to make a thick glossy sauce."
+      },
+      {
+        "step": "Toss through green part of green onions and basil leaves. Stir until just wilted, then serve immediately with steamed jasmine rice."
+      },
+    ]
+  },
+  {
+    "id": "13",
+    "category": "Indian",
+    "title": "Chicken Tikka Masala",
+    "image": "delish-chicken-tikka-masala-jpg-1526059261.jpg",
+    "description": "Right off the streets of Thailand, made in your own home! Spicy, garlicky and savoury with a hint of sweet. Gold standard Thai chicken stir fry, quick to make and no hunting down unusual ingredients.",
+    "prepTime": 10,
+    "cookTime": 35,
+    "totalTime": 45,
+    "serving": "4",
+    "effort": "Moderate",
+    "isFavorite": false,
+    "url": "https://www.delish.com/cooking/recipe-ideas/a20151723/easy-chicken-tikka-masala-recipe/",
+    "ingredients": [
+      {
+        "name": "1 tbsp. extra-virgin olive oil",
+        "type": ""
+      },
+      {
+        "name": "1 lb. boneless skinless chicken breasts, cut into 1 inch cubes",
+        "type": ""
+      },
+      {
+        "name": "1 onion, chopped",
+        "type": ""
+      },
+      {
+        "name": "5 cloves garlic, minced",
+        "type": ""
+      },
+      {
+        "name": "1 tbsp. freshly minced ginger",
+        "type": ""
+      },
+      {
+        "name": "1/2 tsp. ground turmeric",
+        "type": ""
+      },
+      {
+        "name": "2 tsp. ground cumin",
+        "type": ""
+      },
+      {
+        "name": "2 tsp. paprika",
+        "type": ""
+      },
+      {
+        "name": "2 tsp. garam masala",
+        "type": ""
+      },
+      {
+        "name": "1 tsp. cayenne pepper",
+        "type": ""
+      },
+      {
+        "name": "1 (28-oz.) can crushed tomatoes",
+        "type": ""
+      },
+      {
+        "name": "1/2 c. plus 2 tbsp. heavy cream Kosher salt",
+        "type": ""
+      },
+      {
+        "name": "Freshly chopped cilantro, for garnish",
+        "type": ""
+      },
+      {
+        "name": "Rice or naan, for serving",
+        "type": ""
+      },
+    ],
+    "Steps": [
+      {
+        "step": "In a large skillet over medium heat, heat oil. Add chicken and cook, flipping once, until golden and no longer pink, 8 minutes per side. Transfer to a plate."
+      },
+      {
+        "step": "Add onion to skillet and cook until soft, about 5 minutes. Add garlic, ginger, and spices and cook until fragrant, 1 minute. Add tomatoes and simmer until thickened, about 15 minutes. "
+      },
+      {
+        "step": "Add heavy cream and chicken and simmer until warmed through, 5 minutes more. Season with salt."
+      },
+      {
+        "step": "Garnish with cilantro and serve alongside rice or naan, if using."
+      },
+    ]
+  },
 ]

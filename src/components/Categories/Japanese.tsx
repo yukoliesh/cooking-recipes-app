@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from '@xstyled/styled-components';
 import { Flex, Box } from "reflexbox";
-import { H2 } from "../../styles/Text";
+import { H2 } from "../../styles/text";
 import { Card } from "../Card";
 import Peas from "../../images/Peas.png";
 import { recipes } from "../../data/MockData";
+import { handleReverseOrder } from "../../shared";
 
 
 const MainTitleImg = styled.img`
@@ -25,7 +26,7 @@ export interface JapaneseProps {
 
 export const Japanese: React.FC<JapaneseProps> = ({
 }: JapaneseProps): JSX.Element => {
-  const japaneseList = recipes.filter(item => item.category === "Japanese");
+  const japaneseList = handleReverseOrder().filter(item => item.category === "Japanese");
   return (
     <>
       <Flex>

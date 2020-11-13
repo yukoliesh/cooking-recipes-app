@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from '@xstyled/styled-components';
 import { Flex, Box } from "reflexbox";
-import { H2 } from "../../styles/Text";
+import { H2 } from "../../styles/text";
 import { Card } from "../Card";
 import Peas from "../../images/Peas.png";
 import { recipes } from "../../data/MockData";
-
+import { handleReverseOrder } from "../../shared";
 
 const MainTitleImg = styled.img`
   width: 8rem;
@@ -25,7 +25,7 @@ export interface TaiwaneseProps {
 
 export const Taiwanese: React.FC<TaiwaneseProps> = ({
 }: TaiwaneseProps): JSX.Element => {
-  const taiwaneseList = recipes.filter(item => item.category === "Taiwanese");
+  const taiwaneseList = handleReverseOrder().filter(item => item.category === "Taiwanese");
   return (
     <>
       <Flex>

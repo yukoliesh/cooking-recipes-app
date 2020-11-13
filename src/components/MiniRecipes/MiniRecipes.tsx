@@ -2,12 +2,13 @@ import React from 'react';
 import styled from '@xstyled/styled-components';
 import { th } from "@xstyled/system";
 import { Flex, Box } from "reflexbox";
-import { H3 } from "../../styles/Text"; 
+import { H3 } from "../../styles/text"; 
 import { MiniCard } from "./MiniCard";
 import { StyledButton } from '../Button';
 import Basil from "../../images/Basil.png"
 import { recipes } from "../../data/MockData";
 import history from '../../history';
+import { handleReverseOrder } from "../../shared";
 
 const RowWidth = styled(Box)`
   width: 50vw;
@@ -41,7 +42,7 @@ export interface MiniRecipesProps {
 export const MiniRecipes: React.FC<MiniRecipesProps> = ({
   onMoreRecipesClick
 }: MiniRecipesProps): JSX.Element => {
-  const quickList = recipes.filter(item => item.totalTime <= 15);
+  const quickList = handleReverseOrder().filter(item => item.totalTime <= 15);
   const limitMainRecipes = quickList.slice(0,10);
 
   return (

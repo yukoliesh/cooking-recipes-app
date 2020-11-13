@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from "@xstyled/styled-components";
-import { LinkStyle } from "../../styles/Text"; 
+import { LinkStyle } from "../../styles/text"; 
 import { CardCont, CardImageCont, CardImage, CardInfoText, CardInfoCategoryCont, CardInfoCont, MiniCardTitle, MiniDivider } from "./miniCardStyle";
 import { Flex, Box } from "reflexbox";
 import { getCategoryColor } from "../../shared";

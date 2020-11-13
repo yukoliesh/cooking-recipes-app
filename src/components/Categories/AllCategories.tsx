@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from '@xstyled/styled-components';
 import { Flex, Box } from "reflexbox";
-import { H2 } from "../../styles/Text";
+import { H2 } from "../../styles/text";
 import { Card } from "../Card";
 import Peas from "../../images/Peas.png";
 import { recipes } from "../../data/MockData";
 import { handleDetailsPath } from "../../shared/index";
+import { handleReverseOrder } from "../../shared";
 
 
 const MainTitleImg = styled.img`
@@ -45,7 +46,7 @@ export const AllCategories: React.FC<AllCategoriesProps> = ({
             </Box>
           </Flex>
           <Flex justifyContent="flex-start" flexWrap="wrap">
-            {recipes.map(item => (
+            {handleReverseOrder().map(item => (
               <Box>
                 <Card
                   key={item.id}

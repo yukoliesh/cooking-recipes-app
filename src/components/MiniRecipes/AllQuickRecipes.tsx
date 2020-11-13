@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@xstyled/styled-components';
 import { Flex, Box } from "reflexbox";
-import { H2 } from "../../styles/Text";
+import { H2 } from "../../styles/text";
 import { Card } from "../Card";
 import Peas from "../../images/Peas.png";
 import { recipes } from "../../data/MockData";

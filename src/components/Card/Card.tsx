@@ -4,7 +4,7 @@ import { th } from "@xstyled/system";
 import { Link } from 'react-router-dom';
 import { CardCont, CardImageCont, CardImage, CardInfoText, Desc, CardInfoCategoryCont, CardInfoCont, CardInfoTitle } from "./cardStyle";
 import { Flex, Box } from "reflexbox";
-import { RecipeTitle, Fade, LinkStyle } from "../../styles/Text"; 
+import { RecipeTitle, Fade, LinkStyle } from "../../styles/text"; 
 import { Difficulty } from "../MainRecipes/Difficulty"; 
 import { getCategoryColor } from "../../shared";
 

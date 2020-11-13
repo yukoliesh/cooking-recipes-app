@@ -3,11 +3,12 @@ import styled from '@xstyled/styled-components';
 import { th } from "@xstyled/system";
 import { StyledButton } from '../Button';
 import { Flex, Box } from "reflexbox";
-import { H2 } from "../../styles/Text"; 
+import { H2 } from "../../styles/text"; 
 import { Card } from "./index";
 import Lemon from "../../images/Lemon03.png";
 import { recipes } from "../../data/MockData";
 import { client } from "../../data/apollo/client";
+import { handleReverseOrder } from "../../shared";
 
 const RowWidth = styled(Box)`
   width: 50vw;
@@ -41,7 +42,7 @@ export interface MainRecipesProps {
 export const MainRecipes: React.FC<MainRecipesProps> = ({
   onMoreRecipesClick
 }: MainRecipesProps): JSX.Element => {
-  const limitMainRecipes = recipes.slice(0,5);
+  const limitMainRecipes = handleReverseOrder().slice(0,5);
 
   // const [selectedId, setSelectedId] = React.useState("");
 

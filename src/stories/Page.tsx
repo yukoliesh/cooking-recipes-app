@@ -5,7 +5,7 @@ import { Header } from './Header/Header';
 import { Menu } from './Menu/Menu';
 import { Flex, Box } from "reflexbox";
 import { Categories } from './Categories';
-import { H2, H3 } from "../styles/Text"; 
+import { H2, H3 } from "../styles/text"; 
 import Lemon from "../images/Lemon03.png";
 import Basil from "../images/Basil.png"
 import { Card } from "./Card"; 

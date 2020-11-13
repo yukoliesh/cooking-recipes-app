@@ -1,7 +1,7 @@
 import styled from "@xstyled/styled-components";
 import { th } from "@xstyled/system";
 import { Flex, Box } from "reflexbox";
-import { fontFamily } from "../../styles/Text"; 
+import { fontFamily } from "../../styles/text"; 
 
 export const CardCont = styled.div`
 width: 30vw;

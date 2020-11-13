@@ -2,7 +2,7 @@ import React from 'react';
 import styled from '@xstyled/styled-components';
 import { th } from "@xstyled/system";
 import { Flex, Box } from "reflexbox";
-import { H3 } from "../../styles/Text"; 
+import { H3 } from "../../styles/text"; 
 import { StyledButton } from '../Button';
 import Basil from "../../images/Basil.png"
 import { recipes } from "../../data/MockData";
