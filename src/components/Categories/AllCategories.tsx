@@ -59,7 +59,7 @@ export const AllCategories: React.FC<AllCategoriesProps> = ({
                   imageUrl={require(`../../images/${item.category}/${item.image}`)}
                   imageAlt={item.title}
                   // detailPagePath={`/${handleDetailsPath(item.title)}`}
-                  detailPagePath="/Details"
+                  detailPagePath={`/Details/${item.title}`}
                   categoryPagePath={`/${item.category}`}
                   onSelectedRecipe={()=>{}}
                 />

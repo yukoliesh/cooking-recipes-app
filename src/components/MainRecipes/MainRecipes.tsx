@@ -77,7 +77,7 @@ export const MainRecipes: React.FC<MainRecipesProps> = ({
           effortLevel={item.effort}
           imageUrl={require(`../../images/${item.category}/${item.image}`)}
           imageAlt={item.title}
-          detailPagePath="/Details"
+          detailPagePath={`/Details/${item.title}`}
           categoryPagePath={`/${item.category}`}
           onSelectedRecipe={() => {}}
           />

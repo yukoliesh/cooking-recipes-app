@@ -14,7 +14,7 @@ import { Taiwanese } from "./components/Categories";
 import { Thai } from "./components/Categories";
 import { Vietnamese } from "./components/Categories";
 import { AllQuickRecipes } from "./components/MiniRecipes";
-import { Details } from "./components/Details";
+import { DetailsPage } from "./components/Details";
 import history from './history';
 
 export default class Routes extends Component {
@@ -35,7 +35,7 @@ export default class Routes extends Component {
                     <Route path="/Thai" exact component={Thai} />
                     <Route path="/Vietnamese" exact component={Vietnamese} />
                     <Route path="/QuickRecipes" exact component={AllQuickRecipes} />
-                    <Route path="/Details" exact component={Details} />
+                    <Route path="/Details/:recipeName" exact component={DetailsPage} />
 
                 </Switch>
             </Router>

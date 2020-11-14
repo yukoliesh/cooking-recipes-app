@@ -7,26 +7,26 @@ import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 
 
 export interface DetailsPageProps {
-  title: string;
-  description: string;
-  imageUrl: string;
-  imageAlt: string;
-  categoryName: string;
-  prepTime: number;
-  cookTime: number;
-  difficulty: string;
+  // title: string;
+  // description: string;
+  // imageUrl: string;
+  // imageAlt: string;
+  // categoryName: string;
+  // prepTime: number;
+  // cookTime: number;
+  // difficulty: string;
   // ingredients: [];
 }
 
 export const DetailsPage: React.FC<DetailsPageProps> = ({  
-  title,
-  description,
-  imageUrl,
-  imageAlt,
-  categoryName,
-  prepTime,
-  cookTime,
-  difficulty,
+  // title,
+  // description,
+  // imageUrl,
+  // imageAlt,
+  // categoryName,
+  // prepTime,
+  // cookTime,
+  // difficulty,
   // ingredients
 }: DetailsPageProps): JSX.Element => {
   //@ts-ignore
@@ -38,7 +38,7 @@ export const DetailsPage: React.FC<DetailsPageProps> = ({
         <Box>
           {recipeName}
         </Box>
-        <Box pb={4}>
+        {/* <Box pb={4}>
           <Flex width={1} alignItems="center">
             <Box pr={2}><H2>{title}</H2></Box>
             <Box><FavoriteBorderIcon color="secondary" /></Box>
@@ -79,11 +79,11 @@ export const DetailsPage: React.FC<DetailsPageProps> = ({
           </Flex>
         </Box>
         <Box>
-          <H3>Ingredients</H3>
+          <H3>Ingredients</H3> */}
           {/* <IngredientsList>
             <IngredientsListItem />
           </IngredientsList> */}
-        </Box>
+        {/* </Box> */}
       </Flex>
       
       

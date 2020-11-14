@@ -6,7 +6,7 @@ import { Menu } from './components/MainNav';
 import { AllCategories, CategoriesNav, Chinese, Indian, Japanese, Korean, Malaysian, Singaporean, Taiwanese, Thai, Vietnamese } from './components/Categories';
 import { Footer } from './components/Footer';
 import { Home } from './components/Home';
-import { Details } from './components/Details';
+import { DetailsPage } from './components/Details';
 import { Modal } from './components/Modal';
 import './App.css';
 import { AllQuickRecipes } from './components/MiniRecipes';
@@ -80,8 +80,8 @@ function App() {
                   <Route path="/Vietnamese">
                     <Vietnamese />
                   </Route>
-                  <Route path="/Details">
-                    <Details />
+                  <Route path="/Details/:recipeName">
+                    <DetailsPage  />
                   </Route>
                 </Box>
               </Switch>
