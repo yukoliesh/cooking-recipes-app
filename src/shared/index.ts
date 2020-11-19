@@ -41,5 +41,3 @@ export const handleReverseOrder = () => {
   const reverseOrder = recipes.reverse();
   return reverseOrder;
 }
-
-console.log("h", handleReverseOrder());

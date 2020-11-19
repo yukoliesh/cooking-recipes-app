@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, useParams } from 'react-router-dom';
 import { Flex, Box } from "reflexbox";
 import { Header } from './components/Header';
 import { Menu } from './components/MainNav';
@@ -10,6 +10,7 @@ import { DetailsPage } from './components/Details';
 import { Modal } from './components/Modal';
 import './App.css';
 import { AllQuickRecipes } from './components/MiniRecipes';
+import { recipes } from './data/MockData';
 
 function App() {
 
@@ -27,7 +28,10 @@ function App() {
   const onModalClose = () => {
     setIsOpenModal(false);
   }
-
+  //@ts-ignore
+  // let { recipeName } = useParams();
+  // const details = recipes.filter(item => item.title === `${recipeName}`);
+  // console.log("detail", details);
 
   return (
     <Router>
@@ -53,31 +57,31 @@ function App() {
                   <Route path="/QuickRecipes">
                     <AllQuickRecipes />
                   </Route>
-                  <Route path="/Chinese">
+                  <Route path="/Category/Chinese">
                     <Chinese />
                   </Route>
-                  <Route path="/Indian">
+                  <Route path="/Category/Indian">
                     <Indian />
                   </Route>
-                  <Route path="/Japanese">
+                  <Route path="/Category/Japanese">
                     <Japanese />
                   </Route>
-                  <Route path="/Korean">
+                  <Route path="/Category/Korean">
                     <Korean />
                   </Route>
-                  <Route path="/Malaysian">
+                  <Route path="/Category/Malaysian">
                     <Malaysian />
                   </Route>
-                  <Route path="/Singaporean">
+                  <Route path="/Category/Singaporean">
                     <Singaporean />
                   </Route>
-                  <Route path="/Taiwanese">
+                  <Route path="/Category/Taiwanese">
                     <Taiwanese />
                   </Route>
-                  <Route path="/Thai">
+                  <Route path="/Category/Thai">
                     <Thai />
                   </Route>
-                  <Route path="/Vietnamese">
+                  <Route path="/Category/Vietnamese">
                     <Vietnamese />
                   </Route>
                   <Route path="/Details/:recipeName">

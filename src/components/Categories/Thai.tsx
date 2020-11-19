@@ -55,7 +55,7 @@ export const Thai: React.FC<ThaiProps> = ({
                   imageUrl={require(`../../images/${item.category}/${item.image}`)}
                   imageAlt={item.title}
                   detailPagePath={`/Details/${item.title}`}
-                  categoryPagePath={`/${item.category}`}
+                  categoryPagePath={`/Category/${item.category}`}
                   onSelectedRecipe={()=>{}}
                 />
               </Box>

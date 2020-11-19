@@ -39,7 +39,7 @@ export const recipes = [
         "type": ""
       }
     ],
-    "Steps": [
+    "steps": [
       {
         "step": "Boiled Water with Dried Kelp in medium-high heat (this is called Dashi)"
       },
@@ -136,7 +136,7 @@ export const recipes = [
         "type": ""
       }
     ],
-    "Steps": [
+    "steps": [
       {
         "step": "Start to cook rice"
       },
@@ -276,7 +276,7 @@ export const recipes = [
       },
       
     ],
-    "Steps": [
+    "steps": [
       {
         "step": "Assemble the main ingredients (except for instant ramen noodles, rice cakes, green onion and cheese) in a shallow pot. Add the sauce in the middle. Pour the stock in the corner of the pot. Close the lid and boil it on medium high heat until the stock starts to boil (about 8 mins)."
       },
@@ -363,7 +363,7 @@ export const recipes = [
         "type": ""
       }
     ],
-    "Steps": [
+    "steps": [
       {
         "step": "Make the dipping sauce by whisking all the dipping sauce ingredients in a small bowl. Set aside. Combine all the prepared main ingredients (excluding the oil) in a mixing bowl and mix them well."
       },
@@ -426,7 +426,7 @@ export const recipes = [
         "type": ""
       },
     ],
-    "Steps": [
+    "steps": [
       {
         "step": "Rinse clams with cold water thoroughly, scrub the shells, drain the water, and set aside."
       },
@@ -533,7 +533,7 @@ export const recipes = [
         "type": "Seasoning"
       },
     ],
-    "Steps": [
+    "steps": [
       {
         "step": "Soak the vermicelli in warm water for 15 minutes or until soft. Drain the water and set aside."
       },
@@ -667,7 +667,7 @@ export const recipes = [
         "type": "Optional"
       },
     ],
-    "Steps": [
+    "steps": [
       {
         "step": "Boil A for 10 minutes."
       },
@@ -764,7 +764,7 @@ export const recipes = [
         "type": "Optional"
       },
     ],
-    "Steps": [
+    "steps": [
       {
         "step": "Mix tapioca flour with water in a mixing bowl."
       },
@@ -851,7 +851,7 @@ export const recipes = [
         "type": "Lo Mein"
       },
     ],
-    "Steps": [
+    "steps": [
       {
         "step": "Sauce: Shake all the sauce ingredients together in a jar."
       },
@@ -926,7 +926,7 @@ export const recipes = [
         "type": "Stir Fry"
       },
     ],
-    "Steps": [
+    "steps": [
       {
         "step": "Chinese Broccoli - trim ends, cut into 7.5cm/3 pieces. Separate leaves from stems. Cut thick stems in half vertically so they're no wider than 0.8cm / 0.3 in thick."
       },
@@ -1021,7 +1021,7 @@ export const recipes = [
         "type": ""
       },
     ],
-    "Steps": [
+    "steps": [
       {
         "step": "Place broth, creamed corn, soy sauce, Chinese cooking wine, ginger, garlic and cornflour / water mixture in a saucepan over high heat."
       },
@@ -1099,7 +1099,7 @@ export const recipes = [
         "type": "Serving"
       },
     ],
-    "Steps": [
+    "steps": [
       {
         "step": "Put Sauce ingredients in a small bowl and mix to combine."
       },
@@ -1191,7 +1191,7 @@ export const recipes = [
         "type": ""
       },
     ],
-    "Steps": [
+    "steps": [
       {
         "step": "In a large skillet over medium heat, heat oil. Add chicken and cook, flipping once, until golden and no longer pink, 8 minutes per side. Transfer to a plate."
       },

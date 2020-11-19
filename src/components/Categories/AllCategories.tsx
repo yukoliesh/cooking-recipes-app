@@ -60,7 +60,7 @@ export const AllCategories: React.FC<AllCategoriesProps> = ({
                   imageAlt={item.title}
                   // detailPagePath={`/${handleDetailsPath(item.title)}`}
                   detailPagePath={`/Details/${item.title}`}
-                  categoryPagePath={`/${item.category}`}
+                  categoryPagePath={`/Category/${item.category}`}
                   onSelectedRecipe={()=>{}}
                 />
               </Box>

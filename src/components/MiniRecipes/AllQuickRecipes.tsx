@@ -55,7 +55,7 @@ export const AllQuickRecipes: React.FC<AllQuickRecipesProps> = ({
                   imageUrl={require(`../../images/${item.category}/${item.image}`)}
                   imageAlt={item.title}
                   detailPagePath={`/Details/${item.title}`}
-                  categoryPagePath="/"
+                  categoryPagePath={`/Category/${item.category}`}
                   onSelectedRecipe={()=>{}}
                 />
               </Box>
