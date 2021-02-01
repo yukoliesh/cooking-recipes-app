@@ -6,8 +6,6 @@ import { Flex, Box } from "reflexbox";
 import { H2 } from "../../styles/text"; 
 import { Card } from "./index";
 import Lemon from "../../images/Lemon03.png";
-import { recipes } from "../../data/MockData";
-import { client } from "../../data/apollo/client";
 import { handleReverseOrder } from "../../shared";
 
 const RowWidth = styled(Box)`

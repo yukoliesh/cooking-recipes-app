@@ -6,8 +6,7 @@ import { H3 } from "../../styles/text";
 import { MiniCard } from "./MiniCard";
 import { StyledButton } from '../Button';
 import Basil from "../../images/Basil.png"
-import { recipes } from "../../data/MockData";
-import history from '../../history';
+// import history from '../../history';
 import { handleReverseOrder } from "../../shared";
 
 const RowWidth = styled(Box)`

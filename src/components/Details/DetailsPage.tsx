@@ -1,11 +1,11 @@
 import React from 'react';
 import { useParams } from "react-router-dom";
+import { gql, useQuery } from "@apollo/client";
 import { Flex, Box } from "reflexbox";
 import { H2, H3 } from '../../styles/text';
 import { DetailsImage, InfoTxt, IngredientsList, IngredientsListItem, StepList, StepListItem } from './detailsStyle';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
-import { recipes } from '../../data/MockData';
-
+import { RECIPE_BY_ID } from "../../api/gql";
 
 export interface DetailsPageProps {
   // title: string;
@@ -32,10 +32,12 @@ export const DetailsPage: React.FC<DetailsPageProps> = ({
 }: DetailsPageProps): JSX.Element => {
   //@ts-ignore
   let { recipeName } = useParams();
-  const details = recipes.filter(item => item.title === `${recipeName}`);
+  const { loading, error, data } = useQuery(RECIPE_BY_ID);
+  const details = data.filter(item => item.title === `${recipeName}`);
   console.log("detail", details);
 
-  
+  if(loading) return <p>Loading Detailed Recipe...</p> 
+  if(error) return <p>Error loading Detailed Recipe!</p> 
 
   return (
     <>

@@ -1,6 +1,3 @@
-import { recipes } from "../data/MockData";
-
-
 export const getCategoryColor = (categoryName: string) => {
     
   if(categoryName === "Chinese") {
@@ -37,7 +34,8 @@ export const handleDetailsPath = (title: string) => {
   string.replace(' ',"-");
 }
 
-export const handleReverseOrder = () => {
-  const reverseOrder = recipes.reverse();
+
+export const handleReverseOrder = (receipesData) => {
+  const reverseOrder = receipesData.reverse();
   return reverseOrder;
 }

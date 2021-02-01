@@ -1,10 +1,11 @@
 import React from 'react';
+import { useQuery } from "@apollo/client";
 import styled from '@xstyled/styled-components';
+import { RECIPES } from "../../api/gql";
 import { Flex, Box } from "reflexbox";
 import { H2 } from "../../styles/text";
 import { Card } from "../Card";
 import Peas from "../../images/Peas.png";
-import { recipes } from "../../data/MockData";
 import { handleReverseOrder } from "../../shared";
 
 
@@ -26,7 +27,10 @@ export interface ThaiProps {
 
 export const Thai: React.FC<ThaiProps> = ({
 }: ThaiProps): JSX.Element => {
-  const ThaiList = handleReverseOrder().filter(item => item.category === "Thai");
+  const { loading, error, data } = useQuery(RECIPES);
+  if(loading) return <p>Loading Detailed Recipe...</p> 
+  if(error) return <p>Error loading Detailed Recipe!</p>
+  const ThaiList = handleReverseOrder(data).filter(item => item.category === "Thai");
   return (
     <>
       <Flex>
