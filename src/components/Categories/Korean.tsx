@@ -25,12 +25,11 @@ export interface KoreanProps {
 
 }
 
-export const Korean: React.FC<KoreanProps> = ({
-}: KoreanProps): JSX.Element => {
+export const Korean: React.FC<KoreanProps> = (KoreanProps): JSX.Element => {
 
   const { loading, error, data } = useQuery(RECIPES);
-  if(loading) return <p>Loading Detailed Recipe...</p> 
-  if(error) return <p>Error loading Detailed Recipe!</p>
+  if(loading) return <p>Loading Korean Recipe...</p> 
+  if(error) return <p>Error loading Korean Recipe!</p>
 
   const koreanList = handleReverseOrder(data).filter(item => item.category === "Korean");
   return (

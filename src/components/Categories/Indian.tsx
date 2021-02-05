@@ -25,12 +25,11 @@ export interface IndianProps {
 
 }
 
-export const Indian: React.FC<IndianProps> = ({
-}: IndianProps): JSX.Element => {
+export const Indian: React.FC<IndianProps> = (IndianProps): JSX.Element => {
   
   const { loading, error, data } = useQuery(RECIPES);
-  if(loading) return <p>Loading Detailed Recipe...</p> 
-  if(error) return <p>Error loading Detailed Recipe!</p>
+  if(loading) return <p>Loading Indian Recipe...</p> 
+  if(error) return <p>Error loading Indian Recipe!</p>
 
   const indianList = handleReverseOrder(data).filter(item => item.category === "Indian");
   return (

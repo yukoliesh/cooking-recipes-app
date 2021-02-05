@@ -25,12 +25,11 @@ export interface SingaporeanProps {
 
 }
 
-export const Singaporean: React.FC<SingaporeanProps> = ({
-}: SingaporeanProps): JSX.Element => {
+export const Singaporean: React.FC<SingaporeanProps> = (SingaporeanProps): JSX.Element => {
 
   const { loading, error, data } = useQuery(RECIPES);
-  if(loading) return <p>Loading Detailed Recipe...</p> 
-  if(error) return <p>Error loading Detailed Recipe!</p>
+  if(loading) return <p>Loading Singaporean Recipe...</p> 
+  if(error) return <p>Error loading Singaporean Recipe!</p>
 
   const singaporeanList = handleReverseOrder(data).filter(item => item.category === "Singaporean");
   return (

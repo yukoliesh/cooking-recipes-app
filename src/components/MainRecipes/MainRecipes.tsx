@@ -1,4 +1,5 @@
 import React from 'react';
+import { useQuery } from "@apollo/client";
 import styled from '@xstyled/styled-components';
 import { th } from "@xstyled/system";
 import { StyledButton } from '../Button';
@@ -7,6 +8,7 @@ import { H2 } from "../../styles/text";
 import { Card } from "./index";
 import Lemon from "../../images/Lemon03.png";
 import { handleReverseOrder } from "../../shared";
+import { RECIPES } from "../../api/gql";
 
 const RowWidth = styled(Box)`
   width: 50vw;
@@ -40,7 +42,16 @@ export interface MainRecipesProps {
 export const MainRecipes: React.FC<MainRecipesProps> = ({
   onMoreRecipesClick
 }: MainRecipesProps): JSX.Element => {
-  const limitMainRecipes = handleReverseOrder().slice(0,5);
+  const { loading, error, data } = useQuery(RECIPES);
+
+  console.log("data", data);
+
+  if(loading) return <p>Loading main recipes Recipe...</p> 
+  if(error) return <p>Error loading main recipes Recipe!</p> 
+  
+  const limitMainRecipes = handleReverseOrder(data).slice(0,5);
+
+
 
   // const [selectedId, setSelectedId] = React.useState("");
 

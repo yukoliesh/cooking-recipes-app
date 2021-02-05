@@ -24,11 +24,10 @@ export interface TaiwaneseProps {
 
 }
 
-export const Taiwanese: React.FC<TaiwaneseProps> = ({
-}: TaiwaneseProps): JSX.Element => {
+export const Taiwanese: React.FC<TaiwaneseProps> = (TaiwaneseProps): JSX.Element => {
   const { loading, error, data } = useQuery(RECIPES);
-  if(loading) return <p>Loading Detailed Recipe...</p> 
-  if(error) return <p>Error loading Detailed Recipe!</p>
+  if(loading) return <p>Loading Taiwanese Recipe...</p> 
+  if(error) return <p>Error loading Taiwanese Recipe!</p>
 
   const taiwaneseList = handleReverseOrder(data).filter(item => item.category === "Taiwanese");
   return (

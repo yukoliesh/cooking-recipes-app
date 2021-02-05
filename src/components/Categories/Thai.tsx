@@ -25,11 +25,11 @@ export interface ThaiProps {
 
 }
 
-export const Thai: React.FC<ThaiProps> = ({
-}: ThaiProps): JSX.Element => {
+export const Thai: React.FC<ThaiProps> = (ThaiProps): JSX.Element => {
   const { loading, error, data } = useQuery(RECIPES);
-  if(loading) return <p>Loading Detailed Recipe...</p> 
-  if(error) return <p>Error loading Detailed Recipe!</p>
+  if(loading) return <p>Loading Thai Recipe...</p> 
+  if(error) return <p>Error loading Thai Recipe!</p>
+  
   const ThaiList = handleReverseOrder(data).filter(item => item.category === "Thai");
   return (
     <>

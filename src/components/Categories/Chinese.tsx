@@ -26,11 +26,10 @@ export interface ChineseProps {
 
 }
 
-export const Chinese: React.FC<ChineseProps> = ({
-}: ChineseProps): JSX.Element => {
+export const Chinese: React.FC<ChineseProps> = (ChineseProps): JSX.Element => {
   const { loading, error, data } = useQuery(RECIPES);
-  if(loading) return <p>Loading Detailed Recipe...</p> 
-  if(error) return <p>Error loading Detailed Recipe!</p> 
+  if(loading) return <p>Loading Chinese Recipe...</p> 
+  if(error) return <p>Error loading Chinese Recipe!</p> 
 
   const chineseList = handleReverseOrder(data).filter(item => item.category === "Chinese");
   

@@ -7,9 +7,7 @@ export interface HomeProps {
 
 }
 
-export const Home: React.FC<HomeProps> = ({
-
-}): JSX.Element => { 
+export const Home: React.FC<HomeProps> = (HomeProps): JSX.Element => { 
   const history = useHistory();
   const routeChange = () => {
     let path = `All`;

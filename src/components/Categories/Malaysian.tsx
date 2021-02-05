@@ -25,12 +25,13 @@ export interface MalaysianProps {
 
 }
 
-export const Malaysian: React.FC<MalaysianProps> = ({
-}: MalaysianProps): JSX.Element => {
+// export const Malaysian: React.FC<MalaysianProps> = ({
+// }: MalaysianProps): JSX.Element => {
+export const Malaysian: React.FC<MalaysianProps> = (MalaysianProps): JSX.Element => {
 
   const { loading, error, data } = useQuery(RECIPES);
-  if(loading) return <p>Loading Detailed Recipe...</p> 
-  if(error) return <p>Error loading Detailed Recipe!</p>
+  if(loading) return <p>Loading Malaysian Recipe...</p> 
+  if(error) return <p>Error loading Malaysian Recipe!</p>
 
   const malaysianList = handleReverseOrder(data).filter(item => item.category === "Malaysian");
   return (

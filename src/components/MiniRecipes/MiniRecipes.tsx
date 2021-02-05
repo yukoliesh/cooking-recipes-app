@@ -1,4 +1,5 @@
 import React from 'react';
+import { useQuery } from "@apollo/client";
 import styled from '@xstyled/styled-components';
 import { th } from "@xstyled/system";
 import { Flex, Box } from "reflexbox";
@@ -8,6 +9,7 @@ import { StyledButton } from '../Button';
 import Basil from "../../images/Basil.png"
 // import history from '../../history';
 import { handleReverseOrder } from "../../shared";
+import { RECIPES } from "../../api/gql";
 
 const RowWidth = styled(Box)`
   width: 50vw;
@@ -41,8 +43,14 @@ export interface MiniRecipesProps {
 export const MiniRecipes: React.FC<MiniRecipesProps> = ({
   onMoreRecipesClick
 }: MiniRecipesProps): JSX.Element => {
-  const quickList = handleReverseOrder().filter(item => item.totalTime <= 15);
+  const { loading, error, data } = useQuery(RECIPES);
+  
+  if(loading) return <p>Loading mini recipes Recipe...</p> 
+  if(error) return <p>Error loading mini recipes Recipe!</p> 
+  
+  const quickList = handleReverseOrder(data).filter(item => item.totalTime <= 15);
   const limitMainRecipes = quickList.slice(0,10);
+
 
   return (
     <RowWidth>

@@ -1,7 +1,7 @@
 import styled from "@xstyled/styled-components";
 import { Flex, Box } from "reflexbox";
 import { th } from "@xstyled/system";
-import CloseIcon from '@material-ui/icons/Close';
+// import CloseIcon from '@material-ui/icons/Close';
 import { StyledButton } from '../Button';
 
 

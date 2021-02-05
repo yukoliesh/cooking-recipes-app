@@ -25,11 +25,11 @@ export interface VietnameseProps {
 
 }
 
-export const Vietnamese: React.FC<VietnameseProps> = ({
-}: VietnameseProps): JSX.Element => {
+export const Vietnamese: React.FC<VietnameseProps> = (VietnameseProps): JSX.Element => {
   const { loading, error, data } = useQuery(RECIPES);
-  if(loading) return <p>Loading Detailed Recipe...</p> 
-  if(error) return <p>Error loading Detailed Recipe!</p>
+  if(loading) return <p>Loading Vietnamese Recipe...</p> 
+  if(error) return <p>Error loading Vietnamese Recipe!</p>
+  
   const VietnameseList = handleReverseOrder(data).filter(item => item.category === "Vietnamese");
   return (
     <>

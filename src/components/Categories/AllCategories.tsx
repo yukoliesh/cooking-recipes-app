@@ -25,11 +25,10 @@ export interface AllCategoriesProps {
 
 }
 
-export const AllCategories: React.FC<AllCategoriesProps> = ({
-}: AllCategoriesProps): JSX.Element => {
+export const AllCategories: React.FC<AllCategoriesProps> = (AllCategoriesProps): JSX.Element => {
   const { loading, error, data } = useQuery(RECIPES);
-  if(loading) return <p>Loading Detailed Recipe...</p> 
-  if(error) return <p>Error loading Detailed Recipe!</p> 
+  if(loading) return <p>Loading All Category Recipe...</p> 
+  if(error) return <p>Error loading All Category Recipe!</p> 
 
   const title = "word of mouth";
   title.replace(" ", "_");

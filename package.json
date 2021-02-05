@@ -2,24 +2,20 @@
   "name": "cooking-recipes-app",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "storybook": "start-storybook -s ./public -p 9001",
+    "build-storybook": "build-storybook -s public"
+  },
   "dependencies": {
-    "@apollo/client": "^3.2.5",
+    "@apollo/client": "^3.3.7",
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
-    "@testing-library/user-event": "^7.2.1",
-    "@types/jest": "^26.0.14",
-    "@types/node": "^14.11.2",
-    "@types/react": "^16.9.49",
-    "@types/react-dom": "^16.9.8",
-    "@types/react-router-dom": "^5.1.6",
-    "@types/reflexbox": "^4.0.1",
-    "@types/xstyled__styled-components": "^1.17.1",
-    "@types/xstyled__system": "^1.19.1",
     "@xstyled/styled-components": "^1.19.0",
     "apollo-cache-inmemory": "^1.6.6",
-    "apollo-client": "^2.6.10",
     "apollo-link": "^1.2.14",
     "apollo-link-error": "^1.1.13",
     "apollo-link-http": "^1.5.17",
@@ -31,21 +27,35 @@
     "graphql-tag": "^2.11.0",
     "lodash": "^4.17.20",
     "nodemon": "^2.0.7",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
     "reflexbox": "^4.0.6",
     "styled-components": "^5.2.0",
     "typescript": "^4.0.3"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "storybook": "start-storybook -s ./public -p 9001",
-    "build-storybook": "build-storybook -s public"
+  "devDependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.5.0",
+    "@testing-library/user-event": "^7.2.1",
+    "@types/jest": "^26.0.14",
+    "@types/node": "^14.11.2",
+    "@types/react": "^16.9.49",
+    "@types/react-dom": "^16.9.8",
+    "@types/react-router-dom": "^5.1.6",
+    "@types/reflexbox": "^4.0.1",
+    "@types/xstyled__styled-components": "^1.17.1",
+    "@types/xstyled__system": "^1.19.1",
+    "@babel/core": "^7.11.6",
+    "@storybook/addon-actions": "^6.0.22",
+    "@storybook/addon-essentials": "^6.0.22",
+    "@storybook/addon-links": "^6.0.22",
+    "@storybook/node-logger": "^6.0.22",
+    "@storybook/preset-create-react-app": "^3.1.4",
+    "@storybook/react": "^6.0.22",
+    "babel-loader": "^8.1.0",
+    "react-is": "^16.13.1"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -61,17 +71,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@babel/core": "^7.11.6",
-    "@storybook/addon-actions": "^6.0.22",
-    "@storybook/addon-essentials": "^6.0.22",
-    "@storybook/addon-links": "^6.0.22",
-    "@storybook/node-logger": "^6.0.22",
-    "@storybook/preset-create-react-app": "^3.1.4",
-    "@storybook/react": "^6.0.22",
-    "babel-loader": "^8.1.0",
-    "react-is": "^16.13.1"
   },
   "nodemonConfig": {
     "env": {

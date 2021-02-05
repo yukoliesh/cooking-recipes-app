@@ -28,7 +28,7 @@ const image = {
 }
 
 
-export const CategoriesNav: React.FC<CategoriesNavProps> = ({}: CategoriesNavProps): JSX.Element => {
+export const CategoriesNav: React.FC<CategoriesNavProps> = (CategoriesNavProps): JSX.Element => {
   
   return (
   <>
