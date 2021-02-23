@@ -27,7 +27,7 @@ export const RECIPES = gql`
 
 
 export const RECIPE_BY_ID = gql`
-  query recipeById($id: ID!){
+  query recipeById($id: String!){
     recipeById{
       id
       title

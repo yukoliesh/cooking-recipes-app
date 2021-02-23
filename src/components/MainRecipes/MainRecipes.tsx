@@ -47,7 +47,7 @@ export const MainRecipes: React.FC<MainRecipesProps> = ({
   console.log("data", data);
 
   if(loading) return <p>Loading main recipes Recipe...</p> 
-  if(error) return <p>Error loading main recipes Recipe!</p> 
+  if(error) return <p>Error loading from main recipes Recipe!</p> 
   
   const limitMainRecipes = handleReverseOrder(data).slice(0,5);
 
