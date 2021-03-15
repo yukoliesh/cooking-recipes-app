@@ -45,7 +45,7 @@ export const Header: React.FC<HeaderProps> = (): JSX.Element => (
             <Title>Explore Your Easy Cooking Recipes!</Title>
           </Box>
           <RightAlignedBox width={3 / 4}>
-            <SearchBox />
+            {/* <SearchBox /> */}
           </RightAlignedBox>
         </Flex>
       </HeaderBg>       

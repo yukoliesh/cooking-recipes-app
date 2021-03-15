@@ -5,7 +5,7 @@ import { Flex, Box } from "reflexbox";
 import { H2, H3 } from '../../styles/text';
 import { DetailsImage, InfoTxt, IngredientsList, IngredientsListItem, StepList, StepListItem } from './detailsStyle';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
-import { RECIPE_BY_ID } from "../../api/gql";
+import { RECIPE_BY_TITLE } from "../../api/gql";
 
 export interface DetailsPageProps {
   // title: string;
@@ -22,16 +22,18 @@ export interface DetailsPageProps {
 export const DetailsPage: React.FC<DetailsPageProps> = (DetailsPageProps): JSX.Element => {
   //@ts-ignore
   let { recipeName } = useParams();
-  const { loading, error, data } = useQuery(RECIPE_BY_ID);
+  const { loading, error, data } = useQuery(RECIPE_BY_TITLE, {
+    variables: { title: recipeName.replaceAll("-", " ") },
+  });
   if(loading) return <p>Loading Detailed Recipe...</p> 
   if(error) return <p>Error loading Detailed Recipe!</p> 
 
-  const details = data.filter(item => item.title === `${recipeName}`);
-  console.log("detail", details);
+  console.log("data", data);
 
+  const item = data.recipeByTitle;
+  if(!item) return <p>Recipe not found...</p> 
   return (
     <>
-    {details.map(item => (
       <Flex flexDirection="column">
         <Box width={3 / 4} key={item.id}>
           <Box pb={4}>
@@ -103,10 +105,6 @@ export const DetailsPage: React.FC<DetailsPageProps> = (DetailsPageProps): JSX.E
           </Box>
         </Box>
       </Flex>
-    ))}
-      
-      
-      
     </>
   ); 
 };

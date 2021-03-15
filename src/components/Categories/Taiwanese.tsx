@@ -29,7 +29,7 @@ export const Taiwanese: React.FC<TaiwaneseProps> = (TaiwaneseProps): JSX.Element
   if(loading) return <p>Loading Taiwanese Recipe...</p> 
   if(error) return <p>Error loading Taiwanese Recipe!</p>
 
-  const taiwaneseList = handleReverseOrder(data).filter(item => item.category === "Taiwanese");
+  const taiwaneseList = handleReverseOrder(data.recipes).filter(item => item.category === "Taiwanese");
   return (
     <>
       <Flex>

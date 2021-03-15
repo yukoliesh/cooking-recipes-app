@@ -6,6 +6,7 @@ export const RECIPES = gql`
       id
       title
       description
+      category
       image
       prepTime
       cookTime
@@ -26,12 +27,13 @@ export const RECIPES = gql`
 `;
 
 
-export const RECIPE_BY_ID = gql`
-  query recipeById($id: String!){
-    recipeById{
+export const RECIPE_BY_TITLE = gql`
+  query recipeByTitle($title: String!){
+    recipeByTitle(title: $title){
       id
       title
       description
+      category
       image
       prepTime
       cookTime

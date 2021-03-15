@@ -30,7 +30,7 @@ export const Vietnamese: React.FC<VietnameseProps> = (VietnameseProps): JSX.Elem
   if(loading) return <p>Loading Vietnamese Recipe...</p> 
   if(error) return <p>Error loading Vietnamese Recipe!</p>
   
-  const VietnameseList = handleReverseOrder(data).filter(item => item.category === "Vietnamese");
+  const VietnameseList = handleReverseOrder(data.recipes).filter(item => item.category === "Vietnamese");
   return (
     <>
       <Flex>

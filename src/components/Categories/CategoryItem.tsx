@@ -21,22 +21,22 @@ const CroppedImg = styled.div`
   overflow: hidden;
   margin: -20px 0 0 -35px;
 `;
-export interface IndianProps {
+export interface CategoryItemProps {
 
 }
 
-export const Indian: React.FC<IndianProps> = (IndianProps): JSX.Element => {
+export const CategoryItem: React.FC<CategoryItemProps> = (CategoryItemProps): JSX.Element => {
   
   const { loading, error, data } = useQuery(RECIPES);
-  if(loading) return <p>Loading Indian Recipe...</p> 
-  if(error) return <p>Error loading Indian Recipe!</p>
-
-  console.log("category", data.recipes);
+  if(loading) return <p>Loading CategoryItem Recipe...</p> 
+  if(error) return <p>Error loading CategoryItem Recipe!</p>
 
   const indianList = handleReverseOrder(data.recipes).filter(item => item.category === "Indian");
   return (
     <>
-      <Flex>
+    {
+      data.recipes.map(item => (
+        <Flex>
         <Box>
           <Flex justifyContent="flex-start">
             <Box>
@@ -45,31 +45,30 @@ export const Indian: React.FC<IndianProps> = (IndianProps): JSX.Element => {
               </CroppedImg>
             </Box>
             <Box>
-              <H2>Indian</H2>
+              <H2>{item.category}</H2>
             </Box>
           </Flex>
           <Flex justifyContent="flex-start" flexWrap="wrap">
-            {indianList.map(item => (
-              <Box>
-                <Card
-                  key={item.id}
-                  itemId={item.id}
-                  title={item.title}
-                  description={item.description}
-                  categoryName={item.category}
-                  timeAmount={`${item.totalTime} min`}
-                  effortLevel={item.effort}
-                  imageUrl={require(`../../images/${item.category}/${item.image}`)}
-                  imageAlt={item.title}
-                  detailPagePath={`/Details/${item.title}`}
-                  categoryPagePath="/"
-                  onSelectedRecipe={()=>{}}
-                />
-              </Box>
-            ))
-            }
+            <Box>
+              <Card
+                key={item.id}
+                itemId={item.id}
+                title={item.title}
+                description={item.description}
+                categoryName={item.category}
+                timeAmount={`${item.totalTime} min`}
+                effortLevel={item.effort}
+                imageUrl={require(`../../images/${item.category}/${item.image}`)}
+                imageAlt={item.title}
+                detailPagePath={`/Details/${item.title}`}
+                categoryPagePath="/"
+                onSelectedRecipe={()=>{}}
+              />
+            </Box>
           </Flex>
         </Box>
       </Flex>
+      ))
+    }
     </>
   )};

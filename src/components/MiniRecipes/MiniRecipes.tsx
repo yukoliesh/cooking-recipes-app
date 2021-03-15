@@ -48,7 +48,7 @@ export const MiniRecipes: React.FC<MiniRecipesProps> = ({
   if(loading) return <p>Loading mini recipes Recipe...</p> 
   if(error) return <p>Error loading mini recipes Recipe!</p> 
   
-  const quickList = handleReverseOrder(data).filter(item => item.totalTime <= 15);
+  const quickList = handleReverseOrder(data.recipes).filter(item => item.totalTime <= 15);
   const limitMainRecipes = quickList.slice(0,10);
 
 

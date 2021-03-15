@@ -33,7 +33,7 @@ export const Malaysian: React.FC<MalaysianProps> = (MalaysianProps): JSX.Element
   if(loading) return <p>Loading Malaysian Recipe...</p> 
   if(error) return <p>Error loading Malaysian Recipe!</p>
 
-  const malaysianList = handleReverseOrder(data).filter(item => item.category === "Malaysian");
+  const malaysianList = handleReverseOrder(data.recipes).filter(item => item.category === "Malaysian");
   return (
     <>
       <Flex>

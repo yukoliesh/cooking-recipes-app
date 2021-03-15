@@ -31,7 +31,7 @@ export const Singaporean: React.FC<SingaporeanProps> = (SingaporeanProps): JSX.E
   if(loading) return <p>Loading Singaporean Recipe...</p> 
   if(error) return <p>Error loading Singaporean Recipe!</p>
 
-  const singaporeanList = handleReverseOrder(data).filter(item => item.category === "Singaporean");
+  const singaporeanList = handleReverseOrder(data.recipes).filter(item => item.category === "Singaporean");
   return (
     <>
       <Flex>

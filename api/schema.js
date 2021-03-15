@@ -4,19 +4,19 @@ module.exports = gql`
   type Query {
     recipes(
       id: ID
-    category: String
-    title: String
-    image: String,
-    description: String,
-    prepTime: Int,
-    cookTime: Int,
-    totalTime: Int,
-    serving: String,
-    effort: String,
-    isFavorite: Boolean,
-    url: String
+      category: String
+      title: String
+      image: String,
+      description: String,
+      prepTime: Int,
+      cookTime: Int,
+      totalTime: Int,
+      serving: String,
+      effort: String,
+      isFavorite: Boolean,
+      url: String
     ): [Recipe]
-    recipeById(id: ID): Recipe
+    recipeByTitle(title: String!): Recipe
   }
   type Ingredient {
     name: String!

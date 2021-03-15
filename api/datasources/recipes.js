@@ -13,9 +13,13 @@ class RecipeAPI extends DataSource {
   getRecipes(args) {
     return _.filter(recipes, args);
   }
-
-  getRecipeById(id){
-    const recipe = _.filter(recipes, { id: parseInt(id) });
+  
+  getRecipeByTitle(title){
+    console.log("title", title);
+    const recipe = _.filter(recipes, function(a){
+      return a.title.toLowerCase().indexOf((title).toLowerCase()) !== -1;
+    });
+    console.log("recipe", recipe);
     return recipe[0];
   }
 }

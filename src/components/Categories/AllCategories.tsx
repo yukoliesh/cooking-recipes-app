@@ -32,7 +32,7 @@ export const AllCategories: React.FC<AllCategoriesProps> = (AllCategoriesProps):
 
   const title = "word of mouth";
   title.replace(" ", "_");
-  console.log("rec", title);
+  console.log("title", title);
   
   return (
     <>
@@ -49,7 +49,7 @@ export const AllCategories: React.FC<AllCategoriesProps> = (AllCategoriesProps):
             </Box>
           </Flex>
           <Flex justifyContent="flex-start" flexWrap="wrap">
-            {handleReverseOrder(data).map(item => (
+            {handleReverseOrder(data.recipes).map(item => (
               <Box>
                 <Card
                   key={item.id}
@@ -62,8 +62,8 @@ export const AllCategories: React.FC<AllCategoriesProps> = (AllCategoriesProps):
                   imageUrl={require(`../../images/${item.category}/${item.image}`)}
                   imageAlt={item.title}
                   // detailPagePath={`/${handleDetailsPath(item.title)}`}
-                  detailPagePath={`/Details/${item.title}`}
-                  categoryPagePath={`/Category/${item.category}`}
+                  detailPagePath={`/details/${item.title.toLowerCase().replaceAll(" ", "-")}`}
+                  categoryPagePath={`/category/${item.category}`}
                   onSelectedRecipe={()=>{}}
                 />
               </Box>

@@ -31,7 +31,7 @@ export const Chinese: React.FC<ChineseProps> = (ChineseProps): JSX.Element => {
   if(loading) return <p>Loading Chinese Recipe...</p> 
   if(error) return <p>Error loading Chinese Recipe!</p> 
 
-  const chineseList = handleReverseOrder(data).filter(item => item.category === "Chinese");
+  const chineseList = handleReverseOrder(data.recipes).filter(item => item.category === "Chinese");
   
   return (
     <>

@@ -1,35 +1,11 @@
 import React from 'react';
 import styled from '@xstyled/styled-components';
-import { gql, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { Flex, Box } from "reflexbox";
 import { H2 } from "../../styles/text";
 import { Card } from "../Card";
 import Peas from "../../images/Peas.png";
-
-const RECIPES = gql`
-  query recipes{
-    recipes{
-      id
-      title
-      description
-      image
-      prepTime
-      cookTime
-      totalTime
-      serving
-      effort
-      isFavorite
-      url
-      ingredients{
-        name
-        type
-      }
-      steps{
-        step
-      }
-    }
-  }
-`;
+import { RECIPES } from "../../api/gql";
 
 
 const MainTitleImg = styled.img`
@@ -53,8 +29,8 @@ export const AllQuickRecipes: React.FC<AllQuickRecipesProps> = (AllQuickRecipesP
   if(loading) return <p>Loading Detailed Recipe...</p> 
   if(error) return <p>Error loading Detailed Recipe!</p> 
   
-  console.log("rec", data);
-  const miniRecipes = data.filter(item => item.totalTime <= 15 );
+  console.log("rec", data.recipes);
+  const miniRecipes = data.recipes.filter(item => item.totalTime <= 15 );
 
   return (
     <>

@@ -36,6 +36,6 @@ export const handleDetailsPath = (title: string) => {
 
 
 export const handleReverseOrder = (receipesData) => {
-  const reverseOrder = receipesData.reverse();
+  const reverseOrder = [...receipesData].reverse();
   return reverseOrder;
 }

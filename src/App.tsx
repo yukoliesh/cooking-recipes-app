@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { ApolloClient, ApolloProvider, HttpLink, InMemoryCache } from "@apollo/client"
+import { ApolloClient, ApolloProvider, HttpLink, InMemoryCache, useQuery } from "@apollo/client";
+import { RECIPES } from "./api/gql";
 import { Flex, Box } from "reflexbox";
 import { Header } from './components/Header';
 import { Menu } from './components/MainNav';
@@ -11,12 +12,13 @@ import { DetailsPage } from './components/Details';
 import { Modal } from './components/Modal';
 import './App.css';
 import { AllQuickRecipes } from './components/MiniRecipes';
+import { CategoryItem } from './components/Categories/CategoryItem';
 // import { recipes } from './api/data/MockData.json';
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
   link: new HttpLink({
-    uri: "http:localhost:4000/"
+    uri: "http://localhost:4000/"
   }),
   credentials: "same-origin"
 })
@@ -37,6 +39,11 @@ function AppRouter() {
   const onModalClose = () => {
     setIsOpenModal(false);
   }
+
+  const { loading, error, data } = useQuery(RECIPES);
+  if(loading) return <p>Loading App ...</p> 
+  if(error) return <p>Error loading App!</p>
+
   return (
     <Router>
       <Header />
@@ -61,7 +68,10 @@ function AppRouter() {
                     <Route path="/QuickRecipes">
                       <AllQuickRecipes />
                     </Route>
-                    <Route path="/Category/Chinese">
+                    <Route path="/Category/:categoryName">
+                      <CategoryItem  />
+                    </Route>
+                    {/* <Route path="/Category/Chinese">
                       <Chinese />
                     </Route>
                     <Route path="/Category/Indian">
@@ -87,7 +97,7 @@ function AppRouter() {
                     </Route>
                     <Route path="/Category/Vietnamese">
                       <Vietnamese />
-                    </Route>
+                    </Route> */}
                     <Route path="/Details/:recipeName">
                       <DetailsPage  />
                     </Route>

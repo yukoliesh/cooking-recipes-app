@@ -30,7 +30,7 @@ export const Thai: React.FC<ThaiProps> = (ThaiProps): JSX.Element => {
   if(loading) return <p>Loading Thai Recipe...</p> 
   if(error) return <p>Error loading Thai Recipe!</p>
   
-  const ThaiList = handleReverseOrder(data).filter(item => item.category === "Thai");
+  const ThaiList = handleReverseOrder(data.recipes).filter(item => item.category === "Thai");
   return (
     <>
       <Flex>

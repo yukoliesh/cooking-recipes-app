@@ -48,8 +48,9 @@ export const MainRecipes: React.FC<MainRecipesProps> = ({
 
   if(loading) return <p>Loading main recipes Recipe...</p> 
   if(error) return <p>Error loading from main recipes Recipe!</p> 
-  
-  const limitMainRecipes = handleReverseOrder(data).slice(0,5);
+
+  const limitMainRecipes = handleReverseOrder(data.recipes).slice(0,5);
+  console.log("limitMainRecipes", limitMainRecipes);
 
 
 
@@ -86,7 +87,7 @@ export const MainRecipes: React.FC<MainRecipesProps> = ({
           effortLevel={item.effort}
           imageUrl={require(`../../images/${item.category}/${item.image}`)}
           imageAlt={item.title}
-          detailPagePath={`/Details/${item.title}`}
+          detailPagePath={`/Details/${item.title.toLowerCase().replaceAll(" ", "-")}`}
           categoryPagePath={`/${item.category}`}
           onSelectedRecipe={() => {}}
           />

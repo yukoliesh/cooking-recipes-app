@@ -31,7 +31,7 @@ export const Korean: React.FC<KoreanProps> = (KoreanProps): JSX.Element => {
   if(loading) return <p>Loading Korean Recipe...</p> 
   if(error) return <p>Error loading Korean Recipe!</p>
 
-  const koreanList = handleReverseOrder(data).filter(item => item.category === "Korean");
+  const koreanList = handleReverseOrder(data.recipes).filter(item => item.category === "Korean");
   return (
     <>
       <Flex>

@@ -31,7 +31,7 @@ export const Japanese: React.FC<JapaneseProps> = (JapaneseProps): JSX.Element =>
   if(loading) return <p>Loading Japanese Recipe...</p> 
   if(error) return <p>Error loading Japanese Recipe!</p>
 
-  const japaneseList = handleReverseOrder(data).filter(item => item.category === "Japanese");
+  const japaneseList = handleReverseOrder(data.recipes).filter(item => item.category === "Japanese");
   return (
     <>
       <Flex>
