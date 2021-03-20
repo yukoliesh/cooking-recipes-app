@@ -1,12 +1,13 @@
 import React from 'react';
+import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import styled from '@xstyled/styled-components';
-import { RECIPES } from "../../api/gql";
+import { RECIPES_BY_CATEGORY } from "../../api/gql";
 import { Flex, Box } from "reflexbox";
 import { H2 } from "../../styles/text";
 import { Card } from "../Card";
 import Peas from "../../images/Peas.png";
-import { handleReverseOrder } from "../../shared";
+// import { handleReverseOrder } from "../../shared";
 
 
 const MainTitleImg = styled.img`
@@ -26,17 +27,19 @@ export interface CategoryItemProps {
 }
 
 export const CategoryItem: React.FC<CategoryItemProps> = (CategoryItemProps): JSX.Element => {
-  
-  const { loading, error, data } = useQuery(RECIPES);
+  //@ts-ignore
+  let { categoryName } = useParams();
+  const { loading, error, data } = useQuery(RECIPES_BY_CATEGORY, {
+    variables: { category: categoryName }
+  });
+
   if(loading) return <p>Loading CategoryItem Recipe...</p> 
   if(error) return <p>Error loading CategoryItem Recipe!</p>
 
-  const indianList = handleReverseOrder(data.recipes).filter(item => item.category === "Indian");
+  console.log("RECIPES_BY_CATEGORY", data);
   return (
     <>
-    {
-      data.recipes.map(item => (
-        <Flex>
+    <Flex>
         <Box>
           <Flex justifyContent="flex-start">
             <Box>
@@ -45,30 +48,31 @@ export const CategoryItem: React.FC<CategoryItemProps> = (CategoryItemProps): JS
               </CroppedImg>
             </Box>
             <Box>
-              <H2>{item.category}</H2>
+              <H2>{data.recipesByCategory[0].category}</H2>
             </Box>
           </Flex>
           <Flex justifyContent="flex-start" flexWrap="wrap">
-            <Box>
-              <Card
-                key={item.id}
-                itemId={item.id}
-                title={item.title}
-                description={item.description}
-                categoryName={item.category}
-                timeAmount={`${item.totalTime} min`}
-                effortLevel={item.effort}
-                imageUrl={require(`../../images/${item.category}/${item.image}`)}
-                imageAlt={item.title}
-                detailPagePath={`/Details/${item.title}`}
-                categoryPagePath="/"
-                onSelectedRecipe={()=>{}}
-              />
-            </Box>
+            {
+              data.recipesByCategory.map(item => (
+                <Box key={item.id}>
+                  <Card
+                    itemId={item.id}
+                    title={item.title}
+                    description={item.description}
+                    categoryName={item.category}
+                    timeAmount={`${item.totalTime} min`}
+                    effortLevel={item.effort}
+                    imageUrl={require(`../../images/${item.category}/${item.image}`)}
+                    imageAlt={item.title}
+                    detailPagePath={`/Details/${item.title}`}
+                    categoryPagePath="/"
+                    onSelectedRecipe={()=>{}}
+                  />
+                </Box>
+              ))
+            }
           </Flex>
         </Box>
       </Flex>
-      ))
-    }
     </>
   )};

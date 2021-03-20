@@ -6,5 +6,8 @@ module.exports = {
     recipeByTitle: (parent, { title }, { dataSources }, info) => {
       return dataSources.recipeAPI.getRecipeByTitle(title);
     },
+    recipesByCategory: (parent, { category }, { dataSources }, info) => {
+      return dataSources.recipeAPI.getRecipesByCategory(category);
+    },
   },
 }

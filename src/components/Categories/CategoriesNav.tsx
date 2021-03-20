@@ -6,7 +6,7 @@ import { NavButton } from "../../styles/Button";
 import Tomato from "../../images/Tomato.png"
 
 export interface CategoriesNavProps {
-
+  categoryNames: string[];
 }
 
 const CategoryImg = styled.img`
@@ -28,8 +28,8 @@ const image = {
 }
 
 
-export const CategoriesNav: React.FC<CategoriesNavProps> = (CategoriesNavProps): JSX.Element => {
-  
+export const CategoriesNav: React.FC<CategoriesNavProps> = ({categoryNames}): JSX.Element => {
+  const colors = ["#ffc107", "#2F4858", "#315771", "#33658A", "#5D90B1", "#86BBD8", "#C3C16C", "#FFC700", "#F9960D", "#F26419"]
   return (
   <>
     <RowWidth justifyContent="flex-start" alignItems="center" width={1}>
@@ -44,33 +44,11 @@ export const CategoriesNav: React.FC<CategoriesNavProps> = (CategoriesNavProps):
         <NavButton bordercolor="#ffc107" to="/QuickRecipes" key="cat02">
           <NavButtonTxt>Quick Recipes</NavButtonTxt>
         </NavButton>
-        <NavButton bordercolor="#2F4858" to="/Category/Chinese" key="cat03">
-          <NavButtonTxt>Chinese</NavButtonTxt>
-        </NavButton>
-        <NavButton bordercolor="#315771" to="/Category/Indian" key="cat04">
-          <NavButtonTxt>Indian</NavButtonTxt>
-        </NavButton>
-        <NavButton bordercolor="#33658A" to="/Category/Japanese" key="cat05">
-          <NavButtonTxt>Japanese</NavButtonTxt>
-        </NavButton>
-        <NavButton bordercolor="#5D90B1" to="/Category/Korean" key="cat06">
-          <NavButtonTxt>Korean</NavButtonTxt>
-        </NavButton>
-        <NavButton bordercolor="#86BBD8" to="/Category/Malaysian" key="cat07">
-          <NavButtonTxt>Malaysian</NavButtonTxt>
-        </NavButton>
-        <NavButton bordercolor="#C3C16C" to="/Category/Singaporean" key="cat08">
-          <NavButtonTxt>Singaporean</NavButtonTxt>
-        </NavButton>
-        <NavButton bordercolor="#FFC700" to="/Category/Taiwanese" key="cat09">
-          <NavButtonTxt>Taiwanese</NavButtonTxt>
-        </NavButton>
-        <NavButton bordercolor="#F9960D" to="/Category/Thai" key="cat10">
-          <NavButtonTxt>Thai</NavButtonTxt>
-        </NavButton>
-        <NavButton bordercolor="#F26419" to="/Category/Vietnamese" key="cat11">
-          <NavButtonTxt>Vietnamese</NavButtonTxt>
-        </NavButton>
+        {categoryNames.map((name, index) => (
+          <NavButton bordercolor={colors[index]} to={`/Category/${name}`} key={name}>
+            <NavButtonTxt>{name}</NavButtonTxt>
+          </NavButton>
+        ))}
       </Box>
     </RowWidth>
   </>

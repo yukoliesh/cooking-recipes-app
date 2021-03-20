@@ -5,7 +5,7 @@ import { RECIPES } from "./api/gql";
 import { Flex, Box } from "reflexbox";
 import { Header } from './components/Header';
 import { Menu } from './components/MainNav';
-import { AllCategories, CategoriesNav, Chinese, Indian, Japanese, Korean, Malaysian, Singaporean, Taiwanese, Thai, Vietnamese } from './components/Categories';
+import { AllCategories, CategoriesNav } from './components/Categories';
 import { Footer } from './components/Footer';
 import { Home } from './components/Home';
 import { DetailsPage } from './components/Details';
@@ -13,6 +13,7 @@ import { Modal } from './components/Modal';
 import './App.css';
 import { AllQuickRecipes } from './components/MiniRecipes';
 import { CategoryItem } from './components/Categories/CategoryItem';
+import { AllRecipes } from './components/AllRecipes/AllRecipes';
 // import { recipes } from './api/data/MockData.json';
 
 const client = new ApolloClient({
@@ -43,6 +44,10 @@ function AppRouter() {
   const { loading, error, data } = useQuery(RECIPES);
   if(loading) return <p>Loading App ...</p> 
   if(error) return <p>Error loading App!</p>
+  const categoryNames: string[] = data.recipes.map(x => x.category);
+  const categorySet:string[] = [...new Set(categoryNames)];
+
+  console.log("data from app", data)
 
   return (
     <Router>
@@ -52,7 +57,7 @@ function AppRouter() {
             <Menu onLogin={onUserLoginClick} onCreateAccount={onCreateAccountClick} onLogout={() => {}}/>
             <Flex justifyContent="flex-start" alignItems="flex-start">
               <Box width={1 / 4}>
-                <CategoriesNav />
+                <CategoriesNav categoryNames={categorySet} />
               </Box>
               <Box width={3 / 4}>
                 <Switch>
@@ -63,6 +68,9 @@ function AppRouter() {
                   </Route>
                   <Box>  
                     <Route path="/AllRecipes">
+                      <AllRecipes />
+                    </Route>
+                    <Route path="/AllCategories">
                       <AllCategories />
                     </Route>
                     <Route path="/QuickRecipes">
@@ -71,33 +79,6 @@ function AppRouter() {
                     <Route path="/Category/:categoryName">
                       <CategoryItem  />
                     </Route>
-                    {/* <Route path="/Category/Chinese">
-                      <Chinese />
-                    </Route>
-                    <Route path="/Category/Indian">
-                      <Indian />
-                    </Route>
-                    <Route path="/Category/Japanese">
-                      <Japanese />
-                    </Route>
-                    <Route path="/Category/Korean">
-                      <Korean />
-                    </Route>
-                    <Route path="/Category/Malaysian">
-                      <Malaysian />
-                    </Route>
-                    <Route path="/Category/Singaporean">
-                      <Singaporean />
-                    </Route>
-                    <Route path="/Category/Taiwanese">
-                      <Taiwanese />
-                    </Route>
-                    <Route path="/Category/Thai">
-                      <Thai />
-                    </Route>
-                    <Route path="/Category/Vietnamese">
-                      <Vietnamese />
-                    </Route> */}
                     <Route path="/Details/:recipeName">
                       <DetailsPage  />
                     </Route>

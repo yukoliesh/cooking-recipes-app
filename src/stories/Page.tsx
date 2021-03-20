@@ -4,7 +4,7 @@ import styled from '@xstyled/styled-components';
 import { Header } from './Header/Header';
 import { Menu } from './Menu/Menu';
 import { Flex, Box } from "reflexbox";
-import { Categories } from './Categories';
+import { CategoriesNav } from './Categories/CategoriesNav';
 import { H2, H3 } from "../styles/text"; 
 import Lemon from "../images/Lemon03.png";
 import Basil from "../images/Basil.png"
@@ -57,7 +57,7 @@ export const Page: React.FC<PageProps> = ({ user, onLogin, onLogout, onCreateAcc
                 <Box width={1} flex={1}> <Menu user={user} onLogin={onLogin} onLogout={onLogout} onCreateAccount={onCreateAccount} /> </Box>
               </Flex>
               <Flex>
-                <Box width={1 / 4}><Categories /></Box>
+                <Box width={1 / 4}><CategoriesNav categoryNames={[]} /></Box>
                 <RowWidth alignItems="center">
                   <Flex justifyContent="flex-start" alignItems="center">
                     <div className="cropped">

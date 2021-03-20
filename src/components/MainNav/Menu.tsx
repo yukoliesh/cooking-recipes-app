@@ -53,6 +53,9 @@ export const Menu: React.FC<MenuProps> = ({ user, onLogin, onLogout, onCreateAcc
                 <SpacedLink to="/AllRecipes" color="secondary">
                   Recipes
                 </SpacedLink>
+                <SpacedLink to="/AllCategories" color="secondary">
+                  Categories
+                </SpacedLink>
                 <SpacedLink to="/Favorites" color="secondary">
                   Favorites
                 </SpacedLink>

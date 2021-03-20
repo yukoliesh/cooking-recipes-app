@@ -15,12 +15,18 @@ class RecipeAPI extends DataSource {
   }
   
   getRecipeByTitle(title){
-    console.log("title", title);
     const recipe = _.filter(recipes, function(a){
       return a.title.toLowerCase().indexOf((title).toLowerCase()) !== -1;
     });
-    console.log("recipe", recipe);
     return recipe[0];
+  }
+  getRecipesByCategory(category){
+    console.log("c", category);
+    const recipesCategory = _.filter(recipes, function(c){
+      return category === c.category ;
+    });
+    console.log("recipe", recipesCategory);
+    return recipesCategory;
   }
 }
 

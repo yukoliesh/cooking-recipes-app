@@ -1,13 +1,16 @@
 import React from 'react';
+import { useParams } from "react-router-dom";
+import { useQuery } from "@apollo/client";
 import styled from '@xstyled/styled-components';
 import { Row, Col } from "../../styles/Grids"; 
 import { SideHeader, NavButtonTxt } from "../../styles/text";
 import { NavButton } from "../../styles/Button";
 import Tomato from "../../images/Tomato.png"
+import { RECIPES_BY_CATEGORY } from "../../api/gql";
 
-export interface CategoriesProps {
-
-}
+export interface CategoriesNavProps {
+  categoryNames: string[];
+} 
 
 const CategoryImg = styled.img`
   width: 4rem;
@@ -28,8 +31,16 @@ const image = {
 }
 
 
-export const Categories: React.FC<CategoriesProps> = (): JSX.Element => (
-  <>
+export const CategoriesNav: React.FC<CategoriesNavProps> = ({categoryNames}): JSX.Element => {
+  //@ts-ignore
+  // let { categoryName } = useParams();
+  // const { loading, error, data } = useQuery(RECIPES_BY_CATEGORY, {
+  //   variables: { category: categoryName }
+  // });
+  // console.log("RECIPES_BY_CATEGORY nav", data);
+  const colors = ["#ffc107", "#2F4858"]
+  return(
+    <>
     <RowWidth justifyContent="center" alignItems="center">
       <Col size={1}><CategoryImg src={image.src} alt={image.alt} /></Col>
       <Col size={2}><SideHeader>Categories</SideHeader></Col>
@@ -72,4 +83,5 @@ export const Categories: React.FC<CategoriesProps> = (): JSX.Element => (
       </Col>
     </RowWidth>
   </>
-);
+  )
+};

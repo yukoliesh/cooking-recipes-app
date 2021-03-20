@@ -2,7 +2,7 @@ import React from 'react';
 import styled from '@xstyled/styled-components';
 import { Flex, Box } from "reflexbox";
 import bgImg from '../../images/resized-bg-img.jpg';
-import { SearchBox } from '../SearchBox';
+// import { SearchBox } from '../SearchBox';
 import './header.css';
 
 export interface HeaderProps {

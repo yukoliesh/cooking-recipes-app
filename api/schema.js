@@ -17,6 +17,7 @@ module.exports = gql`
       url: String
     ): [Recipe]
     recipeByTitle(title: String!): Recipe
+    recipesByCategory(category: String!): [Recipe]
   }
   type Ingredient {
     name: String!

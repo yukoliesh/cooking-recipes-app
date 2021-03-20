@@ -52,3 +52,29 @@ export const RECIPE_BY_TITLE = gql`
     }
   }
 `;
+
+export const RECIPES_BY_CATEGORY = gql`
+  query recipeByTitle($category: String!){
+    recipesByCategory(category: $category){
+      id
+      title
+      description
+      category
+      image
+      prepTime
+      cookTime
+      totalTime
+      serving
+      effort
+      isFavorite
+      url
+      ingredients{
+        name
+        type
+      }
+      steps{
+        step
+      }
+    }
+  }
+`;
