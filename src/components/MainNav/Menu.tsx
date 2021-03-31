@@ -40,6 +40,8 @@ const SpacedLink = styled(Link)`
 export const Menu: React.FC<MenuProps> = ({ user, onLogin, onLogout, onCreateAccount }: MenuProps): JSX.Element => {
   // const classes = useStyles();
   // const preventDefault = (event: React.SyntheticEvent) => event.preventDefault();
+
+
   return (
     <ThemeProvider theme={theme}>
       <Flex justifyContent="flex-start" alignItems="center" marginBottom={4}>
@@ -51,13 +53,13 @@ export const Menu: React.FC<MenuProps> = ({ user, onLogin, onLogout, onCreateAcc
             <Box>
               <nav>
                 <SpacedLink to="/AllRecipes" color="secondary">
-                  Recipes
+                  RECIPES
                 </SpacedLink>
                 <SpacedLink to="/AllCategories" color="secondary">
-                  Categories
+                  CATEGORIES
                 </SpacedLink>
                 <SpacedLink to="/Favorites" color="secondary">
-                  Favorites
+                  FAVORITES
                 </SpacedLink>
               </nav>
             </Box>
@@ -65,15 +67,15 @@ export const Menu: React.FC<MenuProps> = ({ user, onLogin, onLogout, onCreateAcc
               <Flex justifyContent="flex-end" width="200px">
               {user ? (
                 <Box>
-                  <StyledButton size="small" onClick={onLogout} label="Sign out" />
+                  <StyledButton size="small" onClick={onLogout} label="SIGN OUT" />
                 </Box>
               ) : (
                 <>
                   <Box>
-                    <StyledButton size="small" onClick={onLogin} label="Sign in" />
+                    <StyledButton size="small" onClick={onLogin} label="SIGN IN" />
                   </Box>
                   <Box>
-                    <StyledButton primary size="small" onClick={onCreateAccount} label="Sign up" />
+                    <StyledButton primary size="small" onClick={onCreateAccount} label="SIGN UP" />
                   </Box>
                 </>
               )}

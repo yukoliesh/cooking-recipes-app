@@ -31,7 +31,6 @@ export const Indian: React.FC<IndianProps> = (IndianProps): JSX.Element => {
   if(loading) return <p>Loading Indian Recipe...</p> 
   if(error) return <p>Error loading Indian Recipe!</p>
 
-  console.log("category", data.recipes);
 
   const indianList = handleReverseOrder(data.recipes).filter(item => item.category === "Indian");
   return (

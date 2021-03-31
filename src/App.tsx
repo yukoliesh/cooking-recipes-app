@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, useHistory } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, HttpLink, InMemoryCache, useQuery } from "@apollo/client";
 import { RECIPES } from "./api/gql";
 import { Flex, Box } from "reflexbox";
@@ -9,12 +9,12 @@ import { AllCategories, CategoriesNav } from './components/Categories';
 import { Footer } from './components/Footer';
 import { Home } from './components/Home';
 import { DetailsPage } from './components/Details';
-import { Modal } from './components/Modal';
+import { LoginModal } from './components/Modal';
 import './App.css';
 import { AllQuickRecipes } from './components/MiniRecipes';
 import { CategoryItem } from './components/Categories/CategoryItem';
 import { AllRecipes } from './components/AllRecipes/AllRecipes';
-// import { recipes } from './api/data/MockData.json';
+import { useFormFields } from './shared/hooks/useFormFields';
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
@@ -26,8 +26,30 @@ const client = new ApolloClient({
 
 
 function AppRouter() {
+  const history = useHistory();
+
   const [isOpenModal, setIsOpenModal] = React.useState(false); 
   const [isNewMember, setIsNewMember] = React.useState(false); 
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [fields, handleFieldChange] = useFormFields({
+    email: "",
+    password: ""
+  });
+
+  // async function handleSubmit(event) {
+  //   event.preventDefault();
+
+  //   setIsLoading(true);
+
+  //   try {
+  //     await Auth.signIn(fields.email, fields.password);
+  //     userHasAuthenticated(true);
+  //     history.push("/");
+  //   } catch (e) {
+  //     onError(e);
+  //     setIsLoading(false);
+  //   }
+  // }
 
   const onUserLoginClick = () => {
     setIsOpenModal(true);
@@ -44,8 +66,23 @@ function AppRouter() {
   const { loading, error, data } = useQuery(RECIPES);
   if(loading) return <p>Loading App ...</p> 
   if(error) return <p>Error loading App!</p>
+
+  // It's better to pass data down to child components so then you don't have to re-render again
   const categoryNames: string[] = data.recipes.map(x => x.category);
   const categorySet:string[] = [...new Set(categoryNames)];
+
+  // Sign In - Sign Up modal
+  const validateForm = () => {
+    return fields.email.length > 0 && fields.passward.length > 0 ;
+  }
+  const onTextBoxInputChange = (e) => {
+    const textTargetInput = e.target.value;
+    console.log("input", textTargetInput, e.target.value);
+    // setSignInValues{
+    //   'email' = textTargetInput,
+    //   'password' = textTargetInput
+    // }
+  }
 
   console.log("data from app", data)
 
@@ -89,9 +126,9 @@ function AppRouter() {
           </Box>
         </Flex> 
         {isNewMember ? (
-          <Modal modalTitle="Create an Account" modalDesc="When you signed up, you can save your recipes!" onCloseClick={onModalClose} isModalOpen={isOpenModal} isCreateAccount={isNewMember} onTextBoxInputChange={() => {}} />
+          <LoginModal modalTitle="Create an Account" modalDesc="When you signed up, you can save your recipes!" onCloseClick={onModalClose} isModalOpen={isOpenModal} isCreateAccount={isNewMember} onTextBoxInputChange={onTextBoxInputChange} />
         ) : (
-          <Modal modalTitle="SIGN IN" modalDesc="Welcome back, Nash!" onCloseClick={onModalClose} isModalOpen={isOpenModal} isCreateAccount={isNewMember} onTextBoxInputChange={() => {}} />
+          <LoginModal modalTitle="SIGN IN" modalDesc="Welcome back!" onCloseClick={onModalClose} isModalOpen={isOpenModal} isCreateAccount={isNewMember} onTextBoxInputChange={onTextBoxInputChange} />
         )}
       <Footer onCreateAccount={onCreateAccountClick} onLogin={onUserLoginClick} />
     </Router>

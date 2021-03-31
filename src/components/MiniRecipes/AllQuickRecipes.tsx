@@ -29,7 +29,6 @@ export const AllQuickRecipes: React.FC<AllQuickRecipesProps> = (AllQuickRecipesP
   if(loading) return <p>Loading Detailed Recipe...</p> 
   if(error) return <p>Error loading Detailed Recipe!</p> 
   
-  console.log("rec", data.recipes);
   const miniRecipes = data.recipes.filter(item => item.totalTime <= 15 );
 
   return (

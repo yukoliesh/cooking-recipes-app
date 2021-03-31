@@ -28,8 +28,6 @@ export const DetailsPage: React.FC<DetailsPageProps> = (DetailsPageProps): JSX.E
   if(loading) return <p>Loading Detailed Recipe...</p> 
   if(error) return <p>Error loading Detailed Recipe!</p> 
 
-  console.log("data", data);
-
   const item = data.recipeByTitle;
   if(!item) return <p>Recipe not found...</p> 
   return (

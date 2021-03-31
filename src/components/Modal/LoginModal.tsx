@@ -6,16 +6,16 @@ import { TextBox } from './TextBox';
 
 
 
-export interface ModalProps {
+export interface LoginModalProps {
   modalTitle: string;
   isModalOpen: boolean;
   isCreateAccount?: boolean;
   modalDesc?: string;
   onCloseClick: () => void;
-  onTextBoxInputChange: () => void;
+  onTextBoxInputChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
-export const Modal: React.FC<ModalProps> = ({
+export const LoginModal: React.FC<LoginModalProps> = ({
   modalTitle,
   modalDesc,
   isModalOpen,
@@ -23,7 +23,7 @@ export const Modal: React.FC<ModalProps> = ({
   onCloseClick,
   onTextBoxInputChange
 
-}: ModalProps): JSX.Element => {
+}: LoginModalProps): JSX.Element => {
 
   return (
     <>
@@ -45,19 +45,24 @@ export const Modal: React.FC<ModalProps> = ({
                       {isCreateAccount && (
                         <>
                           <Box mb={3}>
-                            <TextBox textboxId="firtName" textboxLabel="First Name" textboxPlaceholder="First Name" onTextBoxInputChange={onTextBoxInputChange} />
+                            <TextBox htmlFor="firtName" textboxId="firtName" textboxLabel="First Name" textboxPlaceholder="First Name" onTextBoxInputChange={e => onTextBoxInputChange(e)} />
                           </Box>
                           <Box mb={3}>
-                            <TextBox textboxId="lastName" textboxLabel="Last Name" textboxPlaceholder="Last Name" onTextBoxInputChange={onTextBoxInputChange} />
+                            <TextBox htmlFor="lastName" textboxId="lastName" textboxLabel="Last Name" textboxPlaceholder="Last Name" onTextBoxInputChange={e => onTextBoxInputChange(e)} />
                           </Box>
                         </>
                       )}
                       <Box mb={3}>
-                        <TextBox textboxId="email" textboxLabel="Email" textboxPlaceholder="Email" onTextBoxInputChange={onTextBoxInputChange} />
+                        <TextBox htmlFor="email" textboxId="email" textboxLabel="Email" textboxPlaceholder="Email" onTextBoxInputChange={e => onTextBoxInputChange(e)} />
                       </Box>
-                      <Box>
-                        <TextBox textboxId="password" textboxLabel="Password" textboxPlaceholder="Password" onTextBoxInputChange={onTextBoxInputChange} />
+                      <Box mb={3}>
+                        <TextBox htmlFor="password" textboxId="password" textboxLabel="Password" textboxPlaceholder="Password" onTextBoxInputChange={e => onTextBoxInputChange(e)} />
                       </Box>
+                      {isCreateAccount && (
+                        <Box>
+                          <TextBox htmlFor="confirmPassword" textboxId="confirmPassword" textboxLabel="Confirm Password" textboxPlaceholder="Confirm Password" onTextBoxInputChange={e => onTextBoxInputChange(e)} />
+                        </Box>
+                      )}
                       {!isCreateAccount && (
                         <ForgotTxtBox mt={2} mb={5}>
                           <ForgotButton>Forgot your password?</ForgotButton>

@@ -44,25 +44,11 @@ export const MainRecipes: React.FC<MainRecipesProps> = ({
 }: MainRecipesProps): JSX.Element => {
   const { loading, error, data } = useQuery(RECIPES);
 
-  console.log("data", data);
-
   if(loading) return <p>Loading main recipes Recipe...</p> 
   if(error) return <p>Error loading from main recipes Recipe!</p> 
 
   const limitMainRecipes = handleReverseOrder(data.recipes).slice(0,5);
-  console.log("limitMainRecipes", limitMainRecipes);
 
-
-
-  // const [selectedId, setSelectedId] = React.useState("");
-
-
-
-  // const onSelectedRecipe = (id: string): void => {
-  //   const selected = recipes.filter((c): boolean => c.id === id)[0] || recipes[0];
-  //   return setSelectedId(selected.id);
-  // }
-  // console.log("id", selectedId);
   return (
     <RowWidth>
       <Flex width={1}>

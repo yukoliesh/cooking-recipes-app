@@ -5,21 +5,23 @@ export interface TextBoxProps {
   textboxLabel: string;
   textboxPlaceholder: string;
   textboxId: string;
-  onTextBoxInputChange: () => void;
+  onTextBoxInputChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  htmlFor: string;
 }
 
 export const TextBox: React.FC<TextBoxProps> = ({
   textboxLabel,
   textboxPlaceholder,
   textboxId,
-  onTextBoxInputChange
+  onTextBoxInputChange,
+  htmlFor
 }: TextBoxProps): JSX.Element => {
 
 
   return (
     <>
-      <TextboxLabel htmlFor="email">{textboxLabel}</TextboxLabel>
-      <TextBoxInput type="text" placeholder={textboxPlaceholder} aria-placeholder={textboxPlaceholder} id={textboxId} onChange={onTextBoxInputChange} />
+      <TextboxLabel htmlFor={htmlFor}>{textboxLabel}</TextboxLabel>
+      <TextBoxInput type="text" placeholder={textboxPlaceholder} aria-placeholder={textboxPlaceholder} id={textboxId} onChange={e => onTextBoxInputChange} />
     </>
   );
 };

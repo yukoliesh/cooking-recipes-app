@@ -36,7 +36,6 @@ export const CategoryItem: React.FC<CategoryItemProps> = (CategoryItemProps): JS
   if(loading) return <p>Loading CategoryItem Recipe...</p> 
   if(error) return <p>Error loading CategoryItem Recipe!</p>
 
-  console.log("RECIPES_BY_CATEGORY", data);
   return (
     <>
     <Flex>
