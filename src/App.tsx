@@ -19,14 +19,18 @@ import { useFormFields } from './shared/hooks/useFormFields';
 const client = new ApolloClient({
   cache: new InMemoryCache(),
   link: new HttpLink({
+    // Mock Data
     uri: "http://localhost:4000/"
+
+    // MongoDB
+    // uri: "http://localhost:4001/graphql"
   }),
   credentials: "same-origin"
 })
 
 
 function AppRouter() {
-  const history = useHistory();
+  // const history = useHistory();
 
   const [isOpenModal, setIsOpenModal] = React.useState(false); 
   const [isNewMember, setIsNewMember] = React.useState(false); 
@@ -35,21 +39,6 @@ function AppRouter() {
     email: "",
     password: ""
   });
-
-  // async function handleSubmit(event) {
-  //   event.preventDefault();
-
-  //   setIsLoading(true);
-
-  //   try {
-  //     await Auth.signIn(fields.email, fields.password);
-  //     userHasAuthenticated(true);
-  //     history.push("/");
-  //   } catch (e) {
-  //     onError(e);
-  //     setIsLoading(false);
-  //   }
-  // }
 
   const onUserLoginClick = () => {
     setIsOpenModal(true);
@@ -72,17 +61,17 @@ function AppRouter() {
   const categorySet:string[] = [...new Set(categoryNames)];
 
   // Sign In - Sign Up modal
-  const validateForm = () => {
-    return fields.email.length > 0 && fields.passward.length > 0 ;
-  }
-  const onTextBoxInputChange = (e) => {
-    const textTargetInput = e.target.value;
-    console.log("input", textTargetInput, e.target.value);
+  // const validateForm = () => {
+  //   return fields.email.length > 0 && fields.passward.length > 0 ;
+  // }
+  // const onTextBoxInputChange = (e) => {
+  //   const textTargetInput = e.target.value;
+  //   console.log("input", textTargetInput, e.target.value);
     // setSignInValues{
     //   'email' = textTargetInput,
     //   'password' = textTargetInput
     // }
-  }
+  // }
 
   console.log("data from app", data)
 
@@ -126,9 +115,9 @@ function AppRouter() {
           </Box>
         </Flex> 
         {isNewMember ? (
-          <LoginModal modalTitle="Create an Account" modalDesc="When you signed up, you can save your recipes!" onCloseClick={onModalClose} isModalOpen={isOpenModal} isCreateAccount={isNewMember} onTextBoxInputChange={onTextBoxInputChange} />
+          <LoginModal modalTitle="Create an Account" modalDesc="When you signed up, you can save your recipes!" onCloseClick={onModalClose} isModalOpen={isOpenModal} isCreateAccount={isNewMember} onTextBoxInputChange={() => {}} />
         ) : (
-          <LoginModal modalTitle="SIGN IN" modalDesc="Welcome back!" onCloseClick={onModalClose} isModalOpen={isOpenModal} isCreateAccount={isNewMember} onTextBoxInputChange={onTextBoxInputChange} />
+          <LoginModal modalTitle="SIGN IN" modalDesc="Welcome back!" onCloseClick={onModalClose} isModalOpen={isOpenModal} isCreateAccount={isNewMember} onTextBoxInputChange={() => {}} />
         )}
       <Footer onCreateAccount={onCreateAccountClick} onLogin={onUserLoginClick} />
     </Router>
