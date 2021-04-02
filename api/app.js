@@ -1,11 +1,13 @@
+require('dotenv').config()
 const express = require ('express');
 const app = express();
 const mongoose = require('mongoose');
 const { graphqlHTTP } = require('express-graphql');
-const { buildSchema } = require('graphql');
+const recipeSchema = require('./schema/schema');
+const resolvers = require('./resolver/resolver');
 
 // This will take two arguments, connection string and object. Object takes the url parser
-mongoose.connect('mongodb+srv://admin:asianCooking@cluster0.wvmnb.mongodb.net/cooking-app?retryWrites=true&w=majority', {
+mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}/cooking-app?retryWrites=true&w=majority`, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true
@@ -13,27 +15,11 @@ mongoose.connect('mongodb+srv://admin:asianCooking@cluster0.wvmnb.mongodb.net/co
 .then(() => console.log('MongoDB Connected!'))
 .catch((err) => console.log('Error', err));
 
-// Temporary setup
-const schema = buildSchema(`
-  type Query {
-    name: String
-  }
-`)
-
-const rootValue = {
-  name: () => {
-    return 'Miso Soup 01'
-  }
-}
-
 // Setting GraphQL
 app.use('/graphql', graphqlHTTP({
-  // schema: schema,
-  // ES6
-  schema,
+  schema: recipeSchema,
   graphiql: true,
-  // rootValue : rootValue -> ES6
-  rootValue
+  rootValue: resolvers
 }))
 
 app.get('/', (req, res) => {
