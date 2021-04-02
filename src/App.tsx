@@ -20,10 +20,10 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
   link: new HttpLink({
     // Mock Data
-    uri: "http://localhost:4000/"
+    // uri: "http://localhost:4000/"
 
     // MongoDB
-    // uri: "http://localhost:4001/graphql"
+    uri: "http://localhost:4001/graphql"
   }),
   credentials: "same-origin"
 })
@@ -64,13 +64,16 @@ function AppRouter() {
   // const validateForm = () => {
   //   return fields.email.length > 0 && fields.passward.length > 0 ;
   // }
+
+  // You need to separate the email and password to get their value by using .name.
   // const onTextBoxInputChange = (e) => {
-  //   const textTargetInput = e.target.value;
+  //   const textTargetInputEmail = e.target.name;
+  //   const textTargetInputPassword = e.target.name;
   //   console.log("input", textTargetInput, e.target.value);
-    // setSignInValues{
-    //   'email' = textTargetInput,
-    //   'password' = textTargetInput
-    // }
+  //   setSignInValues{
+  //     'email' = textTargetInput,
+  //     'password' = textTargetInput
+  //   }
   // }
 
   console.log("data from app", data)

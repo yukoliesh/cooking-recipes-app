@@ -8,15 +8,7 @@ import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import { RECIPE_BY_TITLE } from "../../api/gql";
 
 export interface DetailsPageProps {
-  // title: string;
-  // description: string;
-  // imageUrl: string;
-  // imageAlt: string;
-  // categoryName: string;
-  // prepTime: number;
-  // cookTime: number;
-  // difficulty: string;
-  // ingredients: [];
+
 }
 
 export const DetailsPage: React.FC<DetailsPageProps> = (DetailsPageProps): JSX.Element => {

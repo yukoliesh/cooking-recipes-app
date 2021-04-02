@@ -1,5 +1,4 @@
 const Recipe = require('../model/model');
-const recipes = require('../data/MockData');
 
 const resolvers = {
   recipes: () => {
@@ -9,10 +8,11 @@ const resolvers = {
     return Recipe.find({})
   },
   recipeByTitle: (args) => {
+    // this is mongoose
     return Recipe.findOne({title: args.title})
   },
-  recipesByCategory: (parent, { category }, { dataSources }, info) => {
-    return Recipe.recipeAPI.getRecipesByCategory(category);
+  recipesByCategory: (args) => {
+    return Recipe.find({category: args.category})
   },
   addRecipe: (args) => {
     // Recipe is coming from the model

@@ -8,6 +8,14 @@ const recipeSchema = buildSchema(`
     recipesByCategory(category: String!): [Recipe]
   }
 
+  input IngredientInput{
+    name: String,
+    type: String
+  }
+  input StepInput{
+    step: String
+  }
+
   type Mutation {
     addRecipe( 
       title: String!, 
@@ -21,8 +29,8 @@ const recipeSchema = buildSchema(`
       effort: String
       isFavorite: Boolean
       url: String
-      ingredients: [Ingredient]
-      steps: [Step]
+      ingredients: [IngredientInput]
+      steps: [StepInput]
       ): Recipe
   }
 
