@@ -32,6 +32,8 @@ const recipeSchema = buildSchema(`
       ingredients: [IngredientInput]
       steps: [StepInput]
       ): Recipe
+    signup(email: String!, password: String!, firstName: String!, lastName: String!): AuthPayload
+    login(email: String!, password: String!): AuthPayload
   }
 
   type Ingredient {
@@ -57,6 +59,20 @@ const recipeSchema = buildSchema(`
     url: String
     ingredients: [Ingredient]
     steps: [Step]
+  }
+
+  type AuthPayload {
+    token: String
+    user: User
+  }
+
+  type User {
+    id: ID!
+    firstName: String!
+    lastName: String!
+    email: String!
+    password: String!
+    role: String
   }
 `)
 

@@ -1,4 +1,5 @@
-const Recipe = require('../model/model');
+const { Recipe, User } = require('../model/model');
+const { UserInputError } = require('apollo-server'); 
 
 const resolvers = {
   recipes: () => {
@@ -16,6 +17,7 @@ const resolvers = {
   },
   addRecipe: (args) => {
     // Recipe is coming from the model
+    console.log("ing", args.ingredients);
     let recipe = new Recipe({
       title: args.title,
       description: args.description,
@@ -36,7 +38,30 @@ const resolvers = {
     return recipe
       // args is coming from schema.js in the Mutation
       // title: args.title
-    
+  },
+  signup: async (args) => {
+  // check the dupe email 
+    const existingUser = await User.find(u => { return u && u.email === args.email });
+    console.log("ex", existingUser);
+    if(existingUser.length){
+      throw new UserInputError("User already exists");
+    }
+    let signup = new User( {
+      firstName: args.firstName,
+      lastName: args.lastName,
+      email: args.email,
+      password: args.password
+    })
+    signup.save()
+    return {user: signup, token: "sample token"}
+  },
+  login: (args) => {
+    let login = new User({
+      email: args.email,
+      password: args.password
+    })
+    login.save()
+    return login
   }
 }
 
