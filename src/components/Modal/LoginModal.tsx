@@ -12,6 +12,7 @@ export interface LoginModalProps {
   isCreateAccount?: boolean;
   modalDesc?: string;
   onCloseClick: () => void;
+  onSubmitClick: (e) => void;
   onTextBoxInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -21,8 +22,8 @@ export const LoginModal: React.FC<LoginModalProps> = ({
   isModalOpen,
   isCreateAccount,
   onCloseClick,
+  onSubmitClick,
   onTextBoxInputChange
-
 }: LoginModalProps): JSX.Element => {
 
   return (
@@ -45,22 +46,22 @@ export const LoginModal: React.FC<LoginModalProps> = ({
                       {isCreateAccount && (
                         <>
                           <Box mb={3}>
-                            <TextBox htmlFor="firtName" textboxId="firtName" textboxLabel="First Name" textboxPlaceholder="First Name" onTextBoxInputChange={onTextBoxInputChange} />
+                            <TextBox htmlFor="firstName" textboxId="firstName" textboxLabel="First Name" textboxPlaceholder="First Name" textBoxType="text" onTextBoxInputChange={onTextBoxInputChange} />
                           </Box>
                           <Box mb={3}>
-                            <TextBox htmlFor="lastName" textboxId="lastName" textboxLabel="Last Name" textboxPlaceholder="Last Name" onTextBoxInputChange={onTextBoxInputChange} />
+                            <TextBox htmlFor="lastName" textboxId="lastName" textboxLabel="Last Name" textboxPlaceholder="Last Name" textBoxType="text" onTextBoxInputChange={onTextBoxInputChange} />
                           </Box>
                         </>
                       )}
                       <Box mb={3}>
-                        <TextBox htmlFor="email" textboxId="email" textboxLabel="Email" textboxPlaceholder="Email" onTextBoxInputChange={onTextBoxInputChange} />
+                        <TextBox htmlFor="email" textboxId="email" textboxLabel="Email" textboxPlaceholder="Email" textBoxType="text" onTextBoxInputChange={onTextBoxInputChange} />
                       </Box>
                       <Box mb={3}>
-                        <TextBox htmlFor="password" textboxId="password" textboxLabel="Password" textboxPlaceholder="Password" onTextBoxInputChange={onTextBoxInputChange} />
+                        <TextBox htmlFor="password" textboxId="password" textboxLabel="Password" textboxPlaceholder="Password" textBoxType="password" onTextBoxInputChange={onTextBoxInputChange} />
                       </Box>
                       {isCreateAccount && (
                         <Box>
-                          <TextBox htmlFor="confirmPassword" textboxId="confirmPassword" textboxLabel="Confirm Password" textboxPlaceholder="Confirm Password" onTextBoxInputChange={onTextBoxInputChange} />
+                          <TextBox htmlFor="confirmPassword" textboxId="confirmPassword" textboxLabel="Confirm Password" textBoxType="password" textboxPlaceholder="Confirm Password" onTextBoxInputChange={onTextBoxInputChange} />
                         </Box>
                       )}
                       {!isCreateAccount && (
@@ -69,7 +70,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({
                         </ForgotTxtBox>
                       )}
                       <Box mt={5}>
-                        <SubmitButton size="large" label={modalTitle} primary />
+                        <SubmitButton size="large" label={modalTitle} primary onClick={e => onSubmitClick(e)} />
                       </Box>
                     </Flex>
                   </form>

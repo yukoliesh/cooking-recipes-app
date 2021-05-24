@@ -47,7 +47,7 @@ export const H1 = styled.h1`
 export const H2 = styled.h2`
    ${fontFamily}
    font-size: ${th.fontSize(6)};
-   margin-top: 14px;
+   /* margin-top: 14px; */
 `;
 
 export const H3 = styled.h3`

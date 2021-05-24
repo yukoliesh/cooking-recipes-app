@@ -8,16 +8,16 @@ import { Card } from "../Card";
 import Peas from "../../images/Peas.png";
 
 const MainTitleImg = styled.img`
-  width: 8rem;
+  width: 100%;
 `;
 const image = {
   src: Peas,
   alt: 'Categories'
 }
 const CroppedImg = styled.div`
-  width: 7rem;
+  width: 4rem;
   overflow: hidden;
-  margin: -20px 0 0 -35px;
+  margin: 0.75rem 0.5rem 0 0;
 `;
 export interface AllCategoriesProps {
 

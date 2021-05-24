@@ -3,12 +3,13 @@ const { ApolloServer } = require('apollo-server');
 const RecipeAPI = require('./datasources/recipes');
 const typeDefs = require('./schema.js');
 const resolvers = require('./resolvers.js');
+const Auth = require('./auth');
 
 const dataSources = () => ({
   recipeAPI: new RecipeAPI(),
 });
 
-const server = new ApolloServer({ typeDefs, resolvers, dataSources });
+const server = new ApolloServer({ typeDefs, resolvers, dataSources, context: Auth, });
 
 server
   .listen({ port: process.env.PORT || 4000})

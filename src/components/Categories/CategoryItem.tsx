@@ -11,16 +11,16 @@ import Peas from "../../images/Peas.png";
 
 
 const MainTitleImg = styled.img`
-  width: 8rem;
+  width: 5rem;
 `;
 const image = {
   src: Peas,
   alt: 'Categories'
 }
 const CroppedImg = styled.div`
-  width: 7rem;
+  width: 5.5rem;
   overflow: hidden;
-  margin: -20px 0 0 -35px;
+  margin-top: 0.25rem;
 `;
 export interface CategoryItemProps {
 

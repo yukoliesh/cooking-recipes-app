@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const { graphqlHTTP } = require('express-graphql');
 const recipeSchema = require('./schema/schema');
 const resolvers = require('./resolver/resolver');
+const Auth = require('./auth');
 
 const jwt = require('jsonwebtoken');
 
@@ -21,10 +22,12 @@ mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${
 app.use(cors())
 
 // Setting GraphQL
+console.log("auth", Auth);
 app.use('/graphql', graphqlHTTP({
   schema: recipeSchema,
   graphiql: true,
-  rootValue: resolvers
+  rootValue: resolvers,
+  context: Auth
 }))
 
 app.use(express.urlencoded({

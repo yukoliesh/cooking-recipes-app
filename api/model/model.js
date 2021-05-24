@@ -3,7 +3,7 @@ const mongoose = require('mongoose'),
     bcrypt = require('bcrypt'),
     SALT_WORK_FACTOR = 10;
 
-const RecipeSchema = new mongoose.Schema({
+const RecipeSchema = new Schema({
   category: String,
   title: String,
   image: String,
@@ -28,7 +28,7 @@ const RecipeSchema = new mongoose.Schema({
   typeKey: "$type"
 })
 
-const UserSchema = new mongoose.Schema({
+const UserSchema = new Schema({
   firstName: String,
   lastName: String,
   email: {

@@ -1,5 +1,9 @@
 const { Recipe, User } = require('../model/model');
-const { UserInputError } = require('apollo-server'); 
+const { UserInputError, AuthenticationError } = require('apollo-server'); 
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
+const { APP_SECRET } = require('../utils');
+
 
 const resolvers = {
   recipes: () => {
@@ -8,9 +12,10 @@ const resolvers = {
     // for finding ALL the recipes
     return Recipe.find({})
   },
-  recipeByTitle: (args) => {
+  recipeByTitle: (args, args2, args3) => {
     // this is mongoose
-    return Recipe.findOne({title: args.title})
+    console.log("context", args3);
+    return Recipe.findOne({title: new RegExp('^' + args.title + '$', 'gi')})
   },
   recipesByCategory: (args) => {
     return Recipe.find({category: args.category})
@@ -39,11 +44,13 @@ const resolvers = {
       // args is coming from schema.js in the Mutation
       // title: args.title
   },
-  signup: async (args) => {
+  signUp: async (args) => {
   // check the dupe email 
-    const existingUser = await User.find(u => { return u && u.email === args.email });
+    const existingUser = await User.findOne({ email: args.email });
+    
+    console.log("args", args);
     console.log("ex", existingUser);
-    if(existingUser.length){
+    if(existingUser){
       throw new UserInputError("User already exists");
     }
     let signup = new User( {
@@ -53,15 +60,22 @@ const resolvers = {
       password: args.password
     })
     signup.save()
-    return {user: signup, token: "sample token"}
+
+    const token = jwt.sign({ user: signup }, APP_SECRET);
+    return {user: signup, token}
   },
-  login: (args) => {
-    let login = new User({
-      email: args.email,
-      password: args.password
-    })
-    login.save()
-    return login
+  logIn: async (args) => {
+    const user = await User.findOne({ email: args.email });
+    if(!user){
+      throw new AuthenticationError("Invalid crendentials - email address");
+    }
+    const matchPasswords = bcrypt.compareSync(args.password, user.password);
+    if(!matchPasswords){
+      throw new AuthenticationError("Invalid crendeitials - password")
+    }
+    const token = jwt.sign({ user: user }, APP_SECRET); 
+
+    return {user, token}
   }
 }
 

@@ -54,7 +54,7 @@ export const RECIPE_BY_TITLE = gql`
 `;
 
 export const RECIPES_BY_CATEGORY = gql`
-  query recipeByTitle($category: String!){
+  query recipesByCategory($category: String!){
     recipesByCategory(category: $category){
       _id
       title
@@ -78,3 +78,34 @@ export const RECIPES_BY_CATEGORY = gql`
     }
   }
 `;
+
+export const ADD_USER = gql`
+  mutation signUp($email: String!, $firstName: String!, $lastName: String!, $password: String!){
+    signUp(email: $email, firstName: $firstName, lastName: $lastName, password: $password){
+      token,
+      user{
+        firstName
+        lastName
+        email
+        password
+      }
+    }
+  }
+`;
+
+export const LOGIN_USER = gql`
+  query logIn($email: String!, $password: String!){
+    logIn(email: $email, password: $password){
+      token
+      user {
+        firstName
+        lastName
+        email
+        id
+      }
+    }
+  }
+`;
+
+
+

@@ -13,6 +13,7 @@ export interface MenuProps {
   onLogin: () => void;
   onLogout: () => void;
   onCreateAccount: () => void;
+  userFirstName: string;
 }
 
 export default {
@@ -36,20 +37,27 @@ const SpacedLink = styled(Link)`
   text-decoration: none;
 `;
 
+const WelcomeText = styled.span`
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  color: #4d4d4d;
+`;
 
-export const Menu: React.FC<MenuProps> = ({ user, onLogin, onLogout, onCreateAccount }: MenuProps): JSX.Element => {
+
+export const Menu: React.FC<MenuProps> = ({ user, onLogin, onLogout, onCreateAccount, userFirstName }: MenuProps): JSX.Element => {
   // const classes = useStyles();
   // const preventDefault = (event: React.SyntheticEvent) => event.preventDefault();
 
 
   return (
     <ThemeProvider theme={theme}>
-      <Flex justifyContent="flex-start" alignItems="center" marginBottom={4}>
-        <Box width={1 / 2}>
+      <Flex justifyContent="space-between" alignItems="center" marginBottom={4}>
+        <Box width="auto">
           <Link to="/"><img src={image.src} alt={image.alt} /></Link>
         </Box>
-        <RGrid width={1 / 2}>
+        <RGrid width={2 / 3}>
           <Flex alignItems="center" justifyContent="flex-end">
+            <Box pr="3"><WelcomeText>{`WELCOME BACK, ${userFirstName}!`}</WelcomeText></Box>
             <Box>
               <nav>
                 <SpacedLink to="/AllRecipes" color="secondary">

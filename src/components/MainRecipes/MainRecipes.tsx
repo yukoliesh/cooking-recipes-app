@@ -15,7 +15,7 @@ const RowWidth = styled(Box)`
   max-width: 550px;
 `;
 const MainTitleImg = styled.img`
-  width: 8rem;
+  width: 100%;
 `;
 const image = {
   src: Lemon,
@@ -29,9 +29,9 @@ const MoreButton = styled(StyledButton)`
 `;
 
 const CroppedImg = styled.div`
-  width: 7rem;
+  width: 4rem;
   overflow: hidden;
-  margin: -10px 0 0 -35px;
+  margin: 1.25rem 0.5rem 0 0;
 `;
 
 

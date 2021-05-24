@@ -1,17 +1,32 @@
 import React from 'react';
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
+import styled from '@xstyled/styled-components';
+import Checkbox from '@material-ui/core/Checkbox';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { Flex, Box } from "reflexbox";
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import FavoriteIcon from '@material-ui/icons/Favorite';
 import { H2, H3 } from '../../styles/text';
 import { DetailsImage, InfoTxt, IngredientsList, IngredientsListItem, StepList, StepListItem } from './detailsStyle';
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import { RECIPE_BY_TITLE } from "../../api/gql";
 
-export interface DetailsPageProps {
+const FavoriteToggleLabel = styled.label`
+  display: none;
+`;
+const FavoriteToggleButton = styled(FormControlLabel)`
+  span:nth-child(2){
+    display: none;
+  }
+`;
 
+export interface DetailsPageProps {
+  onFavoriteButtonChange (e): React.MouseEventHandler<HTMLInputElement>;
+  isFavorite: boolean;
+  recipeTitle: string;
 }
 
-export const DetailsPage: React.FC<DetailsPageProps> = (DetailsPageProps): JSX.Element => {
+export const DetailsPage: React.FC<DetailsPageProps> = ({onFavoriteButtonChange, isFavorite, recipeTitle}): JSX.Element => {
   //@ts-ignore
   let { recipeName } = useParams();
   const { loading, error, data } = useQuery(RECIPE_BY_TITLE, {
@@ -19,6 +34,9 @@ export const DetailsPage: React.FC<DetailsPageProps> = (DetailsPageProps): JSX.E
   });
   if(loading) return <p>Loading Detailed Recipe...</p> 
   if(error) return <p>Error loading Detailed Recipe!</p> 
+
+  const recipeNameForId = recipeName.replace(" ", "-").toLowerCase();
+  console.log("date from details", data);
 
   const item = data.recipeByTitle;
   if(!item) return <p>Recipe not found...</p> 
@@ -28,8 +46,19 @@ export const DetailsPage: React.FC<DetailsPageProps> = (DetailsPageProps): JSX.E
         <Box width={3 / 4} key={item.id}>
           <Box pb={4}>
             <Flex width={1} alignItems="center">
-              <Box pr={2}><H2>{item.title}</H2></Box>
-              <Box><FavoriteBorderIcon color="secondary" /></Box>
+              <Box pr={3}><H2>{item.title}</H2></Box>
+              <Box>
+                <FavoriteToggleLabel htmlFor={recipeNameForId}>
+                  {recipeTitle}
+                </FavoriteToggleLabel>
+                  <FavoriteToggleButton
+                    control={<Checkbox inputProps={{'aria-label': `${recipeNameForId}_is_favorite`}} icon={<FavoriteBorderIcon />}
+                    checkedIcon={<FavoriteIcon />} 
+                    name="checkedH" />}
+                    label={`${recipeNameForId}`}
+                    onChange={e => onFavoriteButtonChange(e)}
+                  />
+              </Box>
             </Flex>
           </Box>
           <Box pb={4}>
@@ -70,7 +99,7 @@ export const DetailsPage: React.FC<DetailsPageProps> = (DetailsPageProps): JSX.E
             <H3>Ingredients</H3> 
           </Box>
           {item.ingredients.map(i => (
-          <Box>
+          <Box key={`${i}_${i.name}`}>
             <IngredientsList>
               <IngredientsListItem>
                 {i.name}
@@ -87,7 +116,7 @@ export const DetailsPage: React.FC<DetailsPageProps> = (DetailsPageProps): JSX.E
           <Box>
             <StepList>
               {item.steps.map(s => (
-                <StepListItem>
+                <StepListItem key={s.step}>
                   {s.step}
                 </StepListItem>
               ))}

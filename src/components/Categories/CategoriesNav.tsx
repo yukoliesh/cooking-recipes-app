@@ -10,7 +10,13 @@ export interface CategoriesNavProps {
 }
 
 const CategoryImg = styled.img`
-  width: 4rem;
+  width: 100%;
+`;
+
+const CategoryNavCroppedImg = styled.div`
+  width: 3.5rem;
+  overflow: hidden;
+  margin: 0.25rem 0.5rem 0 0.75rem;
 `;
 
 const RowWidth = styled(Flex)`
@@ -33,7 +39,7 @@ export const CategoriesNav: React.FC<CategoriesNavProps> = ({categoryNames}): JS
   return (
   <>
     <RowWidth justifyContent="flex-start" alignItems="center" width={1}>
-      <Box><CategoryImg src={image.src} alt={image.alt} /></Box>
+      <Box><CategoryNavCroppedImg><CategoryImg src={image.src} alt={image.alt} /></CategoryNavCroppedImg></Box>
       <Box><SideHeader>Categories</SideHeader></Box>
     </RowWidth>
     <RowWidth justifyContent="flex-end" alignItems="flex-end">

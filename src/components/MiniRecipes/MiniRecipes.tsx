@@ -16,7 +16,7 @@ const RowWidth = styled(Box)`
   max-width: 550px;
 `;
 const MainTitleImg = styled.img`
-  width: 7rem;
+  width: 100%;
 `;
 const imageBasil = {
   src: Basil,
@@ -30,9 +30,9 @@ const MoreButton = styled(StyledButton)`
 `;
 
 const MiniCroppedImg = styled.div`
-  width: 5.5rem;
+  width: 3.5rem;
   overflow: hidden;
-  margin: 0 0 0 -40px;
+  margin-top: 0.25rem;
 `;
 
 

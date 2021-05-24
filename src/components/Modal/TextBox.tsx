@@ -7,6 +7,7 @@ export interface TextBoxProps {
   textboxId: string;
   onTextBoxInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   htmlFor: string;
+  textBoxType: string;
 }
 
 export const TextBox: React.FC<TextBoxProps> = ({
@@ -14,14 +15,15 @@ export const TextBox: React.FC<TextBoxProps> = ({
   textboxPlaceholder,
   textboxId,
   onTextBoxInputChange,
-  htmlFor
+  htmlFor,
+  textBoxType
 }: TextBoxProps): JSX.Element => {
 
 
   return (
     <>
       <TextboxLabel htmlFor={htmlFor}>{textboxLabel}</TextboxLabel>
-      <TextBoxInput type="text" placeholder={textboxPlaceholder} aria-placeholder={textboxPlaceholder} id={textboxId} onChange={onTextBoxInputChange} />
+      <TextBoxInput type={textBoxType} placeholder={textboxPlaceholder} aria-placeholder={textboxPlaceholder} name={textboxId} id={textboxId} onChange={onTextBoxInputChange} />
     </>
   );
 };
