@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 export const NavButton = styled(Link)<{bordercolor: string}>`
   width: 100%;
   padding: 0.8rem;
-  margin-left: 0.8rem;
+  /* margin-left: 0.8rem; */
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
   border-left: solid 5px ${(props) => props.bordercolor };;

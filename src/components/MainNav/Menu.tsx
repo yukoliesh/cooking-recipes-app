@@ -9,7 +9,7 @@ import Logo from "../../stories/assets/logo.svg";
 
 
 export interface MenuProps {
-  user?: {};
+  isLoggedIn: boolean;
   onLogin: () => void;
   onLogout: () => void;
   onCreateAccount: () => void;
@@ -44,7 +44,7 @@ const WelcomeText = styled.span`
 `;
 
 
-export const Menu: React.FC<MenuProps> = ({ user, onLogin, onLogout, onCreateAccount, userFirstName }: MenuProps): JSX.Element => {
+export const Menu: React.FC<MenuProps> = ({ isLoggedIn, onLogin, onLogout, onCreateAccount, userFirstName }: MenuProps): JSX.Element => {
   // const classes = useStyles();
   // const preventDefault = (event: React.SyntheticEvent) => event.preventDefault();
 
@@ -58,22 +58,22 @@ export const Menu: React.FC<MenuProps> = ({ user, onLogin, onLogout, onCreateAcc
         <RGrid width={2 / 3}>
           <Flex alignItems="center" justifyContent="flex-end">
             <Box pr="3"><WelcomeText>{`WELCOME BACK, ${userFirstName}!`}</WelcomeText></Box>
-            <Box>
+            <Box width="auto">
               <nav>
-                <SpacedLink to="/AllRecipes" color="secondary">
+                <SpacedLink to="/AllRecipes" color="secondary" aria-label="Recipes link">
                   RECIPES
                 </SpacedLink>
-                <SpacedLink to="/AllCategories" color="secondary">
+                <SpacedLink to="/AllCategories" color="secondary" aria-label="Categories link">
                   CATEGORIES
                 </SpacedLink>
-                <SpacedLink to="/Favorites" color="secondary">
+                <SpacedLink to="/Favorites" color="secondary" aria-label="Favorites link">
                   FAVORITES
                 </SpacedLink>
               </nav>
             </Box>
             <Box width={1 / 4}>
-              <Flex justifyContent="flex-end" width="200px">
-              {user ? (
+              <Flex justifyContent={isLoggedIn ? "flex-start" : "flex-end"} width="200px">
+              {isLoggedIn ? (
                 <Box>
                   <StyledButton size="small" onClick={onLogout} label="SIGN OUT" />
                 </Box>

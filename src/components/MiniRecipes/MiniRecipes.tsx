@@ -54,7 +54,7 @@ export const MiniRecipes: React.FC<MiniRecipesProps> = ({
 
   return (
     <RowWidth>
-      <Flex justifyContent="flex-start" alignItems="center">
+      <Flex justifyContent="flex-start" alignItems="center" height="91px">
         <MiniCroppedImg>
           <MainTitleImg src={imageBasil.src} alt={imageBasil.alt} />
         </MiniCroppedImg>

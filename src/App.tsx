@@ -47,27 +47,30 @@ function AppRouter() {
     password: "",
     confirmPassword: ""
   })
-  const [isFavoriteClicked, setIsFavoriteClicked] = React.useState(false);
-  const [ signUp ] = useMutation(ADD_USER);
+  const [isFavoriteClicked, setIsFavoriteClicked] = React.useState<boolean>(false);
+  const [user, setUser] = React.useState({});
+  const [isUserLoggedIn, setIsUserLoggedIn] = React.useState<boolean>(false);
+  const [username, setUsername] = React.useState<string>("");
+  const [password, setPassword] = React.useState<string>("");
 
-  const onUserLoginClick = () => {
-    setIsOpenModal(true);
-    setIsNewMember(false);
-  }
-  const onCreateAccountClick = () => {
-    setIsOpenModal(true);
-    setIsNewMember(true);
-  }
-  const onModalClose = () => {
-    setIsOpenModal(false);
-  }
+  const [ signUp ] = useMutation(ADD_USER);
 
   const { loading: loadingRecipes, error: errorRecipes, data: dataRecipes } = useQuery(RECIPES);
   const { loading: loadingUser, error: errorUser, data: dataUser } = useQuery(LOGIN_USER, {
     variables: signInGqlVariables, 
     skip: typeof signInGqlVariables === "undefined"
   });
+
+  // const getFirstName = React.useMemo(() => {
+  //   const welcomeName = dataUser.logIn.user.firstName;
+  //   return welcomeName;
+  // },[dataUser]);
+
+
   console.log("data user" , dataUser);
+  console.log("username" , username);
+  console.log("password" , password);
+
   if(loadingRecipes) return <p>Loading App ...</p> 
   if(errorRecipes) return <p>Error loading App!</p>
 
@@ -75,23 +78,7 @@ function AppRouter() {
   const categoryNames: string[] = dataRecipes.recipes.map(x => x.category);
   const categorySet:string[] = [...new Set(categoryNames)];
 
-
-  // You need to separate the email and password to get their value by using .name.
-  const onSignInTextBoxInputChange = (e) => {
-    const { name, value } = e.target;
-    setSignInInputValues({ ...signInInputValues, [name]: value });
-  }
   
-  const handleSignInSubmitClick = (e) => {
-    e.preventDefault();
-    // Check the email address is in database otherwise show the validation
-    // Check the password is correct otherwise show the validation
-    // Find out how to take care of Forgot password? part
-
-    setSignInGqlVariables(signInInputValues);
-    setIsOpenModal(false);
-  }
-
   const onSignUpTextBoxInputChange = (e) => {
     const { name, value } = e.target;
     console.log("name", name);
@@ -110,6 +97,40 @@ function AppRouter() {
     }
   }
 
+  // React.useEffect(() => {
+  //   const loggedInUser = localStorage.getItem("user");
+  //   if(loggedInUser){
+  //     const foundUser = JSON.parse(loggedInUser);
+  //     setUser(foundUser);
+  //   }
+  // },[]);
+
+  // You need to separate the email and password to get their value by using .name.
+  const onSignInTextBoxInputChange = (e) => {
+    const { name, value } = e.target;
+    setSignInInputValues({ ...signInInputValues, [name]: value });
+  }
+  
+  const handleSignInSubmitClick = (e) => {
+    e.preventDefault();
+    // Check the email address is in database otherwise show the validation
+    // Check the password is correct otherwise show the validation
+    // Find out how to take care of Forgot password? part
+
+    setSignInGqlVariables(signInInputValues);
+    setIsOpenModal(false);
+    setUser(dataUser);
+    setIsUserLoggedIn(true);
+    localStorage.setItem('user', dataUser);
+    console.log("user", dataUser);
+  }
+
+  const handleLogout = () => {
+    setUser({});
+    setUsername("");
+    setPassword("");
+    localStorage.clear();
+  }
 
   // Favorite button action
   const handleAddFavoriteItem = (e) => {
@@ -119,10 +140,24 @@ function AppRouter() {
     console.log("you clicked it!");
   }
 
+  const onUserLoginClick = () => {
+    setIsOpenModal(true);
+    setIsNewMember(false);
+  }
+  const onCreateAccountClick = () => {
+    setIsOpenModal(true);
+    setIsNewMember(true);
+  }
+  const onModalClose = () => {
+    setIsOpenModal(false);
+  }
+
+
 
   // validation of confirm password
   // console.log("data from app", dataRecipes)
   console.log("signInInputValues", signInInputValues);
+  // console.log("first Name", dataUser.user.firstName);
   // console.log("signUpInputValues", signUpInputValues);
 
 
@@ -131,7 +166,7 @@ function AppRouter() {
       <Header />
         <Flex justifyContent="center">
           <Box width={3 / 4}>
-            <Menu onLogin={onUserLoginClick} onCreateAccount={onCreateAccountClick} onLogout={() => {}} userFirstName="Yuko" />
+            <Menu onLogin={onUserLoginClick} onCreateAccount={onCreateAccountClick} onLogout={handleLogout} userFirstName="yuko" isLoggedIn={isUserLoggedIn} />
             <Flex justifyContent="flex-start" alignItems="flex-start">
               <Box width={1 / 4}>
                 <CategoriesNav categoryNames={categorySet} />

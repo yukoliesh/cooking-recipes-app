@@ -16,7 +16,7 @@ const CategoryImg = styled.img`
 const CategoryNavCroppedImg = styled.div`
   width: 3.5rem;
   overflow: hidden;
-  margin: 0.25rem 0.5rem 0 0.75rem;
+  margin: 0.25rem 0.5rem 0 0;
 `;
 
 const RowWidth = styled(Flex)`

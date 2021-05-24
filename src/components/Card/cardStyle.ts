@@ -9,7 +9,7 @@ max-width: 500px;
 border-radius: 15px;
 filter: drop-shadow(0 4px 4px #a9a8a8);
 background-color: #fff;
-margin-right: ${th.space(2)};
+margin-right: ${th.space(72)};
 margin-bottom: ${th.space(4)};
 `;
 

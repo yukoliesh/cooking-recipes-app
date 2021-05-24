@@ -13,6 +13,7 @@ import { RECIPES } from "../../api/gql";
 const RowWidth = styled(Box)`
   width: 50vw;
   max-width: 550px;
+  margin-right: 3.5rem !important;  
 `;
 const MainTitleImg = styled.img`
   width: 100%;
