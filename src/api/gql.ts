@@ -94,7 +94,7 @@ export const ADD_USER = gql`
 `;
 
 export const LOGIN_USER = gql`
-  query logIn($email: String!, $password: String!){
+  mutation logIn($email: String!, $password: String!){
     logIn(email: $email, password: $password){
       token
       user {

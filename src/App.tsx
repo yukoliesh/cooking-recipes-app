@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route, useHistory } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, HttpLink, InMemoryCache, useMutation, useQuery } from "@apollo/client";
 import { RECIPES, ADD_USER, LOGIN_USER } from "./api/gql";
 import { Flex, Box } from "reflexbox";
@@ -14,7 +14,17 @@ import './App.css';
 import { AllQuickRecipes } from './components/MiniRecipes';
 import { CategoryItem } from './components/Categories/CategoryItem';
 import { AllRecipes } from './components/AllRecipes/AllRecipes';
+import { setInterval } from 'timers';
 // import { useFormFields } from './shared/hooks/useFormFields';
+
+type User = {
+  id: string,
+  firstName: string,
+  lastName: string,
+  email: string,
+  password: string,
+  role: string
+}
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
@@ -30,8 +40,6 @@ const client = new ApolloClient({
 
 
 function AppRouter() {
-  // const history = useHistory();
-
   const [isOpenModal, setIsOpenModal] = React.useState(false); 
   const [isNewMember, setIsNewMember] = React.useState(false); 
   // const [isLoading, setIsLoading] = React.useState(false);
@@ -39,7 +47,6 @@ function AppRouter() {
     email: "",
     password: ""
   });
-  const [signInGqlVariables, setSignInGqlVariables] = React.useState<{email: string, password: string}>();
   const [signUpInputValues, setSignUpInputValues] = React.useState({
     firstName: "",
     lastName: "",
@@ -48,28 +55,16 @@ function AppRouter() {
     confirmPassword: ""
   })
   const [isFavoriteClicked, setIsFavoriteClicked] = React.useState<boolean>(false);
-  const [user, setUser] = React.useState({});
-  const [isUserLoggedIn, setIsUserLoggedIn] = React.useState<boolean>(false);
-  const [username, setUsername] = React.useState<string>("");
-  const [password, setPassword] = React.useState<string>("");
+  const [user, setUser] = React.useState<User>();
+  const [token, setToken] = React.useState<string>("");
+  const [isInvalid, setIsInvalid] = React.useState<boolean>(false);
+  const [errorMessageTxt, setErrorMessageTxt] = React.useState<string>("");
+ 
 
   const [ signUp ] = useMutation(ADD_USER);
 
   const { loading: loadingRecipes, error: errorRecipes, data: dataRecipes } = useQuery(RECIPES);
-  const { loading: loadingUser, error: errorUser, data: dataUser } = useQuery(LOGIN_USER, {
-    variables: signInGqlVariables, 
-    skip: typeof signInGqlVariables === "undefined"
-  });
-
-  // const getFirstName = React.useMemo(() => {
-  //   const welcomeName = dataUser.logIn.user.firstName;
-  //   return welcomeName;
-  // },[dataUser]);
-
-
-  console.log("data user" , dataUser);
-  console.log("username" , username);
-  console.log("password" , password);
+  const [ logIn ] = useMutation(LOGIN_USER);
 
   if(loadingRecipes) return <p>Loading App ...</p> 
   if(errorRecipes) return <p>Error loading App!</p>
@@ -81,29 +76,35 @@ function AppRouter() {
   
   const onSignUpTextBoxInputChange = (e) => {
     const { name, value } = e.target;
-    console.log("name", name);
-    console.log("value", value);
     setSignUpInputValues({...signUpInputValues, [name]: value })
   } 
 
-  const handleSignUpSubmitClick = (e) => {
+  const handleSignUpSubmitClick = async (e) => {
     e.preventDefault();
+
     if(signUpInputValues.password === signUpInputValues.confirmPassword){
       signUp({ variables: signUpInputValues });
-      console.log("clicked on submit button");
       setIsOpenModal(false);
     } else {
-      console.log("Error! - Wrong Password");
+      setErrorMessageTxt("Please make sure and enter the correct password.");
+    }
+    
+    if(signUpInputValues.firstName.length === 0 || signUpInputValues.lastName.length === 0 || signUpInputValues.email.length === 0 || signUpInputValues.password.length === 0){
+      setErrorMessageTxt("Please enter your information.");
+      setIsInvalid(true);
+      setIsOpenModal(true);
+    }
+
+    setIsInvalid(false);
+    try{
+      setIsOpenModal(false);
+    }
+    catch(e){
+      console.error(e);
+      setIsInvalid(true);
+      setErrorMessageTxt("Please make sure and enter the correct information.");
     }
   }
-
-  // React.useEffect(() => {
-  //   const loggedInUser = localStorage.getItem("user");
-  //   if(loggedInUser){
-  //     const foundUser = JSON.parse(loggedInUser);
-  //     setUser(foundUser);
-  //   }
-  // },[]);
 
   // You need to separate the email and password to get their value by using .name.
   const onSignInTextBoxInputChange = (e) => {
@@ -111,25 +112,36 @@ function AppRouter() {
     setSignInInputValues({ ...signInInputValues, [name]: value });
   }
   
-  const handleSignInSubmitClick = (e) => {
+  const handleSignInSubmitClick = async (e) => {
     e.preventDefault();
-    // Check the email address is in database otherwise show the validation
-    // Check the password is correct otherwise show the validation
-    // Find out how to take care of Forgot password? part
 
-    setSignInGqlVariables(signInInputValues);
-    setIsOpenModal(false);
-    setUser(dataUser);
-    setIsUserLoggedIn(true);
-    localStorage.setItem('user', dataUser);
-    console.log("user", dataUser);
+    if(signInInputValues.email.length === 0 || signInInputValues.password.length === 0){
+      setIsInvalid(true);
+      setIsOpenModal(true);
+      setErrorMessageTxt("Please enter your information.");
+      return ;
+    }
+    setIsInvalid(false);
+
+    try{
+      const userPayload = await logIn({variables: signInInputValues});
+      
+      console.log("userPayload", userPayload);
+      setIsOpenModal(false);
+      setUser(userPayload.data.logIn.user);
+      setToken(userPayload.data.logIn.token);
+    }
+    catch(e){
+      setIsInvalid(true);
+      console.error(e);
+      setErrorMessageTxt("Please make sure and enter the correct information.");
+    }
   }
 
   const handleLogout = () => {
-    setUser({});
-    setUsername("");
-    setPassword("");
+    setUser(undefined);
     localStorage.clear();
+    setToken("");
   }
 
   // Favorite button action
@@ -166,7 +178,7 @@ function AppRouter() {
       <Header />
         <Flex justifyContent="center">
           <Box width={3 / 4}>
-            <Menu onLogin={onUserLoginClick} onCreateAccount={onCreateAccountClick} onLogout={handleLogout} userFirstName="yuko" isLoggedIn={isUserLoggedIn} />
+            <Menu onLogin={onUserLoginClick} onCreateAccount={onCreateAccountClick} onLogout={handleLogout} userFirstName={user?.firstName || ""} isLoggedIn={token !== ""} />
             <Flex justifyContent="flex-start" alignItems="flex-start">
               <Box width={1 / 4}>
                 <CategoriesNav categoryNames={categorySet} />
@@ -201,9 +213,9 @@ function AppRouter() {
           </Box>
         </Flex> 
         {isNewMember ? (
-          <LoginModal modalTitle="Create an Account" modalDesc="When you signed up, you can save your recipes!" onCloseClick={onModalClose} isModalOpen={isOpenModal} isCreateAccount={isNewMember} onTextBoxInputChange={onSignUpTextBoxInputChange} onSubmitClick={e => handleSignUpSubmitClick(e)} />
+          <LoginModal modalTitle="Create an Account" modalDesc="When you signed up, you can save your recipes!" onCloseClick={onModalClose} isModalOpen={isOpenModal} isCreateAccount={isNewMember} onTextBoxInputChange={onSignUpTextBoxInputChange} onSubmitClick={e => handleSignUpSubmitClick(e)} isInvalid={isInvalid} errorMessage={errorMessageTxt} />
         ) : (
-          <LoginModal modalTitle="SIGN IN" modalDesc="Welcome back!" onCloseClick={onModalClose} isModalOpen={isOpenModal} isCreateAccount={isNewMember} onTextBoxInputChange={onSignInTextBoxInputChange} onSubmitClick={e => handleSignInSubmitClick(e)} />
+          <LoginModal modalTitle="SIGN IN" modalDesc="Welcome back!" onCloseClick={onModalClose} isModalOpen={isOpenModal} isCreateAccount={isNewMember} onTextBoxInputChange={onSignInTextBoxInputChange} onSubmitClick={e => handleSignInSubmitClick(e)} isInvalid={isInvalid} errorMessage={errorMessageTxt} />
         )}
       <Footer onCreateAccount={onCreateAccountClick} onLogin={onUserLoginClick} />
     </Router>

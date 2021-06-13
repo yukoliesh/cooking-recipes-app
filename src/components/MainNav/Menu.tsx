@@ -41,13 +41,11 @@ const WelcomeText = styled.span`
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
   color: #4d4d4d;
+  text-transform: uppercase;
 `;
 
 
 export const Menu: React.FC<MenuProps> = ({ isLoggedIn, onLogin, onLogout, onCreateAccount, userFirstName }: MenuProps): JSX.Element => {
-  // const classes = useStyles();
-  // const preventDefault = (event: React.SyntheticEvent) => event.preventDefault();
-
 
   return (
     <ThemeProvider theme={theme}>
@@ -57,7 +55,9 @@ export const Menu: React.FC<MenuProps> = ({ isLoggedIn, onLogin, onLogout, onCre
         </Box>
         <RGrid width={2 / 3}>
           <Flex alignItems="center" justifyContent="flex-end">
-            <Box pr="3"><WelcomeText>{`WELCOME BACK, ${userFirstName}!`}</WelcomeText></Box>
+            {isLoggedIn && (
+              <Box pr="3"><WelcomeText>{`WELCOME BACK, ${userFirstName}!`}</WelcomeText></Box>
+            )}
             <Box width="auto">
               <nav>
                 <SpacedLink to="/AllRecipes" color="secondary" aria-label="Recipes link">

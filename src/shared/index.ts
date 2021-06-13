@@ -9,7 +9,7 @@ export const getCategoryColor = (categoryName: string) => {
     return "#33658A"
   }
   else if (categoryName === "Korean") {
-    return "#5D90B1"
+    return "#507A96"
   }
   else if (categoryName === "Malaysia") {
     return "#86BBD8"
@@ -21,7 +21,7 @@ export const getCategoryColor = (categoryName: string) => {
     return "#FFC700"
   }
   else if (categoryName === "Thai") {
-    return "#F9960D"
+    return "#A86608"
   }
   else if (categoryName === "Vietnamese") {
     return "#F26419"

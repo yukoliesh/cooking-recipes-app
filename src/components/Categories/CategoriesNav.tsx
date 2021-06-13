@@ -35,7 +35,7 @@ const image = {
 
 
 export const CategoriesNav: React.FC<CategoriesNavProps> = ({categoryNames}): JSX.Element => {
-  const colors = ["#ffc107", "#2F4858", "#315771", "#33658A", "#5D90B1", "#86BBD8", "#C3C16C", "#FFC700", "#F9960D", "#F26419"]
+  const colors = ["#ffc107", "#2F4858", "#315771", "#33658A", "#507A96", "#86BBD8", "#C3C16C", "#FFC700", "#A86608", "#F26419"]
   return (
   <>
     <RowWidth justifyContent="flex-start" alignItems="center" width={1}>

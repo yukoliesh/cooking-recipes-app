@@ -62,7 +62,7 @@ export const CategoriesNav: React.FC<CategoriesNavProps> = ({categoryNames}): JS
         <NavButton bordercolor="#33658A" to="/Japanese">
           <NavButtonTxt>Japanese</NavButtonTxt>
         </NavButton>
-        <NavButton bordercolor="#5D90B1" to="/Korean">
+        <NavButton bordercolor="#507A96" to="/Korean">
           <NavButtonTxt>Korean</NavButtonTxt>
         </NavButton>
         <NavButton bordercolor="#86BBD8" to="/Malaysian">
@@ -74,7 +74,7 @@ export const CategoriesNav: React.FC<CategoriesNavProps> = ({categoryNames}): JS
         <NavButton bordercolor="#FFC700" to="/Taiwanese">
           <NavButtonTxt>Taiwanese</NavButtonTxt>
         </NavButton>
-        <NavButton bordercolor="#F9960D" to="/Thai">
+        <NavButton bordercolor="#A86608" to="/Thai">
           <NavButtonTxt>Thai</NavButtonTxt>
         </NavButton>
         <NavButton bordercolor="#F26419" to="/Vietnamese">

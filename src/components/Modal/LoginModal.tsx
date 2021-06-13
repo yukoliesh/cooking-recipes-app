@@ -1,10 +1,8 @@
 import React from 'react';
 import { Flex, Box } from "reflexbox";
 import CloseIcon from '@material-ui/icons/Close';
-import { ModalWrapper, ModalBox, CloseButtonBox, CloseButton, ModalBoxHeaderTxt, ForgotTxtBox, SubmitButton, ForgotButton, ModalBoxHeaderDesc } from './modalStyles'; 
+import { ModalWrapper, ModalBox, CloseButtonBox, CloseButton, ModalBoxHeaderTxt, ForgotTxtBox, SubmitButton, ForgotButton, ModalBoxHeaderDesc, ValidationText } from './modalStyles'; 
 import { TextBox } from './TextBox';
-
-
 
 export interface LoginModalProps {
   modalTitle: string;
@@ -14,6 +12,8 @@ export interface LoginModalProps {
   onCloseClick: () => void;
   onSubmitClick: (e) => void;
   onTextBoxInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  isInvalid: boolean;
+  errorMessage: string;
 }
 
 export const LoginModal: React.FC<LoginModalProps> = ({
@@ -23,7 +23,9 @@ export const LoginModal: React.FC<LoginModalProps> = ({
   isCreateAccount,
   onCloseClick,
   onSubmitClick,
-  onTextBoxInputChange
+  onTextBoxInputChange,
+  isInvalid,
+  errorMessage,
 }: LoginModalProps): JSX.Element => {
 
   return (
@@ -41,6 +43,9 @@ export const LoginModal: React.FC<LoginModalProps> = ({
                 <Box width={1}>
                   <ModalBoxHeaderTxt>{modalTitle}</ModalBoxHeaderTxt>
                   <ModalBoxHeaderDesc>{modalDesc}</ModalBoxHeaderDesc>
+                  {isInvalid && (
+                      <ValidationText aria-invalid={isInvalid} >{errorMessage}</ValidationText>
+                  )}
                   <form>
                     <Flex flexDirection="column"> 
                       {isCreateAccount && (

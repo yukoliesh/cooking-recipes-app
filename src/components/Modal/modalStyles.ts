@@ -65,6 +65,12 @@ export const TextBoxInput = styled.input`
   border-radius: ${th.radius(15)};
 `;
 
+export const ValidationText = styled.div`
+  font-size: 12px;
+  padding: ${th.space(2)} 0;
+  color: red;
+`;
+
 export const ForgotTxtBox = styled(Box)`
   text-align: right;
 `;

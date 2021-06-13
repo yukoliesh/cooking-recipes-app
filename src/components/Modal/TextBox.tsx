@@ -16,7 +16,7 @@ export const TextBox: React.FC<TextBoxProps> = ({
   textboxId,
   onTextBoxInputChange,
   htmlFor,
-  textBoxType
+  textBoxType,
 }: TextBoxProps): JSX.Element => {
 
 
