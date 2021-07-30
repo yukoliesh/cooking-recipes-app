@@ -76,6 +76,19 @@ const resolvers = {
     const token = jwt.sign({ user: user }, APP_SECRET); 
 
     return {user, token}
+  },
+  validateToken: async (obj, arg, context) => {
+    console.log({context, obj, arg});
+    if(!context.userId){
+      throw new AuthenticationError("Invalid token");
+    }
+    const user = await User.findOne({ _id: context.userId });
+    if(!user){
+      throw new AuthenticationError("Unknown user");
+    }
+    const token = jwt.sign({ user: user }, APP_SECRET); 
+
+    return {user, token}
   }
 }
 

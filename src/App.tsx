@@ -1,7 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { ApolloClient, ApolloProvider, HttpLink, InMemoryCache, useMutation, useQuery } from "@apollo/client";
-import { RECIPES, ADD_USER, LOGIN_USER } from "./api/gql";
+import { ApolloClient, ApolloProvider, HttpLink, InMemoryCache, useMutation, useQuery, createHttpLink } from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
+import { RECIPES, ADD_USER, LOGIN_USER, VALIDATE_TOKEN } from "./api/gql";
 import { Flex, Box } from "reflexbox";
 import { Header } from './components/Header';
 import { Menu } from './components/MainNav';
@@ -26,15 +27,25 @@ type User = {
   role: string
 }
 
+const httpLink = createHttpLink({
+  uri: "http://localhost:4001/graphql"
+});
+
+const authLink = setContext((_, { headers }) => {
+  // get the authentication token from local storage if it exists
+  const token = localStorage.getItem('token');
+  // return the headers to the context so httpLink can read them
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : "",
+    }
+  }
+});
+
 const client = new ApolloClient({
   cache: new InMemoryCache(),
-  link: new HttpLink({
-    // Mock Data
-    // uri: "http://localhost:4000/"
-
-    // MongoDB
-    uri: "http://localhost:4001/graphql"
-  }),
+  link: authLink.concat(httpLink),
   credentials: "same-origin"
 })
 
@@ -65,6 +76,33 @@ function AppRouter() {
 
   const { loading: loadingRecipes, error: errorRecipes, data: dataRecipes } = useQuery(RECIPES);
   const [ logIn ] = useMutation(LOGIN_USER);
+  const [ validateToken ] = useMutation(VALIDATE_TOKEN);
+
+  React.useEffect(() => {
+    if(token){
+      localStorage.setItem("token", token);
+    }
+  },[token]);
+
+  React.useEffect(() => {
+    const runValidation = async () => {
+      const localToken = localStorage.getItem("token");
+      if(localToken){
+        console.log("token found", localToken);
+        try{
+          const userPayload = await validateToken();
+          
+          console.log("userPayload", userPayload);
+          setUser(userPayload.data.validateToken.user);
+          setToken(userPayload.data.validateToken.token);
+        }
+        catch(e){
+          setToken("");
+        }
+      }
+    }
+    runValidation();
+  },[]);
 
   if(loadingRecipes) return <p>Loading App ...</p> 
   if(errorRecipes) return <p>Error loading App!</p>

@@ -107,5 +107,20 @@ export const LOGIN_USER = gql`
   }
 `;
 
+export const VALIDATE_TOKEN = gql`
+  mutation validateToken($x: String){
+    validateToken(x: $x){
+      token
+      user {
+        firstName
+        lastName
+        email
+        id
+      }
+    }
+  }
+`;
+
+
 
 

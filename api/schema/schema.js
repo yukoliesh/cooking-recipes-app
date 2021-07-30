@@ -34,6 +34,7 @@ const recipeSchema = buildSchema(`
       ): Recipe
     signUp(email: String!, password: String!, firstName: String!, lastName: String!): AuthPayload
     logIn(email: String!, password: String!): AuthPayload
+    validateToken(x: String): AuthPayload
   }
 
   type Ingredient {
